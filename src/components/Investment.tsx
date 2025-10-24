@@ -4,7 +4,7 @@ import { TrendingUp, Users, Shield, ArrowRight } from "lucide-react";
 
 const Investment = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-primary/5 relative overflow-hidden">
+    <section id="investment" className="py-24 bg-gradient-to-b from-background to-primary/5 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
       

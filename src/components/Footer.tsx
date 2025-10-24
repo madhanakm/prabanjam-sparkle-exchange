@@ -2,7 +2,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-luxury text-primary-foreground py-16 relative overflow-hidden">
+    <footer id="contact" className="bg-gradient-luxury text-primary-foreground py-16 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-64 h-64 bg-accent rounded-full blur-3xl"></div>

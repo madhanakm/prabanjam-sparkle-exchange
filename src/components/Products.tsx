@@ -25,7 +25,7 @@ const products = [
 
 const Products = () => {
   return (
-    <section className="py-24 bg-background">
+    <section id="products" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

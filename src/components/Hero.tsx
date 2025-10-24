@@ -1,14 +1,23 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Gem, Diamond, Crown } from "lucide-react";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-luxury">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-10">
+      {/* Animated jewelry elements */}
+      <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent rounded-full blur-3xl animate-float" style={{ animationDelay: "1.5s" }}></div>
+        
+        {/* Floating jewelry icons */}
+        <Diamond className="absolute top-1/4 left-1/4 w-12 h-12 text-accent/30 animate-float" style={{ animationDelay: "0.5s" }} />
+        <Gem className="absolute top-1/3 right-1/4 w-16 h-16 text-accent/40 animate-float" style={{ animationDelay: "1s" }} />
+        <Crown className="absolute bottom-1/3 left-1/3 w-14 h-14 text-accent/35 animate-float" style={{ animationDelay: "1.8s" }} />
+        <Sparkles className="absolute top-1/2 right-1/3 w-10 h-10 text-accent/30 animate-float" style={{ animationDelay: "2.2s" }} />
       </div>
+      
+      {/* Shimmering overlay */}
+      <div className="absolute inset-0 bg-gradient-shine opacity-20 animate-shimmer" style={{ backgroundSize: "200% 100%" }}></div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
@@ -18,11 +27,15 @@ const Hero = () => {
             <span className="text-sm font-medium text-primary-foreground">Now Offering Public Shares</span>
           </div>
 
-          {/* Main heading */}
-          <h1 className="font-playfair text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in-up">
-            Prabanjam Jewelry
-            <span className="block text-accent mt-2">Pvt Ltd</span>
-          </h1>
+          {/* Main heading with jewelry accent */}
+          <div className="relative inline-block">
+            <Diamond className="absolute -top-8 -left-8 w-8 h-8 text-accent animate-float opacity-60" />
+            <Gem className="absolute -top-6 -right-6 w-10 h-10 text-accent animate-float opacity-70" style={{ animationDelay: "0.8s" }} />
+            <h1 className="font-rubik text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in-up relative">
+              Prabanjam Jewelry
+              <span className="block text-accent mt-2 bg-gradient-gold bg-clip-text text-transparent animate-shimmer" style={{ backgroundSize: "200% 100%" }}>Pvt Ltd</span>
+            </h1>
+          </div>
 
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-primary-foreground/80 mb-8 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>

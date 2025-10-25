@@ -1,15 +1,25 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
 
-  const navLinks = [
-    { name: "Services", href: "#services" },
-    { name: "Investment", href: "#investment" },
-    { name: "Products", href: "#products" },
-    { name: "Contact", href: "#contact" },
+  const aboutLinks = [
+    { name: "About Us", href: "/about" },
+    { name: "Shareholders", href: "/shareholders" },
+    { name: "Board of Directors", href: "/board-of-directors" },
+    { name: "Group of Companies", href: "/group-of-companies" },
   ];
 
   return (
@@ -17,21 +27,63 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="/" className="font-playfair text-2xl font-bold text-foreground hover:text-accent transition-colors">
+          <Link to="/" className="text-2xl font-bold text-foreground hover:text-accent transition-colors">
             Prabanjam <span className="text-accent">Jewelry</span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-foreground/80 hover:text-accent font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all hover:after:w-full"
-              >
-                {link.name}
-              </a>
-            ))}
+            <Link
+              to="/"
+              className="text-foreground/80 hover:text-accent font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all hover:after:w-full"
+            >
+              Home
+            </Link>
+            
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-foreground/80 hover:text-accent font-medium bg-transparent">
+                    About Us
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[200px] gap-3 p-4">
+                      {aboutLinks.map((link) => (
+                        <li key={link.name}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              to={link.href}
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent/10 hover:text-accent focus:bg-accent/10"
+                            >
+                              <div className="text-sm font-medium leading-none">{link.name}</div>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            <a
+              href="/#services"
+              className="text-foreground/80 hover:text-accent font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all hover:after:w-full"
+            >
+              Services
+            </a>
+            <a
+              href="/#investment"
+              className="text-foreground/80 hover:text-accent font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all hover:after:w-full"
+            >
+              Investment
+            </a>
+            <a
+              href="/#products"
+              className="text-foreground/80 hover:text-accent font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all hover:after:w-full"
+            >
+              Products
+            </a>
           </nav>
 
           {/* CTA Button */}
@@ -55,16 +107,62 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="md:hidden py-6 border-t border-border/50 animate-fade-in">
             <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-foreground/80 hover:text-accent font-medium transition-colors py-2"
+              <Link
+                to="/"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-foreground/80 hover:text-accent font-medium transition-colors py-2"
+              >
+                Home
+              </Link>
+              
+              <div>
+                <button
+                  onClick={() => setIsAboutOpen(!isAboutOpen)}
+                  className="flex items-center justify-between w-full text-foreground/80 hover:text-accent font-medium transition-colors py-2"
                 >
-                  {link.name}
-                </a>
-              ))}
+                  About Us
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isAboutOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {isAboutOpen && (
+                  <div className="ml-4 mt-2 space-y-2">
+                    {aboutLinks.map((link) => (
+                      <Link
+                        key={link.name}
+                        to={link.href}
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setIsAboutOpen(false);
+                        }}
+                        className="block text-foreground/80 hover:text-accent transition-colors py-2"
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <a
+                href="/#services"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-foreground/80 hover:text-accent font-medium transition-colors py-2"
+              >
+                Services
+              </a>
+              <a
+                href="/#investment"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-foreground/80 hover:text-accent font-medium transition-colors py-2"
+              >
+                Investment
+              </a>
+              <a
+                href="/#products"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-foreground/80 hover:text-accent font-medium transition-colors py-2"
+              >
+                Products
+              </a>
               <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold mt-2">
                 Invest Now
               </Button>

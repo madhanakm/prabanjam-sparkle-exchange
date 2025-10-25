@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        rubik: ['Rubik', 'sans-serif'],
-        sans: ['Rubik', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

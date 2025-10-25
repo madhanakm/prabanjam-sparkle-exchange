@@ -35,7 +35,7 @@ const Header = () => {
           <nav className="hidden md:flex items-center gap-8">
             <Link
               to="/"
-              className="text-foreground/80 hover:text-accent font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all hover:after:w-full"
+              className="text-foreground/80 hover:text-accent font-medium transition-all duration-300"
             >
               Home
             </Link>
@@ -43,17 +43,17 @@ const Header = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-foreground/80 hover:text-accent font-medium bg-transparent">
+                  <NavigationMenuTrigger className="text-foreground/80 hover:text-accent font-medium bg-transparent hover:bg-accent/10">
                     About Us
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-3 p-4">
+                    <ul className="grid w-[200px] gap-1 p-2">
                       {aboutLinks.map((link) => (
                         <li key={link.name}>
                           <NavigationMenuLink asChild>
                             <Link
                               to={link.href}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent/10 hover:text-accent focus:bg-accent/10"
+                              className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent/10 hover:text-accent"
                             >
                               <div className="text-sm font-medium leading-none">{link.name}</div>
                             </Link>
@@ -66,31 +66,33 @@ const Header = () => {
               </NavigationMenuList>
             </NavigationMenu>
 
-            <a
-              href="/#services"
-              className="text-foreground/80 hover:text-accent font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all hover:after:w-full"
+            <Link
+              to="/services"
+              className="text-foreground/80 hover:text-accent font-medium transition-all duration-300"
             >
               Services
-            </a>
-            <a
-              href="/#investment"
-              className="text-foreground/80 hover:text-accent font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all hover:after:w-full"
+            </Link>
+            <Link
+              to="/investment"
+              className="text-foreground/80 hover:text-accent font-medium transition-all duration-300"
             >
               Investment
-            </a>
-            <a
-              href="/#products"
-              className="text-foreground/80 hover:text-accent font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all hover:after:w-full"
+            </Link>
+            <Link
+              to="/contact"
+              className="text-foreground/80 hover:text-accent font-medium transition-all duration-300"
             >
-              Products
-            </a>
+              Contact
+            </Link>
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-md hover:shadow-gold transition-all duration-300">
-              Invest Now
-            </Button>
+            <Link to="/invest-now">
+              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-md hover:shadow-gold transition-all duration-300">
+                Invest Now
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -142,30 +144,32 @@ const Header = () => {
                 )}
               </div>
 
-              <a
-                href="/#services"
+              <Link
+                to="/services"
                 onClick={() => setIsMenuOpen(false)}
                 className="text-foreground/80 hover:text-accent font-medium transition-colors py-2"
               >
                 Services
-              </a>
-              <a
-                href="/#investment"
+              </Link>
+              <Link
+                to="/investment"
                 onClick={() => setIsMenuOpen(false)}
                 className="text-foreground/80 hover:text-accent font-medium transition-colors py-2"
               >
                 Investment
-              </a>
-              <a
-                href="/#products"
+              </Link>
+              <Link
+                to="/contact"
                 onClick={() => setIsMenuOpen(false)}
                 className="text-foreground/80 hover:text-accent font-medium transition-colors py-2"
               >
-                Products
-              </a>
-              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold mt-2">
-                Invest Now
-              </Button>
+                Contact
+              </Link>
+              <Link to="/invest-now" onClick={() => setIsMenuOpen(false)}>
+                <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold mt-2 w-full">
+                  Invest Now
+                </Button>
+              </Link>
             </div>
           </nav>
         )}

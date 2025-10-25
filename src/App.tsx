@@ -8,6 +8,10 @@ import AboutUs from "./pages/AboutUs";
 import Shareholders from "./pages/Shareholders";
 import BoardOfDirectors from "./pages/BoardOfDirectors";
 import GroupOfCompanies from "./pages/GroupOfCompanies";
+import Services from "./pages/Services";
+import Investment from "./pages/Investment";
+import InvestNow from "./pages/InvestNow";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +28,10 @@ const App = () => (
           <Route path="/shareholders" element={<Shareholders />} />
           <Route path="/board-of-directors" element={<BoardOfDirectors />} />
           <Route path="/group-of-companies" element={<GroupOfCompanies />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/investment" element={<Investment />} />
+          <Route path="/invest-now" element={<InvestNow />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

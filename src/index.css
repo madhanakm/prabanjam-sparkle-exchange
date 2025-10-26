@@ -173,3 +173,34 @@ All colors MUST be HSL.
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+.testimonial-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 4rem 0 0;
+}
+
+.testimonial-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.testimonial-slide {
+  min-width: 25%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .testimonial-slide {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .testimonial-slide {
+    min-width: 50%;
+  }
+}

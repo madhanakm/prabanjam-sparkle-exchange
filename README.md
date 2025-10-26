@@ -1,93 +1,143 @@
-# Prabanjam Jewelry Pvt Ltd - Official Website
+# Prabanjam Jewelry Pvt Ltd - Complete System
 
-## About
+## Overview
+Complete website system with frontend, backend API, and admin panel for Prabanjam Jewelry Pvt Ltd.
 
-This is the official website for Prabanjam Jewelry Pvt Ltd, a premium silver & gold trading company offering investment opportunities to the public.
+## System Components
+
+### 1. Frontend Website (React + Vite)
+- Modern responsive website
+- Dynamic testimonials from database
+- Contact and investment forms
+- Shareholders section with authentication
+
+### 2. Backend API (Node.js + Express)
+- RESTful API endpoints
+- MySQL database integration
+- JWT authentication for admin
+- Form submissions handling
+
+### 3. Admin Panel (React)
+- Admin authentication
+- Manage testimonials
+- View shareholders list
+- Handle contact submissions
+- Investment inquiries management
+
+## Setup Instructions
+
+### Database Setup (XAMPP)
+1. Start XAMPP and ensure MySQL is running
+2. Open phpMyAdmin (http://localhost/phpmyadmin)
+3. Import the database schema from `backend/database.sql`
+4. Default admin credentials: username: `admin`, password: `admin123`
+
+### Backend Setup
+```bash
+cd backend
+npm install
+npm run dev
+```
+Backend will run on http://localhost:5000
+
+### Frontend Website
+```bash
+npm install
+npm run dev
+```
+Website will run on http://localhost:8080
+
+### Admin Panel
+```bash
+cd admin-panel
+npm install
+npm start
+```
+Admin panel will run on http://localhost:3000
+
+## API Endpoints
+
+### Public Endpoints
+- `GET /api/testimonials` - Get all testimonials
+- `POST /api/contact` - Submit contact form
+- `POST /api/invest` - Submit investment inquiry
+
+### Admin Endpoints (Requires Authentication)
+- `POST /api/admin/login` - Admin login
+- `GET /api/shareholders` - Get shareholders list
+- `POST /api/shareholders` - Add new shareholder
+- `POST /api/testimonials` - Add new testimonial
+- `GET /api/admin/contacts` - Get contact submissions
+- `GET /api/admin/investments` - Get investment inquiries
 
 ## Features
 
-- Premium jewelry trading services
-- Investment opportunities
-- Modern responsive design
-- Company information and services
-- Contact and investment forms
+### Website Features
+- ✅ Dynamic testimonials from database
+- ✅ Contact form with backend integration
+- ✅ Investment form with backend integration
+- ✅ Shareholders section (login required)
+- ✅ Responsive design with animations
+- ✅ SEO optimized
+
+### Admin Panel Features
+- ✅ Secure admin authentication
+- ✅ Dashboard with statistics
+- ✅ Testimonials management
+- ✅ Shareholders management
+- ✅ Contact submissions view
+- ✅ Investment inquiries view
+
+## Database Schema
+
+### Tables
+- `admins` - Admin users
+- `testimonials` - Customer testimonials
+- `shareholders` - Company shareholders
+- `contact_submissions` - Contact form submissions
+- `investment_inquiries` - Investment form submissions
+
+## Environment Variables
+
+### Backend (.env)
+```
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=prabanjam_db
+JWT_SECRET=your_jwt_secret_key_here
+PORT=5000
+```
+
+## Default Admin Credentials
+- Username: `admin`
+- Password: `admin123`
 
 ## Technologies Used
 
-- **Frontend Framework**: React 18 with TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui
-- **Routing**: React Router DOM
-- **Icons**: Lucide React
+### Frontend
+- React 18 + TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- React Router DOM
+- Axios
 
-## Getting Started
+### Backend
+- Node.js + Express
+- MySQL2
+- JWT Authentication
+- bcryptjs
+- CORS
 
-### Prerequisites
+### Admin Panel
+- React
+- React Router DOM
+- Axios
 
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd prabanjam-sparkle-exchange
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-4. Open your browser and visit `http://localhost:8080`
-
-## Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run build:dev` - Build for development
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-## Project Structure
-
-```
-src/
-├── components/          # Reusable UI components
-│   ├── ui/             # shadcn/ui components
-│   ├── Header.tsx      # Navigation header
-│   ├── Footer.tsx      # Site footer
-│   └── ...             # Other components
-├── pages/              # Page components
-├── hooks/              # Custom React hooks
-├── lib/                # Utility functions
-└── ...
-```
-
-## Deployment
-
-Build the project for production:
-
-```bash
-npm run build
-```
-
-The built files will be in the `dist` directory, ready for deployment to any static hosting service.
-
-## Contact
-
-For any inquiries about the website or company:
-
-- **Email**: info@prabanjam.com
-- **Company**: Prabanjam Jewelry Pvt Ltd
-
-## License
-
-© 2024 Prabanjam Jewelry Pvt Ltd. All rights reserved.
+## Deployment Notes
+- Update API URLs in production
+- Set proper environment variables
+- Configure CORS for production domains
+- Use HTTPS in production
+- Set up proper database backups

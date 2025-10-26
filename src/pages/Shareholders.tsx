@@ -1,9 +1,74 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Users, TrendingUp, Award, Shield } from "lucide-react";
+import { Users, TrendingUp, Award, Shield, Lock } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Shareholders = () => {
+  const [shareholders, setShareholders] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentShareholder, setCurrentShareholder] = useState(null);
+  const [loginForm, setLoginForm] = useState({ username: '', password: '' });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const token = localStorage.getItem('shareholderToken');
+    const shareholderData = localStorage.getItem('shareholderData');
+    if (token && shareholderData) {
+      setIsLoggedIn(true);
+      setCurrentShareholder(JSON.parse(shareholderData));
+      fetchShareholders(token);
+    }
+  }, []);
+
+  const fetchShareholders = async (token) => {
+    try {
+      const response = await axios.get('http://localhost:5001/api/shareholders', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setShareholders(response.data);
+    } catch (error) {
+      console.error('Error fetching shareholders:', error);
+      if (error.response?.status === 401) {
+        localStorage.removeItem('shareholderToken');
+        setIsLoggedIn(false);
+      }
+    }
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await axios.post('http://localhost:5001/api/shareholder/login', loginForm);
+      const token = response.data.token;
+      const shareholderData = response.data.shareholder;
+      
+      localStorage.setItem('shareholderToken', token);
+      localStorage.setItem('shareholderData', JSON.stringify(shareholderData));
+      
+      setIsLoggedIn(true);
+      setCurrentShareholder(shareholderData);
+      fetchShareholders(token);
+    } catch (error) {
+      setError('Invalid credentials');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('shareholderToken');
+    localStorage.removeItem('shareholderData');
+    setIsLoggedIn(false);
+    setCurrentShareholder(null);
+    setShareholders([]);
+  };
+
   const benefits = [
     {
       icon: TrendingUp,
@@ -116,6 +181,126 @@ const Shareholders = () => {
                   </Card>
                 ))}
               </div>
+            </div>
+
+            {/* Shareholders List */}
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold text-foreground text-center mb-12">
+                Current Shareholders
+              </h2>
+              
+              {!isLoggedIn ? (
+                <Card className="p-8 max-w-md mx-auto">
+                  <div className="text-center mb-6">
+                    <Lock className="w-12 h-12 text-accent mx-auto mb-4" />
+                    <h3 className="text-xl font-bold text-foreground mb-2">Login Required</h3>
+                    <p className="text-muted-foreground">Please login to view shareholders information</p>
+                  </div>
+                  
+                  <form onSubmit={handleLogin}>
+                    <div className="mb-4">
+                      <input
+                        type="text"
+                        placeholder="Username"
+                        className="w-full p-3 border border-border rounded-lg"
+                        value={loginForm.username}
+                        onChange={(e) => setLoginForm({...loginForm, username: e.target.value})}
+                        required
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        className="w-full p-3 border border-border rounded-lg"
+                        value={loginForm.password}
+                        onChange={(e) => setLoginForm({...loginForm, password: e.target.value})}
+                        required
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-3 rounded-lg font-semibold transition-all duration-300"
+                    >
+                      {loading ? 'Logging in...' : 'Login'}
+                    </button>
+                    {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+                  </form>
+                </Card>
+              ) : (
+                <div className="space-y-8">
+                  <Card className="p-8 bg-gradient-to-br from-accent/10 to-accent/5 border-accent/20">
+                    <div className="flex justify-between items-start mb-6">
+                      <div>
+                        <h3 className="text-2xl font-bold text-foreground mb-2">Welcome, {currentShareholder?.name}</h3>
+                        <p className="text-muted-foreground">Your Investment Portfolio</p>
+                      </div>
+                      <button
+                        onClick={handleLogout}
+                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-all duration-300"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-3 gap-6">
+                      <div className="bg-background/50 rounded-lg p-6">
+                        <p className="text-sm text-muted-foreground mb-2">Your Shares</p>
+                        <p className="text-3xl font-bold text-accent">{currentShareholder?.shares}</p>
+                      </div>
+                      <div className="bg-background/50 rounded-lg p-6">
+                        <p className="text-sm text-muted-foreground mb-2">Investment Date</p>
+                        <p className="text-lg font-semibold text-foreground">
+                          {new Date(currentShareholder?.investment_date).toLocaleDateString()}
+                        </p>
+                      </div>
+                      <div className="bg-background/50 rounded-lg p-6">
+                        <p className="text-sm text-muted-foreground mb-2">Username</p>
+                        <p className="text-lg font-semibold text-foreground">{currentShareholder?.username}</p>
+                      </div>
+                    </div>
+                  </Card>
+
+                  <Card className="p-8">
+                    <h3 className="text-xl font-bold text-foreground mb-6">All Shareholders</h3>
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="border-b border-border">
+                            <th className="text-left py-3 px-4 font-semibold text-foreground">Name</th>
+                            <th className="text-left py-3 px-4 font-semibold text-foreground">Shares</th>
+                            <th className="text-left py-3 px-4 font-semibold text-foreground">Investment Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {shareholders.map((shareholder) => (
+                            <tr 
+                              key={shareholder.id} 
+                              className={`border-b border-border/50 hover:bg-accent/5 ${
+                                shareholder.id === currentShareholder?.id ? 'bg-accent/10' : ''
+                              }`}
+                            >
+                              <td className="py-3 px-4 text-foreground">
+                                {shareholder.name}
+                                {shareholder.id === currentShareholder?.id && (
+                                  <span className="ml-2 text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full">
+                                    You
+                                  </span>
+                                )}
+                              </td>
+                              <td className="py-3 px-4 text-foreground">{shareholder.shares}</td>
+                              <td className="py-3 px-4 text-muted-foreground">
+                                {new Date(shareholder.investment_date).toLocaleDateString()}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </Card>
+                </div>
+              )}
             </div>
 
             {/* Contact CTA */}

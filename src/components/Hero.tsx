@@ -1,13 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Gem, Diamond, Crown, TrendingUp, Users, Award } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-luxury-cream pt-20">
-      {/* Animated background elements */}
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-luxury-cream via-background to-accent/5 pt-20">
+      {/* Enhanced Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-luxury-gold/20 rounded-full blur-3xl animate-float" style={{ animationDuration: "6s" }}></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-luxury-gold/30 rounded-full blur-3xl animate-float" style={{ animationDuration: "8s", animationDelay: "2s" }}></div>
+        <div className="absolute top-20 left-10 w-80 h-80 bg-accent/15 rounded-full blur-3xl animate-pulse" style={{ animationDuration: "4s" }}></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: "6s", animationDelay: "1s" }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-accent/8 to-transparent rounded-full blur-3xl animate-spin" style={{ animationDuration: "20s" }}></div>
+        
+        {/* Floating particles */}
+        <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-accent/30 rounded-full animate-bounce" style={{ animationDuration: "2s", animationDelay: "0.5s" }}></div>
+        <div className="absolute bottom-1/3 right-1/3 w-6 h-6 bg-accent/25 rounded-full animate-ping" style={{ animationDuration: "3s", animationDelay: "1.5s" }}></div>
+        <div className="absolute top-2/3 left-1/5 w-3 h-3 bg-accent/35 rounded-full animate-pulse" style={{ animationDuration: "2.5s", animationDelay: "2s" }}></div>
       </div>
 
       <div className="w-full px-6 md:px-12 lg:px-20 py-12 relative z-10">
@@ -20,61 +27,65 @@ const Hero = () => {
               <span className="text-sm font-medium text-luxury-navy">Now Offering Public Shares</span>
             </div>
 
-            {/* Main heading */}
-            <div>
-              <p className="text-luxury-navy/70 text-lg mb-2 font-medium">Indulge in Our</p>
-              <h1 className="font-rubik text-5xl md:text-6xl lg:text-7xl font-bold text-luxury-navy leading-tight">
+            {/* Main heading with enhanced animations */}
+            <div className="animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 0.3s forwards' }}>
+              <p className="text-muted-foreground text-lg mb-4 font-medium animate-fade-in opacity-0" style={{ animation: 'fadeInUp 1s ease-out 0.5s forwards' }}>Indulge in Our</p>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 0.7s forwards' }}>
                 EXQUISITE
-                <span className="block bg-gradient-gold bg-clip-text text-transparent">JEWELRY</span>
+                <span className="block bg-gradient-to-r from-accent via-accent to-accent/80 bg-clip-text text-transparent animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 0.9s forwards' }}>JEWELRY</span>
               </h1>
             </div>
 
-            {/* Description */}
-            <p className="text-luxury-navy/60 text-lg max-w-xl leading-relaxed">
+            {/* Description with animation */}
+            <p className="text-muted-foreground text-lg max-w-xl leading-relaxed animate-fade-in opacity-0" style={{ animation: 'fadeInUp 1s ease-out 1.1s forwards' }}>
               Experience excellence in premium silver & gold trading. We offer silver selling, 
               exchange services, and old gold reselling with unmatched quality and trust.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button 
-                size="lg" 
-                className="bg-luxury-navy hover:bg-luxury-navy/90 text-white font-semibold px-8 shadow-elegant hover:scale-105 transition-all"
-              >
-                Order Now
-              </Button>
-              <Button 
-                size="lg" 
-                variant="ghost" 
-                className="text-luxury-navy hover:bg-luxury-navy/5 font-semibold group"
-              >
-                Explore More
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+            {/* CTA Buttons with staggered animation */}
+            <div className="flex flex-wrap gap-4 pt-4 animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 1.3s forwards' }}>
+              <Link to="/invest-now">
+                <Button 
+                  size="lg" 
+                  className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                >
+                  Invest Now
+                </Button>
+              </Link>
+              <Link to="/services">
+                <Button 
+                  size="lg" 
+                  variant="ghost" 
+                  className="text-foreground hover:bg-accent/10 font-semibold group border border-accent/20 hover:border-accent/40"
+                >
+                  Explore More
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
 
-            {/* Stats Cards */}
+            {/* Stats Cards with enhanced animations */}
             <div className="flex flex-wrap gap-4 pt-8">
-              <div className="bg-luxury-gold/20 backdrop-blur-sm rounded-2xl px-6 py-4 border border-luxury-gold/30">
-                <div className="flex items-center gap-2 text-luxury-navy font-bold text-2xl mb-1">
-                  <TrendingUp className="w-6 h-6 text-luxury-gold" />
+              <div className="bg-accent/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-all duration-300 hover:scale-105 animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 1.5s forwards' }}>
+                <div className="flex items-center gap-2 text-foreground font-bold text-2xl mb-1">
+                  <TrendingUp className="w-6 h-6 text-accent" />
                   100%
                 </div>
-                <p className="text-luxury-navy/60 text-sm">Pure Gold</p>
+                <p className="text-muted-foreground text-sm">Pure Gold</p>
               </div>
-              <div className="bg-luxury-gold/20 backdrop-blur-sm rounded-2xl px-6 py-4 border border-luxury-gold/30">
-                <div className="flex items-center gap-2 text-luxury-navy font-bold text-2xl mb-1">
-                  <Users className="w-6 h-6 text-luxury-gold" />
-                  500+
+              <div className="bg-accent/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-all duration-300 hover:scale-105 animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 1.7s forwards' }}>
+                <div className="flex items-center gap-2 text-foreground font-bold text-2xl mb-1">
+                  <Users className="w-6 h-6 text-accent" />
+                  5000+
                 </div>
-                <p className="text-luxury-navy/60 text-sm">Happy Clients</p>
+                <p className="text-muted-foreground text-sm">Happy Clients</p>
               </div>
-              <div className="bg-luxury-gold/20 backdrop-blur-sm rounded-2xl px-6 py-4 border border-luxury-gold/30">
-                <div className="flex items-center gap-2 text-luxury-navy font-bold text-2xl mb-1">
-                  <Award className="w-6 h-6 text-luxury-gold" />
-                  15+
+              <div className="bg-accent/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-all duration-300 hover:scale-105 animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 1.9s forwards' }}>
+                <div className="flex items-center gap-2 text-foreground font-bold text-2xl mb-1">
+                  <Award className="w-6 h-6 text-accent" />
+                  10+
                 </div>
-                <p className="text-luxury-navy/60 text-sm">Years Trust</p>
+                <p className="text-muted-foreground text-sm">Years Trust</p>
               </div>
             </div>
           </div>

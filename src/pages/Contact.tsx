@@ -99,9 +99,9 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-foreground mb-2">Address</h3>
                       <p className="text-muted-foreground">
-                        123 Jewelry Plaza, Suite 456<br />
-                        Business District, City 12345<br />
-                        State, Country
+                        Brindhavan Gardan, 1, Rabindranath Tagore Rd,<br />
+                        Maniyakarampalayam, Manikarampalayam,<br />
+                        Ganapathy, Coimbatore, Tamil Nadu 641006
                       </p>
                     </div>
                   </div>
@@ -155,6 +155,24 @@ const Contact = () => {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Map Section */}
+        <section className="w-full">
+          <div className="text-center py-8 bg-muted/30">
+            <h2 className="text-3xl font-bold text-foreground mb-2">Find Us</h2>
+            <p className="text-muted-foreground">Visit our office for personalized service</p>
+          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2!2d76.97427358140176!3d11.047865259243965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDAyJzUyLjMiTiA3NsKwNTgnMzkuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+            width="100%"
+            height="500"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Prabanjam Jewelry Office Location"
+          ></iframe>
         </section>
       </div>
       <Footer />

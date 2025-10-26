@@ -15,7 +15,7 @@ const products = [
   {
     title: "Silver Bars",
     category: "Investment Grade",
-    image: "https://images.unsplash.com/photo-1610375461229-96460e532ebe?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=80"
   },
   {
     title: "Diamond Jewelry",

@@ -1,73 +1,93 @@
-# Welcome to your Lovable project
+# Prabanjam Jewelry Pvt Ltd - Official Website
 
-## Project info
+## About
 
-**URL**: https://lovable.dev/projects/d1a94d56-b0f9-4d13-89ff-9d9f790e776c
+This is the official website for Prabanjam Jewelry Pvt Ltd, a premium silver & gold trading company offering investment opportunities to the public.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- Premium jewelry trading services
+- Investment opportunities
+- Modern responsive design
+- Company information and services
+- Contact and investment forms
 
-**Use Lovable**
+## Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d1a94d56-b0f9-4d13-89ff-9d9f790e776c) and start prompting.
+- **Frontend Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Routing**: React Router DOM
+- **Icons**: Lucide React
 
-Changes made via Lovable will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js (v16 or higher)
+- npm or yarn
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd prabanjam-sparkle-exchange
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2. Install dependencies:
+```bash
+npm install
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open your browser and visit `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Available Scripts
 
-**Use GitHub Codespaces**
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run build:dev` - Build for development
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # shadcn/ui components
+│   ├── Header.tsx      # Navigation header
+│   ├── Footer.tsx      # Site footer
+│   └── ...             # Other components
+├── pages/              # Page components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+└── ...
+```
 
-This project is built with:
+## Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Build the project for production:
 
-## How can I deploy this project?
+```bash
+npm run build
+```
 
-Simply open [Lovable](https://lovable.dev/projects/d1a94d56-b0f9-4d13-89ff-9d9f790e776c) and click on Share -> Publish.
+The built files will be in the `dist` directory, ready for deployment to any static hosting service.
 
-## Can I connect a custom domain to my Lovable project?
+## Contact
 
-Yes, you can!
+For any inquiries about the website or company:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **Email**: info@prabanjam.com
+- **Company**: Prabanjam Jewelry Pvt Ltd
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## License
+
+© 2024 Prabanjam Jewelry Pvt Ltd. All rights reserved.

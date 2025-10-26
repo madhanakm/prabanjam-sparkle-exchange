@@ -23,12 +23,16 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-luxury-white/80 backdrop-blur-lg border-b border-border/50 animate-fade-in">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-luxury-white/80 backdrop-blur-lg border-b border-border/50 shadow-lg animate-fade-in">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-foreground hover:text-accent transition-colors">
-            Prabanjam <span className="text-accent">Jewelry</span>
+          <Link to="/" className="hover:opacity-80 transition-opacity">
+            <img 
+              src="/logo.png" 
+              alt="Prabanjam Jewelry" 
+              className="h-[175px] w-[175px] object-contain rounded-lg"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -43,7 +47,7 @@ const Header = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-foreground/80 hover:text-accent font-medium bg-transparent hover:bg-accent/10">
+                  <NavigationMenuTrigger className="text-foreground/80 hover:text-accent font-medium bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent">
                     About Us
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>

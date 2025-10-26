@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const products = [
   {
@@ -24,11 +25,17 @@ const products = [
 ];
 
 const Products = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section id="products" className="py-24 bg-background">
+    <section ref={ref} id="products" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div 
+          className={`text-center max-w-3xl mx-auto mb-16 transform transition-all duration-700 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+          }`}
+        >
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
             Our <span className="text-accent">Collection</span>
           </h2>
@@ -40,29 +47,37 @@ const Products = () => {
         {/* Products grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {products.map((product, index) => (
-            <Card 
+            <div
               key={product.title}
-              className="group overflow-hidden border-border/50 hover:shadow-elegant transition-all duration-500 animate-scale-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`transform transition-all duration-700 ${
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-20 opacity-0"
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
-              {/* Image */}
-              <div className="relative overflow-hidden aspect-square">
-                <img 
-                  src={product.image} 
-                  alt={product.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
+              <Card 
+                className="group overflow-hidden border-border/50 hover:shadow-elegant transition-all duration-500 h-full"
+              >
+                {/* Image */}
+                <div className="relative overflow-hidden aspect-square">
+                  <img 
+                    src={product.image} 
+                    alt={product.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <p className="text-sm text-accent font-medium mb-2">{product.category}</p>
-                <h3 className="font-playfair text-xl font-semibold text-foreground">
-                  {product.title}
-                </h3>
-              </div>
-            </Card>
+                {/* Content */}
+                <div className="p-6">
+                  <p className="text-sm text-accent font-medium mb-2">{product.category}</p>
+                  <h3 className="font-playfair text-xl font-semibold text-foreground">
+                    {product.title}
+                  </h3>
+                </div>
+              </Card>
+            </div>
           ))}
         </div>
       </div>

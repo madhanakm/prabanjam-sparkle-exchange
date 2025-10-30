@@ -20,6 +20,8 @@ const Gallery = () => {
   const [uploading, setUploading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
 
   useEffect(() => {
     fetchGallery();
@@ -170,6 +172,18 @@ const Gallery = () => {
   const handleItemsPerPageChange = (newItemsPerPage) => {
     setItemsPerPage(newItemsPerPage);
     setCurrentPage(1);
+  };
+
+  const openLightbox = (image) => {
+    setCurrentImage(image);
+    setLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    setCurrentImage(null);
+    document.body.style.overflow = 'unset';
   };
 
   if (loading) return <div className="loading">Loading...</div>;
@@ -345,7 +359,12 @@ const Gallery = () => {
               <tr key={item.id}>
                 <td>{indexOfFirstItem + index + 1}</td>
                 <td>
-                  <img src={item.image_url} alt={item.title} style={{width: '60px', height: '60px', objectFit: 'cover', borderRadius: '4px'}} />
+                  <img 
+                    src={item.image_url} 
+                    alt={item.title} 
+                    style={{width: '60px', height: '60px', objectFit: 'cover', borderRadius: '4px', cursor: 'pointer'}} 
+                    onClick={() => openLightbox(item)}
+                  />
                 </td>
                 <td>{item.title}</td>
                 <td>{item.category}</td>
@@ -419,6 +438,28 @@ const Gallery = () => {
             Next →
           </button>
         </div>
+        )}
+
+        {/* Lightbox */}
+        {lightboxOpen && currentImage && (
+          <div className="modal" onClick={closeLightbox}>
+            <div className="modal-content" style={{maxWidth: '90vw', maxHeight: '90vh', padding: '1rem'}} onClick={(e) => e.stopPropagation()}>
+              <div className="modal-header">
+                <h3>{currentImage.title}</h3>
+                <button className="close-btn" onClick={closeLightbox}>×</button>
+              </div>
+              <div style={{textAlign: 'center'}}>
+                <img 
+                  src={currentImage.image_url} 
+                  alt={currentImage.title} 
+                  style={{maxWidth: '100%', maxHeight: '70vh', objectFit: 'contain'}} 
+                />
+                {currentImage.description && (
+                  <p style={{marginTop: '1rem', color: '#666'}}>{currentImage.description}</p>
+                )}
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>

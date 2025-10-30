@@ -1,7 +1,7 @@
 import { Star, Quote } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
+import { api } from "@/config/api";
 
 const Testimonials = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,7 +37,7 @@ const Testimonials = () => {
 
   const fetchTestimonials = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/testimonials');
+      const response = await api.get('/testimonials');
       setTestimonials(response.data);
     } catch (error) {
       console.error('Error fetching testimonials:', error);

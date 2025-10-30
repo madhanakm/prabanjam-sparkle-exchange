@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5001/api';
+const API_BASE_URL = 'https://backend.prabanjamjewellery.com/api';
 const API_KEY = 'prabanjam_api_key_2024';
 
 const api = axios.create({

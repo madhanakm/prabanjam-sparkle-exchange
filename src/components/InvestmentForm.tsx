@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { TrendingUp, Send } from "lucide-react";
 import { useState } from "react";
-import axios from "axios";
+import { api } from "@/config/api";
 
 const InvestmentForm = () => {
   console.log('InvestmentForm component rendered');
@@ -38,11 +38,7 @@ const InvestmentForm = () => {
     
     try {
       console.log('Sending request to API...');
-      const response = await axios.post('http://localhost:5001/api/invest', formData, {
-        headers: {
-          'x-api-key': 'prabanjam_api_key_2024'
-        }
-      });
+      const response = await api.post('/invest', formData);
       console.log('API response:', response.data);
       setSuccess(true);
       setFormData({

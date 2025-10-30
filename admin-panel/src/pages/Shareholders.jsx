@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { api } from '../config/api';
 
 const Shareholders = () => {
   const [shareholders, setShareholders] = useState([]);
@@ -14,7 +14,7 @@ const Shareholders = () => {
     password: ''
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
   useEffect(() => {
     fetchShareholders();
@@ -23,12 +23,19 @@ const Shareholders = () => {
   const fetchShareholders = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.get('http://localhost:5001/api/shareholders', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      if (!token) {
+        console.error('No admin token found');
+        window.location.href = '/login';
+        return;
+      }
+      const response = await api.get('/shareholders');
       setShareholders(response.data);
     } catch (error) {
       console.error('Error fetching shareholders:', error);
+      if (error.response?.status === 401) {
+        localStorage.removeItem('adminToken');
+        window.location.href = '/login';
+      }
     } finally {
       setLoading(false);
     }
@@ -39,18 +46,19 @@ const Shareholders = () => {
     try {
       const token = localStorage.getItem('adminToken');
       if (editingId) {
-        await axios.put(`http://localhost:5001/api/shareholders/${editingId}`, formData, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        await api.put(`/shareholders/${editingId}`, formData);
       } else {
-        await axios.post('http://localhost:5001/api/shareholders', formData, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        await api.post('/shareholders', formData);
       }
       fetchShareholders();
       resetForm();
     } catch (error) {
       console.error('Error saving shareholder:', error);
+      if (error.response?.data?.message) {
+        alert('Error: ' + error.response.data.message);
+      } else {
+        alert('Error saving shareholder. Please check all fields.');
+      }
     }
   };
 
@@ -70,9 +78,7 @@ const Shareholders = () => {
     if (window.confirm('Are you sure you want to delete this shareholder?')) {
       try {
         const token = localStorage.getItem('adminToken');
-        await axios.delete(`http://localhost:5001/api/shareholders/${id}`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        await api.delete(`/shareholders/${id}`);
         fetchShareholders();
       } catch (error) {
         console.error('Error deleting shareholder:', error);
@@ -93,6 +99,11 @@ const Shareholders = () => {
   const totalPages = Math.ceil(shareholders.length / itemsPerPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+    setCurrentPage(1);
+  };
 
   if (loading) return <div className="loading">Loading...</div>;
 
@@ -207,7 +218,30 @@ const Shareholders = () => {
           </tbody>
         </table>
         
+        {/* Items per page selector */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem', padding: '0 1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span>Show:</span>
+            <select 
+              value={itemsPerPage} 
+              onChange={(e) => handleItemsPerPageChange(Number(e.target.value))}
+              style={{ padding: '0.25rem', border: '1px solid #ddd', borderRadius: '4px' }}
+            >
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={25}>25</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+            <span>entries</span>
+          </div>
+          <div>
+            <span>Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, shareholders.length)} of {shareholders.length} entries</span>
+          </div>
+        </div>
+        
         {/* Pagination */}
+        {totalPages > 1 && (
         <div className="pagination">
           <button 
             onClick={() => paginate(currentPage - 1)} 
@@ -235,6 +269,7 @@ const Shareholders = () => {
             Next →
           </button>
         </div>
+        )}
       </div>
     </div>
   );

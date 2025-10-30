@@ -71,3 +71,39 @@ CREATE TABLE investment_inquiries (
   investment_type VARCHAR(50),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Gallery table
+CREATE TABLE gallery (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  description TEXT,
+  image_url VARCHAR(500) NOT NULL,
+  category VARCHAR(50) DEFAULT 'general',
+  is_featured BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Gallery categories table
+CREATE TABLE gallery_categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Sample categories
+INSERT INTO gallery_categories (name) VALUES
+('Jewelry'),
+('Gold'),
+('Silver'),
+('Diamond'),
+('Rings'),
+('Necklaces'),
+('Bracelets'),
+('Earrings');
+
+-- Sample gallery images
+INSERT INTO gallery (title, description, image_url, category, is_featured) VALUES
+('Gold Necklace Collection', 'Exquisite handcrafted gold necklaces', 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80', 'jewelry', TRUE),
+('Diamond Rings', 'Premium diamond engagement rings', 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80', 'jewelry', TRUE),
+('Silver Bracelets', 'Elegant silver bracelet designs', 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80', 'jewelry', FALSE),
+('Gold Earrings', 'Traditional and modern gold earrings', 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80', 'jewelry', FALSE);

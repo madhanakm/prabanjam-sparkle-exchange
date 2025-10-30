@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { api } from '../config/api';
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -12,7 +12,7 @@ const Testimonials = () => {
     rating: 5
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
   useEffect(() => {
     fetchTestimonials();
@@ -20,7 +20,7 @@ const Testimonials = () => {
 
   const fetchTestimonials = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/testimonials');
+      const response = await api.get('/testimonials');
       setTestimonials(response.data);
     } catch (error) {
       console.error('Error fetching testimonials:', error);
@@ -34,13 +34,9 @@ const Testimonials = () => {
     try {
       const token = localStorage.getItem('adminToken');
       if (editingId) {
-        await axios.put(`http://localhost:5001/api/testimonials/${editingId}`, formData, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        await api.put(`/testimonials/${editingId}`, formData);
       } else {
-        await axios.post('http://localhost:5001/api/testimonials', formData, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        await api.post('/testimonials', formData);
       }
       fetchTestimonials();
       resetForm();
@@ -63,9 +59,7 @@ const Testimonials = () => {
     if (window.confirm('Are you sure you want to delete this testimonial?')) {
       try {
         const token = localStorage.getItem('adminToken');
-        await axios.delete(`http://localhost:5001/api/testimonials/${id}`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        await api.delete(`/testimonials/${id}`);
         fetchTestimonials();
       } catch (error) {
         console.error('Error deleting testimonial:', error);
@@ -86,6 +80,11 @@ const Testimonials = () => {
   const totalPages = Math.ceil(testimonials.length / itemsPerPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+    setCurrentPage(1);
+  };
 
   if (loading) return <div className="loading">Loading...</div>;
 
@@ -183,7 +182,30 @@ const Testimonials = () => {
           </tbody>
         </table>
         
+        {/* Items per page selector */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem', padding: '0 1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span>Show:</span>
+            <select 
+              value={itemsPerPage} 
+              onChange={(e) => handleItemsPerPageChange(Number(e.target.value))}
+              style={{ padding: '0.25rem', border: '1px solid #ddd', borderRadius: '4px' }}
+            >
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={25}>25</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+            <span>entries</span>
+          </div>
+          <div>
+            <span>Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, testimonials.length)} of {testimonials.length} entries</span>
+          </div>
+        </div>
+        
         {/* Pagination */}
+        {totalPages > 1 && (
         <div className="pagination">
           <button 
             onClick={() => paginate(currentPage - 1)} 
@@ -211,6 +233,7 @@ const Testimonials = () => {
             Next →
           </button>
         </div>
+        )}
       </div>
     </div>
   );

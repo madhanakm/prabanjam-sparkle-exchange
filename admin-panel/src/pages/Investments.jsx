@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { api } from '../config/api';
 
 const Investments = () => {
   const [investments, setInvestments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
   useEffect(() => {
     fetchInvestments();
@@ -14,9 +14,7 @@ const Investments = () => {
   const fetchInvestments = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.get('http://localhost:5001/api/admin/investments', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await api.get('/admin/investments');
       setInvestments(response.data);
     } catch (error) {
       console.error('Error fetching investments:', error);
@@ -32,6 +30,11 @@ const Investments = () => {
   const totalPages = Math.ceil(investments.length / itemsPerPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+    setCurrentPage(1);
+  };
 
   if (loading) return <div className="loading">Loading...</div>;
 
@@ -67,7 +70,30 @@ const Investments = () => {
           </tbody>
         </table>
         
+        {/* Items per page selector */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem', padding: '0 1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span>Show:</span>
+            <select 
+              value={itemsPerPage} 
+              onChange={(e) => handleItemsPerPageChange(Number(e.target.value))}
+              style={{ padding: '0.25rem', border: '1px solid #ddd', borderRadius: '4px' }}
+            >
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={25}>25</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+            <span>entries</span>
+          </div>
+          <div>
+            <span>Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, investments.length)} of {investments.length} entries</span>
+          </div>
+        </div>
+        
         {/* Pagination */}
+        {totalPages > 1 && (
         <div className="pagination">
           <button 
             onClick={() => paginate(currentPage - 1)} 
@@ -95,6 +121,7 @@ const Investments = () => {
             Next →
           </button>
         </div>
+        )}
       </div>
     </div>
   );

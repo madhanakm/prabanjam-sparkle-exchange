@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { useState } from "react";
-import axios from "axios";
+import { api } from "@/config/api";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,11 +28,7 @@ const Contact = () => {
     setError('');
     
     try {
-      await axios.post('http://localhost:5001/api/contact', formData, {
-        headers: {
-          'x-api-key': 'prabanjam_api_key_2024'
-        }
-      });
+      await api.post('/contact', formData);
       setSuccess(true);
       setFormData({
         firstName: '',

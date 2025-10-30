@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { api } from '../config/api';
 
 const ChangePassword = () => {
   const [formData, setFormData] = useState({
@@ -25,11 +25,9 @@ const ChangePassword = () => {
 
     try {
       const token = localStorage.getItem('adminToken');
-      await axios.put('http://localhost:5001/api/admin/change-password', {
+      await api.put('/admin/change-password', {
         currentPassword: formData.currentPassword,
         newPassword: formData.newPassword
-      }, {
-        headers: { Authorization: `Bearer ${token}` }
       });
       
       setMessage('Password changed successfully');

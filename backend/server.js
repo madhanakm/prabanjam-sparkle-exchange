@@ -3,14 +3,52 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://prabanjamjewellery.com',
+    'https://www.prabanjamjewellery.com',
+    'https://admin.prabanjamjewellery.com',
+    'http://localhost:8080',
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://localhost:5174'
+  ],
+  credentials: true
+}));
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
+
+// Multer configuration for file uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname))
+  }
+});
+
+const upload = multer({ 
+  storage: storage,
+  fileFilter: function (req, file, cb) {
+    if (file.mimetype.startsWith('image/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only image files are allowed!'), false);
+    }
+  },
+  limits: {
+    fileSize: 5 * 1024 * 1024 // 5MB limit
+  }
+});
 
 // Database connection
 const db = mysql.createConnection({
@@ -354,6 +392,126 @@ app.put('/api/admin/change-password', authenticateToken, async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
+});
+
+// Gallery endpoints
+// Get all gallery images
+app.get('/api/gallery', (req, res) => {
+  const query = 'SELECT * FROM gallery ORDER BY created_at DESC';
+  db.query(query, (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json(results);
+  });
+});
+
+// Upload image endpoint
+app.post('/api/upload', authenticateToken, upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: 'No file uploaded' });
+  }
+  
+  const imageUrl = `${process.env.BASE_URL || 'https://backend.prabanjamjewellery.com'}/uploads/${req.file.filename}`;
+  res.json({ image_url: imageUrl });
+});
+
+// Add gallery image (admin only)
+app.post('/api/gallery', authenticateToken, (req, res) => {
+  const { title, description, image_url, category } = req.body;
+  
+  const query = 'INSERT INTO gallery (title, description, image_url, category) VALUES (?, ?, ?, ?)';
+  db.query(query, [title, description, image_url, category || 'general'], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Gallery image added successfully', id: result.insertId });
+  });
+});
+
+// Update gallery image (admin only)
+app.put('/api/gallery/:id', authenticateToken, (req, res) => {
+  const { id } = req.params;
+  const { title, description, image_url, category } = req.body;
+  
+  const query = 'UPDATE gallery SET title = ?, description = ?, image_url = ?, category = ? WHERE id = ?';
+  db.query(query, [title, description, image_url, category, id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Gallery image updated successfully' });
+  });
+});
+
+// Delete gallery image (admin only)
+app.delete('/api/gallery/:id', authenticateToken, (req, res) => {
+  const { id } = req.params;
+  
+  const query = 'DELETE FROM gallery WHERE id = ?';
+  db.query(query, [id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Gallery image deleted successfully' });
+  });
+});
+
+// Gallery categories endpoints
+// Get all categories
+app.get('/api/gallery/categories', (req, res) => {
+  const query = 'SELECT * FROM gallery_categories ORDER BY name ASC';
+  db.query(query, (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json(results);
+  });
+});
+
+// Add category (admin only)
+app.post('/api/gallery/categories', authenticateToken, (req, res) => {
+  const { name } = req.body;
+  
+  const query = 'INSERT INTO gallery_categories (name) VALUES (?)';
+  db.query(query, [name], (err, result) => {
+    if (err) {
+      if (err.code === 'ER_DUP_ENTRY') {
+        return res.status(400).json({ message: 'Category already exists' });
+      }
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Category added successfully', id: result.insertId });
+  });
+});
+
+// Update category (admin only)
+app.put('/api/gallery/categories/:id', authenticateToken, (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  
+  const query = 'UPDATE gallery_categories SET name = ? WHERE id = ?';
+  db.query(query, [name, id], (err, result) => {
+    if (err) {
+      if (err.code === 'ER_DUP_ENTRY') {
+        return res.status(400).json({ message: 'Category name already exists' });
+      }
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Category updated successfully' });
+  });
+});
+
+// Delete category (admin only)
+app.delete('/api/gallery/categories/:id', authenticateToken, (req, res) => {
+  const { id } = req.params;
+  
+  const query = 'DELETE FROM gallery_categories WHERE id = ?';
+  db.query(query, [id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Category deleted successfully' });
+  });
 });
 
 app.listen(PORT, () => {

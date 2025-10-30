@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -82,30 +82,121 @@ body {
   left: 0;
 }
 
-.login-form {
+.login-card {
   background: white;
-  padding: 3rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 450px;
-  text-align: center;
+  overflow: hidden;
 }
 
-.login-logo {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 2rem;
-  border-radius: 12px;
-  object-fit: contain;
-}
-
-.login-form h2 {
+.login-header {
+  background: linear-gradient(135deg, hsl(45, 90%, 55%) 0%, hsl(45, 85%, 50%) 100%);
+  padding: 2rem;
   text-align: center;
-  margin-bottom: 2rem;
   color: hsl(220, 50%, 15%);
-  font-weight: 700;
+}
+
+.logo-container {
+  margin-bottom: 1rem;
+}
+
+.company-name {
   font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem;
+}
+
+.login-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.login-form {
+  padding: 2rem;
+}
+
+
+
+.login-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, hsl(45, 90%, 55%) 0%, hsl(45, 85%, 50%) 100%);
+  color: hsl(220, 50%, 15%);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.login-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  background: hsl(0, 84%, 95%);
+  color: hsl(0, 84%, 60%);
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  border: 1px solid hsl(0, 84%, 85%);
+}
+
+.login-footer {
+  background: hsl(40, 20%, 97%);
+  padding: 1rem;
+  text-align: center;
+  color: hsl(220, 40%, 50%);
+  font-size: 0.85rem;
+}
+
+.footer-link {
+  color: hsl(45, 90%, 45%);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: hsl(45, 85%, 40%);
 }
 
 .form-group {

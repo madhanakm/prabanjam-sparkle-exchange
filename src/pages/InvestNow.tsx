@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { TrendingUp, Shield, Users, Send } from "lucide-react";
 import { useState } from "react";
-import axios from "axios";
+import { api } from "@/config/api";
 
 const InvestNow = () => {
   const [formData, setFormData] = useState({
@@ -27,11 +27,7 @@ const InvestNow = () => {
     setError('');
     
     try {
-      await axios.post('http://localhost:5001/api/invest', formData, {
-        headers: {
-          'x-api-key': 'prabanjam_api_key_2024'
-        }
-      });
+      await api.post('/invest', formData);
       setSuccess(true);
       setFormData({
         name: '',

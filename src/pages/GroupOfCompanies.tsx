@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
-import { Building2, ShoppingBag, Factory, Gem } from "lucide-react";
+import { Building2, ShoppingBag, Factory, Gem, MapPin } from "lucide-react";
 
 const GroupOfCompanies = () => {
   const companies = [
@@ -11,6 +11,13 @@ const GroupOfCompanies = () => {
       type: "Parent Company",
       description: "Leading precious metals trading and jewelry retail company specializing in gold, silver, and diamond products.",
       services: ["Retail Jewelry", "Precious Metals Trading", "Gold Exchange", "Investment Advisory"]
+    },
+    {
+      icon: MapPin,
+      name: "Ooty Resorts",
+      type: "Subsidiary",
+      description: "Premium hospitality venture offering luxury resort experiences in the scenic hills of Ooty, Tamil Nadu.",
+      services: ["Luxury Accommodation", "Conference Facilities", "Event Management", "Tourism Services"]
     },
     {
       icon: Factory,

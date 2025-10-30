@@ -17,6 +17,7 @@ const Header = () => {
 
   const aboutLinks = [
     { name: "About Us", href: "/about" },
+    { name: "Gallery", href: "/gallery" },
     { name: "Shareholders", href: "/shareholders" },
     { name: "Board of Directors", href: "/board-of-directors" },
     { name: "Group of Companies", href: "/group-of-companies" },

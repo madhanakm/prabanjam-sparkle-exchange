@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { Users, TrendingUp, Award, Shield, Lock } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "@/config/api";
 
 const Shareholders = () => {
   const [shareholders, setShareholders] = useState([]);
@@ -25,9 +25,7 @@ const Shareholders = () => {
 
   const fetchShareholders = async (token) => {
     try {
-      const response = await axios.get('http://localhost:5001/api/shareholders', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await api.get('/shareholders');
       setShareholders(response.data);
     } catch (error) {
       console.error('Error fetching shareholders:', error);
@@ -44,7 +42,7 @@ const Shareholders = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5001/api/shareholder/login', loginForm);
+      const response = await api.post('/shareholder/login', loginForm);
       const token = response.data.token;
       const shareholderData = response.data.shareholder;
       

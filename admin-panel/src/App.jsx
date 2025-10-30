@@ -7,6 +7,7 @@ import Shareholders from './pages/Shareholders';
 import Contacts from './pages/Contacts';
 import Investments from './pages/Investments';
 import ChangePassword from './pages/ChangePassword';
+import Gallery from './pages/Gallery';
 import Navbar from './components/Navbar';
 import './App.css';
 
@@ -94,6 +95,14 @@ function App() {
             element={
               isAuthenticated ? 
               <ChangePassword /> : 
+              <Navigate to="/login" />
+            } 
+          />
+          <Route 
+            path="/gallery" 
+            element={
+              isAuthenticated ? 
+              <Gallery /> : 
               <Navigate to="/login" />
             } 
           />

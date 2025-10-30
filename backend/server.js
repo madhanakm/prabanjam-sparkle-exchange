@@ -402,7 +402,13 @@ app.get('/api/gallery', (req, res) => {
     if (err) {
       return res.status(500).json({ message: 'Database error' });
     }
-    res.json(results);
+    // Fix image URLs for production
+    const baseUrl = process.env.BASE_URL || 'http://localhost:5001';
+    const fixedResults = results.map(item => ({
+      ...item,
+      image_url: item.image_url.replace('http://localhost:5001', baseUrl)
+    }));
+    res.json(fixedResults);
   });
 });
 

@@ -19,11 +19,16 @@ import AboutUs from "./pages/AboutUs";
 import Shareholders from "./pages/Shareholders";
 import BoardOfDirectors from "./pages/BoardOfDirectors";
 import GroupOfCompanies from "./pages/GroupOfCompanies";
+import SriCashwayDetail from "./pages/SriCashwayDetail";
+import SiruvaniComplexDetail from "./pages/SiruvaniComplexDetail";
+import PrabanjamJewelleryDetail from "./pages/PrabanjamJewelleryDetail";
+import PrabanjamResortsDetail from "./pages/PrabanjamResortsDetail";
 import Services from "./pages/Services";
 import Investment from "./pages/Investment";
 import InvestNow from "./pages/InvestNow";
 import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
+import Upcoming from "./pages/Upcoming";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import NotFound from "./pages/NotFound";
@@ -43,11 +48,16 @@ const App = () => (
           <Route path="/shareholders" element={<Shareholders />} />
           <Route path="/board-of-directors" element={<BoardOfDirectors />} />
           <Route path="/group-of-companies" element={<GroupOfCompanies />} />
+          <Route path="/sri-cashway-detail" element={<SriCashwayDetail />} />
+          <Route path="/siruvani-complex-detail" element={<SiruvaniComplexDetail />} />
+          <Route path="/prabanjam-jewellery-detail" element={<PrabanjamJewelleryDetail />} />
+          <Route path="/prabanjam-resorts-detail" element={<PrabanjamResortsDetail />} />
           <Route path="/services" element={<Services />} />
           <Route path="/investment" element={<Investment />} />
           <Route path="/invest-now" element={<InvestNow />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/upcoming" element={<Upcoming />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

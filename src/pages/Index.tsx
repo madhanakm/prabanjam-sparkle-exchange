@@ -4,7 +4,7 @@ import Stats from "@/components/Stats";
 import Features from "@/components/Features";
 import HomeServices from "@/components/HomeServices";
 import Investment from "@/components/Investment";
-import Products from "@/components/Products";
+import BusinessAchievements from "@/components/Products";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -29,7 +29,7 @@ const Index = () => {
         <Investment />
       </div>
       <div className="animate-fade-in opacity-0" style={{ animation: 'slideInLeft 1s ease-out 1s forwards' }}>
-        <Products />
+        <BusinessAchievements />
       </div>
       <div className="animate-fade-in opacity-0" style={{ animation: 'slideInRight 1s ease-out 1.2s forwards' }}>
         <Testimonials />

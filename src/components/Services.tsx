@@ -1,66 +1,66 @@
 import { Card } from "@/components/ui/card";
-import { Coins, ArrowLeftRight, Gem, Shield, TrendingUp, Users, Award, Calculator, Clock, CheckCircle } from "lucide-react";
+import { Coins, Building2, Gem, MapPin, TrendingUp, Users, Award, Shield, Clock, CheckCircle } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const services = [
   {
     icon: Coins,
-    title: "Silver Selling",
-    description: "Premium quality silver products with certified purity. Best market rates guaranteed for all your silver purchases.",
+    title: "Gold Finance Services",
+    description: "Secured loans against gold ornaments with competitive interest rates and flexible repayment options through Sri Cashway Gold Finance.",
     color: "from-accent/20 to-accent/5"
   },
   {
-    icon: ArrowLeftRight,
-    title: "Silver Exchange",
-    description: "Seamless exchange services for your silver holdings. Quick, transparent, and hassle-free transactions.",
-    color: "from-primary/20 to-primary/5"
-  },
-  {
-    icon: Gem,
-    title: "Old Gold Reselling",
-    description: "Get the best value for your old gold jewelry. Fair pricing, instant evaluation, and immediate payment.",
-    color: "from-accent/20 to-accent/5"
-  },
-  {
-    icon: TrendingUp,
-    title: "Investment Advisory",
-    description: "Expert guidance on precious metal investments. Strategic advice to maximize your portfolio returns.",
-    color: "from-green-500/20 to-green-500/5"
-  },
-  {
-    icon: Shield,
-    title: "Secure Storage",
-    description: "Safe and insured storage solutions for your precious metals. State-of-the-art security systems.",
+    icon: Building2,
+    title: "Commercial Real Estate",
+    description: "Premium office spaces, retail outlets, and business facilities at Siruvani Complex with modern amenities.",
     color: "from-blue-500/20 to-blue-500/5"
   },
   {
-    icon: Calculator,
-    title: "Price Evaluation",
-    description: "Accurate and transparent pricing for all precious metals. Real-time market rate calculations.",
+    icon: Gem,
+    title: "Jewelry Manufacturing & Retail",
+    description: "Traditional and contemporary gold, silver, and diamond jewelry with in-house manufacturing at Prabanjam Jewellery Limited.",
+    color: "from-accent/20 to-accent/5"
+  },
+  {
+    icon: MapPin,
+    title: "Hospitality Services",
+    description: "Luxury accommodation and hospitality services in the scenic hills of Ooty at Prabanjam Resorts.",
+    color: "from-green-500/20 to-green-500/5"
+  },
+  {
+    icon: TrendingUp,
+    title: "Investment Opportunities",
+    description: "Diversified investment options across multiple business sectors with potential for long-term growth.",
     color: "from-purple-500/20 to-purple-500/5"
+  },
+  {
+    icon: Shield,
+    title: "Business Consulting",
+    description: "Strategic business consulting and advisory services leveraging our multi-sector expertise.",
+    color: "from-orange-500/20 to-orange-500/5"
   }
 ];
 
 const features = [
   {
     icon: Award,
-    title: "Certified Quality",
-    description: "All products come with authenticity certificates"
+    title: "Industry Excellence",
+    description: "8+ years of proven excellence across multiple sectors"
   },
   {
     icon: Clock,
-    title: "Quick Processing",
-    description: "Fast and efficient service delivery"
+    title: "Reliable Service",
+    description: "Consistent and dependable service delivery"
   },
   {
     icon: CheckCircle,
-    title: "Guaranteed Satisfaction",
-    description: "100% customer satisfaction guarantee"
+    title: "Customer Satisfaction",
+    description: "5000+ satisfied customers across all business verticals"
   },
   {
     icon: Users,
-    title: "Expert Team",
-    description: "Experienced professionals at your service"
+    title: "Diversified Expertise",
+    description: "Multi-sector experience and specialized knowledge"
   }
 ];
 
@@ -68,22 +68,22 @@ const processSteps = [
   {
     step: "01",
     title: "Consultation",
-    description: "Free consultation to understand your needs"
+    description: "Free consultation to understand your business needs"
   },
   {
     step: "02",
-    title: "Evaluation",
-    description: "Professional assessment of your precious metals"
+    title: "Assessment",
+    description: "Professional evaluation of requirements and solutions"
   },
   {
     step: "03",
-    title: "Transaction",
-    description: "Secure and transparent transaction process"
+    title: "Implementation",
+    description: "Seamless execution with transparent processes"
   },
   {
     step: "04",
-    title: "Completion",
-    description: "Immediate payment and documentation"
+    title: "Support",
+    description: "Ongoing support and relationship management"
   }
 ];
 
@@ -106,7 +106,7 @@ const Services = () => {
             Our <span className="text-accent">Services</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Comprehensive solutions for all your precious metal trading needs
+            Comprehensive business solutions across finance, real estate, jewelry, and hospitality sectors
           </p>
         </div>
 
@@ -145,8 +145,8 @@ const Services = () => {
         {/* Why Choose Us */}
         <div className="mb-20">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-foreground mb-4">Why Choose Us</h3>
-            <p className="text-muted-foreground">What makes us the preferred choice for precious metal services</p>
+            <h3 className="text-3xl font-bold text-foreground mb-4">Why Choose Prabanjam Group</h3>
+            <p className="text-muted-foreground">What makes us the preferred choice across multiple business sectors</p>
           </div>
           <div className="grid md:grid-cols-4 gap-6">
             {features.map((feature, index) => (
@@ -164,8 +164,8 @@ const Services = () => {
         {/* Process Steps */}
         <div className="mb-20">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-foreground mb-4">Our Process</h3>
-            <p className="text-muted-foreground">Simple and transparent process for all our services</p>
+            <h3 className="text-3xl font-bold text-foreground mb-4">Our Approach</h3>
+            <p className="text-muted-foreground">Systematic and professional approach across all business verticals</p>
           </div>
           <div className="grid md:grid-cols-4 gap-6">
             {processSteps.map((step, index) => (
@@ -191,7 +191,7 @@ const Services = () => {
             Ready to Get Started?
           </h3>
           <p className="text-lg text-muted-foreground mb-6">
-            Contact us today for a free consultation and discover the best solutions for your precious metal needs
+            Contact us today for a free consultation and discover the best solutions for your business needs
           </p>
           <button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold shadow-md hover:shadow-gold transition-all duration-300">
             Get Free Consultation

@@ -23,10 +23,10 @@ const Investment = () => {
             <span className="text-sm font-semibold text-accent">Investment Opportunity</span>
           </div>
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Invest in <span className="text-accent">Prabanjam Jewelry</span>
+            Invest in <span className="text-accent">Prabanjam Group</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Be part of our growth story. We're offering public shares for the first time.
+            Be part of our diversified growth story across multiple business sectors.
           </p>
         </div>
 
@@ -40,24 +40,24 @@ const Investment = () => {
             style={{ transitionDelay: "200ms" }}
           >
             <Card className="p-8 bg-gradient-luxury border-accent/20 text-primary-foreground shadow-gold hover:shadow-gold/70 transition-all duration-500 h-full">
-              <h3 className="font-playfair text-3xl font-bold mb-6">Public Share Offering</h3>
+              <h3 className="font-playfair text-3xl font-bold mb-6">Group Investment Opportunity</h3>
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-accent mt-2"></div>
                   <p className="text-primary-foreground/90">
-                    <span className="font-semibold">Growth Potential:</span> Join a thriving precious metals trading business
+                    <span className="font-semibold">Diversified Portfolio:</span> Multiple revenue streams across finance, real estate, jewelry & hospitality
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-accent mt-2"></div>
                   <p className="text-primary-foreground/90">
-                    <span className="font-semibold">Transparent Operations:</span> Regular financial disclosures and updates
+                    <span className="font-semibold">Expansion Plans:</span> 5 new companies launching in the next 3 years
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-accent mt-2"></div>
                   <p className="text-primary-foreground/90">
-                    <span className="font-semibold">Proven Track Record:</span> Years of excellence in jewelry trading
+                    <span className="font-semibold">Proven Success:</span> 8+ years of excellence across multiple business sectors
                   </p>
                 </div>
               </div>
@@ -83,7 +83,7 @@ const Investment = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">Become a Stakeholder</h4>
                   <p className="text-sm text-muted-foreground">
-                    Own a part of a growing jewelry enterprise and participate in our success
+                    Own a part of a diversified business group and participate in multi-sector growth
                   </p>
                 </div>
               </div>
@@ -97,7 +97,7 @@ const Investment = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">Secure Investment</h4>
                   <p className="text-sm text-muted-foreground">
-                    Backed by tangible assets and a robust business model in precious metals
+                    Backed by diversified assets across real estate, finance, and established businesses
                   </p>
                 </div>
               </div>
@@ -111,7 +111,7 @@ const Investment = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">Long-term Returns</h4>
                   <p className="text-sm text-muted-foreground">
-                    Potential for consistent dividends and capital appreciation over time
+                    Multiple revenue streams ensure stable returns and growth potential
                   </p>
                 </div>
               </div>

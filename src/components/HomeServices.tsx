@@ -1,26 +1,32 @@
 import { Card } from "@/components/ui/card";
-import { Coins, ArrowLeftRight, Gem, ArrowRight } from "lucide-react";
+import { Coins, Building2, Gem, MapPin, ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Link } from "react-router-dom";
 
-const services = [
+const companies = [
   {
     icon: Coins,
-    title: "Silver Selling",
-    description: "Premium quality silver products with certified purity. Best market rates guaranteed for all your silver purchases.",
+    title: "Sri Cashway Gold Finance",
+    description: "Leading gold finance company providing secured loans against gold ornaments with competitive interest rates and flexible repayment options.",
     color: "from-accent/20 to-accent/5"
   },
   {
-    icon: ArrowLeftRight,
-    title: "Silver Exchange",
-    description: "Seamless exchange services for your silver holdings. Quick, transparent, and hassle-free transactions.",
+    icon: Building2,
+    title: "Siruvani Complex",
+    description: "Premium commercial complex offering modern office spaces, retail outlets, and business facilities in prime locations.",
     color: "from-primary/20 to-primary/5"
   },
   {
     icon: Gem,
-    title: "Old Gold Reselling",
-    description: "Get the best value for your old gold jewelry. Fair pricing, instant evaluation, and immediate payment.",
+    title: "Prabanjam Jewellery Limited",
+    description: "Flagship jewelry company specializing in traditional and contemporary gold, silver, and diamond jewelry with in-house manufacturing.",
     color: "from-accent/20 to-accent/5"
+  },
+  {
+    icon: MapPin,
+    title: "Prabanjam Resorts (Ooty)",
+    description: "Luxury resort destination in the scenic hills of Ooty, offering premium accommodation and hospitality services.",
+    color: "from-green-500/20 to-green-500/5"
   }
 ];
 
@@ -40,18 +46,18 @@ const HomeServices = () => {
           }`}
         >
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Our <span className="text-accent">Services</span>
+            Our <span className="text-accent">Companies</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Comprehensive solutions for all your precious metal trading needs
+            Diversified business portfolio serving multiple sectors with excellence
           </p>
         </div>
 
-        {/* Services grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-          {services.map((service, index) => (
+        {/* Companies grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-12">
+          {companies.map((company, index) => (
             <div
-              key={service.title}
+              key={company.title}
               className={`transform transition-all duration-700 ${
                 isVisible
                   ? "translate-y-0 opacity-100"
@@ -63,26 +69,26 @@ const HomeServices = () => {
                 className="p-8 hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 border-border/50 bg-card backdrop-blur-sm group h-full"
               >
                 {/* Icon container */}
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className="w-8 h-8 text-accent" />
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${company.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <company.icon className="w-8 h-8 text-accent" />
                 </div>
 
                 {/* Content */}
-                <h3 className="font-playfair text-2xl font-semibold text-foreground mb-3">
-                  {service.title}
+                <h3 className="font-playfair text-xl font-semibold text-foreground mb-3">
+                  {company.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {service.description}
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  {company.description}
                 </p>
               </Card>
             </div>
           ))}
         </div>
 
-        {/* See All Services Button */}
+        {/* See All Companies Button */}
         <div className="text-center">
-          <Link to="/services" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300">
-            See All Services
+          <Link to="/group-of-companies" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300">
+            View All Companies
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

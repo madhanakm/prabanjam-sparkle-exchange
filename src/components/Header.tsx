@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Download } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -21,6 +21,7 @@ const Header = () => {
     { name: "Shareholders", href: "/shareholders" },
     { name: "Board of Directors", href: "/board-of-directors" },
     { name: "Group of Companies", href: "/group-of-companies" },
+    { name: "Upcoming", href: "/upcoming" },
   ];
 
   return (
@@ -91,8 +92,16 @@ const Header = () => {
             </Link>
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center gap-3">
+            <Button 
+              onClick={() => window.open('/brochures/prabanjam-group-brochure.pdf', '_blank')}
+              variant="outline" 
+              className="border-accent text-accent hover:bg-accent hover:text-white"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Brochure
+            </Button>
             <Link to="/invest-now">
               <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-md hover:shadow-gold transition-all duration-300">
                 Invest Now
@@ -170,6 +179,17 @@ const Header = () => {
               >
                 Contact
               </Link>
+              <Button 
+                onClick={() => {
+                  window.open('/brochures/prabanjam-group-brochure.pdf', '_blank');
+                  setIsMenuOpen(false);
+                }}
+                variant="outline" 
+                className="border-accent text-accent hover:bg-accent hover:text-white mt-2 w-full"
+              >
+                <Download className="w-4 h-4 mr-2" />
+                Download Brochure
+              </Button>
               <Link to="/invest-now" onClick={() => setIsMenuOpen(false)}>
                 <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold mt-2 w-full">
                   Invest Now

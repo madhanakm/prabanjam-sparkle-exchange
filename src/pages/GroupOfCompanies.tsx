@@ -1,44 +1,51 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
-import { Building2, ShoppingBag, Factory, Gem, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Building2, Coins, Factory, Gem, MapPin, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const GroupOfCompanies = () => {
   const companies = [
     {
-      icon: Gem,
-      name: "Prabanjam Jewelry Pvt Ltd",
-      type: "Parent Company",
-      description: "Leading precious metals trading and jewelry retail company specializing in gold, silver, and diamond products.",
-      services: ["Retail Jewelry", "Precious Metals Trading", "Gold Exchange", "Investment Advisory"]
-    },
-    {
-      icon: MapPin,
-      name: "Ooty Resorts",
-      type: "Subsidiary",
-      description: "Premium hospitality venture offering luxury resort experiences in the scenic hills of Ooty, Tamil Nadu.",
-      services: ["Luxury Accommodation", "Conference Facilities", "Event Management", "Tourism Services"]
-    },
-    {
-      icon: Factory,
-      name: "Prabanjam Manufacturing Unit",
-      type: "Subsidiary",
-      description: "State-of-the-art jewelry manufacturing facility producing high-quality gold and silver ornaments.",
-      services: ["Custom Manufacturing", "Bulk Production", "Quality Assurance", "Design Services"]
-    },
-    {
-      icon: ShoppingBag,
-      name: "Prabanjam Retail Chain",
-      type: "Subsidiary",
-      description: "Network of premium jewelry showrooms across multiple cities, providing exceptional customer experience.",
-      services: ["Multi-location Stores", "Premium Service", "Collection Showcase", "Customer Care"]
+      icon: Coins,
+      name: "Sri Cashway Gold Finance",
+      type: "Financial Services",
+      description: "Leading gold finance company providing secured loans against gold ornaments with competitive interest rates and flexible repayment options.",
+      services: ["Gold Loans", "Jewelry Loans", "Quick Processing", "Competitive Rates"],
+      established: "2018",
+      location: "Multiple Branches",
+      detailLink: "/sri-cashway-detail"
     },
     {
       icon: Building2,
-      name: "Prabanjam Investments",
-      type: "Subsidiary",
-      description: "Investment arm focusing on precious metals portfolio management and wealth creation for clients.",
-      services: ["Portfolio Management", "Wealth Advisory", "Market Analysis", "Investment Products"]
+      name: "Siruvani Complex",
+      type: "Real Estate",
+      description: "Premium commercial complex offering modern office spaces, retail outlets, and business facilities in prime locations.",
+      services: ["Commercial Spaces", "Retail Outlets", "Office Rentals", "Business Facilities"],
+      established: "2020",
+      location: "Coimbatore",
+      detailLink: "/siruvani-complex-detail"
+    },
+    {
+      icon: Gem,
+      name: "Prabanjam Jewellery Limited",
+      type: "Retail & Manufacturing",
+      description: "Flagship jewelry company specializing in traditional and contemporary gold, silver, and diamond jewelry with in-house manufacturing.",
+      services: ["Gold Jewelry", "Diamond Collections", "Custom Design", "Wholesale Trading"],
+      established: "2015",
+      location: "Tamil Nadu",
+      detailLink: "/prabanjam-jewellery-detail"
+    },
+    {
+      icon: MapPin,
+      name: "Prabanjam Resorts (Ooty)",
+      type: "Hospitality",
+      description: "Luxury resort destination in the scenic hills of Ooty, offering premium accommodation and hospitality services for tourists and business travelers.",
+      services: ["Luxury Accommodation", "Conference Halls", "Event Management", "Tourism Packages"],
+      established: "2022",
+      location: "Ooty, Tamil Nadu",
+      detailLink: "/prabanjam-resorts-detail"
     }
   ];
 
@@ -69,9 +76,9 @@ const GroupOfCompanies = () => {
                 Our Business Portfolio
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                The Prabanjam Group encompasses a comprehensive ecosystem of companies spanning 
-                retail, manufacturing, and investment services in the precious metals sector. 
-                Our integrated approach ensures quality, reliability, and value across all touchpoints.
+                Prabanjam Group of Companies is a diversified business conglomerate with interests 
+                spanning financial services, real estate, jewelry retail & manufacturing, and hospitality. 
+                Our commitment to excellence and customer satisfaction drives growth across all sectors.
               </p>
             </Card>
 
@@ -95,15 +102,23 @@ const GroupOfCompanies = () => {
                           <h3 className="text-2xl font-bold text-foreground mb-2">
                             {company.name}
                           </h3>
-                          <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-sm font-medium rounded-full">
-                            {company.type}
-                          </span>
+                          <div className="flex flex-wrap gap-2 mb-2">
+                            <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-sm font-medium rounded-full">
+                              {company.type}
+                            </span>
+                            <span className="inline-block px-3 py-1 bg-muted text-muted-foreground text-sm font-medium rounded-full">
+                              Est. {company.established}
+                            </span>
+                          </div>
+                          <p className="text-sm text-muted-foreground">
+                            📍 {company.location}
+                          </p>
                         </div>
                       </div>
                       <p className="text-muted-foreground mb-6 leading-relaxed">
                         {company.description}
                       </p>
-                      <div>
+                      <div className="mb-6">
                         <h4 className="font-semibold text-foreground mb-3">Key Services:</h4>
                         <div className="grid sm:grid-cols-2 gap-3">
                           {company.services.map((service) => (
@@ -117,6 +132,12 @@ const GroupOfCompanies = () => {
                           ))}
                         </div>
                       </div>
+                      <Link to={company.detailLink}>
+                        <Button className="bg-accent hover:bg-accent/90 text-white">
+                          View Details
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </Card>
@@ -129,9 +150,9 @@ const GroupOfCompanies = () => {
                 Strength in Integration
               </h3>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Our group structure creates powerful synergies, enabling us to control quality from 
-                manufacturing to retail, provide competitive pricing, and deliver exceptional value 
-                to our customers and stakeholders.
+                Our diversified business portfolio creates synergies across sectors, enabling us to 
+                provide comprehensive solutions, maintain high quality standards, and deliver 
+                exceptional value to our customers and stakeholders across all business verticals.
               </p>
             </Card>
           </div>

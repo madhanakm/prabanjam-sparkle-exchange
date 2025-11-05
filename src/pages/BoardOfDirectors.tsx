@@ -1,36 +1,29 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
-import { Linkedin, Mail } from "lucide-react";
+
 
 const BoardOfDirectors = () => {
   const directors = [
     {
-      name: "Rajesh Kumar",
-      position: "Chairman & CEO",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
-      bio: "With over 25 years of experience in the precious metals industry, Rajesh leads our strategic vision and growth initiatives.",
-      linkedin: "#"
-    },
-    {
-      name: "Priya Sharma",
+      name: "K. Subramanian",
       position: "Managing Director",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+      bio: "Visionary leader with extensive experience in business development and strategic planning across multiple industry sectors.",
+      linkedin: "#"
+    },
+    {
+      name: "S. Shanthimani",
+      position: "Director",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
-      bio: "A seasoned finance professional with expertise in investment management and corporate strategy.",
+      bio: "Accomplished professional with deep expertise in operations management and organizational development.",
       linkedin: "#"
     },
     {
-      name: "Amit Patel",
-      position: "Director of Operations",
+      name: "V. Prabhakaran",
+      position: "Director",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-      bio: "Brings extensive operational excellence and process optimization experience to drive efficiency.",
-      linkedin: "#"
-    },
-    {
-      name: "Sunita Reddy",
-      position: "Independent Director",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
-      bio: "An accomplished business leader with a strong background in corporate governance and compliance.",
+      bio: "Experienced business leader specializing in financial management and corporate governance.",
       linkedin: "#"
     }
   ];
@@ -47,7 +40,7 @@ const BoardOfDirectors = () => {
               Board of <span className="text-accent">Directors</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Meet the visionary leaders steering Prabanjam Jewelry towards continued excellence
+              Meet the visionary leaders steering Prabanjam Group towards continued excellence
             </p>
           </div>
         </div>
@@ -57,46 +50,27 @@ const BoardOfDirectors = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
               {directors.map((director, index) => (
                 <Card 
                   key={director.name}
                   className="overflow-hidden hover:shadow-elegant transition-all duration-300 animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="md:flex">
-                    <div className="md:w-1/3">
-                      <img 
-                        src={director.image}
-                        alt={director.name}
-                        className="w-full h-64 md:h-full object-cover"
-                      />
-                    </div>
-                    <div className="p-6 md:w-2/3">
-                      <h3 className="text-2xl font-bold text-foreground mb-2">
-                        {director.name}
-                      </h3>
-                      <p className="text-accent font-semibold mb-4">{director.position}</p>
-                      <p className="text-muted-foreground mb-6 leading-relaxed">
-                        {director.bio}
-                      </p>
-                      <div className="flex gap-3">
-                        <a 
-                          href={director.linkedin}
-                          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent/10 hover:bg-accent hover:text-accent-foreground transition-colors"
-                          aria-label="LinkedIn profile"
-                        >
-                          <Linkedin className="w-5 h-5" />
-                        </a>
-                        <a 
-                          href={`mailto:${director.name.toLowerCase().replace(' ', '.')}@prabanjam.com`}
-                          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent/10 hover:bg-accent hover:text-accent-foreground transition-colors"
-                          aria-label="Email"
-                        >
-                          <Mail className="w-5 h-5" />
-                        </a>
-                      </div>
-                    </div>
+                  {/* Passport size photo */}
+                  <div className="text-center p-6">
+                    <img 
+                      src={director.image}
+                      alt={director.name}
+                      className="w-32 h-40 mx-auto object-cover rounded-lg shadow-md mb-4"
+                    />
+                    <h3 className="text-xl font-bold text-foreground mb-2">
+                      {director.name}
+                    </h3>
+                    <p className="text-accent font-semibold mb-4">{director.position}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {director.bio}
+                    </p>
                   </div>
                 </Card>
               ))}

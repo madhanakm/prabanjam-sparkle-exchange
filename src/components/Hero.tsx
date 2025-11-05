@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Gem, Diamond, Crown, TrendingUp, Users, Award } from "lucide-react";
+import { ArrowRight, Building2, Coins, Factory, MapPin, TrendingUp, Users, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -23,23 +23,23 @@ const Hero = () => {
           <div className="space-y-6 animate-fade-in">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-luxury-gold/10 border border-luxury-gold/20 rounded-full px-4 py-2">
-              <Sparkles className="w-4 h-4 text-luxury-gold" />
-              <span className="text-sm font-medium text-luxury-navy">Now Offering Public Shares</span>
+              <Building2 className="w-4 h-4 text-luxury-gold" />
+              <span className="text-sm font-medium text-luxury-navy">Diversified Business Group</span>
             </div>
 
             {/* Main heading with enhanced animations */}
             <div className="animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 0.3s forwards' }}>
-              <p className="text-muted-foreground text-lg mb-4 font-medium animate-fade-in opacity-0" style={{ animation: 'fadeInUp 1s ease-out 0.5s forwards' }}>Indulge in Our</p>
+              <p className="text-muted-foreground text-lg mb-4 font-medium animate-fade-in opacity-0" style={{ animation: 'fadeInUp 1s ease-out 0.5s forwards' }}>Welcome to</p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 0.7s forwards' }}>
-                EXQUISITE
-                <span className="block bg-gradient-to-r from-accent via-accent to-accent/80 bg-clip-text text-transparent animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 0.9s forwards' }}>JEWELRY</span>
+                PRABANJAM
+                <span className="block bg-gradient-to-r from-accent via-accent to-accent/80 bg-clip-text text-transparent animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 0.9s forwards' }}>GROUP</span>
               </h1>
             </div>
 
             {/* Description with animation */}
             <p className="text-muted-foreground text-lg max-w-xl leading-relaxed animate-fade-in opacity-0" style={{ animation: 'fadeInUp 1s ease-out 1.1s forwards' }}>
-              Experience excellence in premium silver & gold trading. We offer silver selling, 
-              exchange services, and old gold reselling with unmatched quality and trust.
+              A diversified business conglomerate with expertise in financial services, real estate, 
+              jewelry retail & manufacturing, and hospitality. Building trust through excellence across all sectors.
             </p>
 
             {/* CTA Buttons with staggered animation */}
@@ -68,10 +68,10 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4 pt-8">
               <div className="bg-accent/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-all duration-300 hover:scale-105 animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 1.5s forwards' }}>
                 <div className="flex items-center gap-2 text-foreground font-bold text-2xl mb-1">
-                  <TrendingUp className="w-6 h-6 text-accent" />
-                  100%
+                  <Building2 className="w-6 h-6 text-accent" />
+                  4+
                 </div>
-                <p className="text-muted-foreground text-sm">Pure Gold</p>
+                <p className="text-muted-foreground text-sm">Companies</p>
               </div>
               <div className="bg-accent/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-all duration-300 hover:scale-105 animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 1.7s forwards' }}>
                 <div className="flex items-center gap-2 text-foreground font-bold text-2xl mb-1">
@@ -83,7 +83,7 @@ const Hero = () => {
               <div className="bg-accent/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-all duration-300 hover:scale-105 animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 1.9s forwards' }}>
                 <div className="flex items-center gap-2 text-foreground font-bold text-2xl mb-1">
                   <Award className="w-6 h-6 text-accent" />
-                  10+
+                  8+
                 </div>
                 <p className="text-muted-foreground text-sm">Years Trust</p>
               </div>
@@ -110,30 +110,30 @@ const Hero = () => {
               ></div>
             </div>
 
-            {/* Floating jewelry elements with enhanced animations */}
+            {/* Floating business elements with enhanced animations */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative w-full h-full flex items-center justify-center">
-                <Diamond 
+                <Coins 
                   className="absolute top-[10%] right-[15%] lg:right-[25%] w-16 h-16 lg:w-24 lg:h-24 text-luxury-gold drop-shadow-2xl animate-float" 
                   style={{ animationDelay: "0s", animationDuration: "5s" }} 
                 />
-                <Gem 
+                <Building2 
                   className="absolute top-[35%] right-[30%] lg:right-[40%] w-24 h-24 lg:w-40 lg:h-40 text-luxury-gold drop-shadow-2xl animate-float" 
                   style={{ animationDelay: "1s", animationDuration: "6s" }} 
                 />
-                <Crown 
+                <Factory 
                   className="absolute top-[65%] right-[10%] lg:right-[20%] w-20 h-20 lg:w-28 lg:h-28 text-luxury-gold drop-shadow-2xl animate-float" 
                   style={{ animationDelay: "2s", animationDuration: "7s" }} 
                 />
-                <Sparkles 
+                <MapPin 
                   className="absolute top-[20%] right-[40%] lg:right-[50%] w-12 h-12 lg:w-20 lg:h-20 text-luxury-gold/70 drop-shadow-xl animate-float" 
                   style={{ animationDelay: "1.5s", animationDuration: "5.5s" }} 
                 />
-                <Diamond 
+                <Coins 
                   className="absolute top-[50%] right-[5%] lg:right-[15%] w-14 h-14 lg:w-20 lg:h-20 text-luxury-gold/80 drop-shadow-2xl animate-float" 
                   style={{ animationDelay: "3s", animationDuration: "6s" }} 
                 />
-                <Sparkles 
+                <Building2 
                   className="absolute top-[75%] right-[35%] lg:right-[45%] w-10 h-10 lg:w-16 lg:h-16 text-luxury-gold/60 drop-shadow-xl animate-float" 
                   style={{ animationDelay: "2.5s", animationDuration: "5s" }} 
                 />

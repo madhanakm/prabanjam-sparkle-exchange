@@ -1,34 +1,43 @@
 import { Card } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { TrendingUp, Users, Award, Building2 } from "lucide-react";
 
-const products = [
+const achievements = [
   {
-    title: "Silver Coins",
-    category: "Silver Collection",
-    image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=800&q=80"
+    icon: Building2,
+    number: "4+",
+    title: "Active Companies",
+    description: "Diversified business portfolio across multiple sectors",
+    color: "from-blue-500/20 to-blue-600/20"
   },
   {
-    title: "Gold Jewelry",
-    category: "Gold Collection",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80"
+    icon: Users,
+    number: "5000+",
+    title: "Satisfied Customers",
+    description: "Trust built through exceptional service delivery",
+    color: "from-green-500/20 to-green-600/20"
   },
   {
-    title: "Silver Bars",
-    category: "Investment Grade",
-    image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=80"
+    icon: TrendingUp,
+    number: "₹50Cr+",
+    title: "Business Turnover",
+    description: "Strong financial performance across all verticals",
+    color: "from-purple-500/20 to-purple-600/20"
   },
   {
-    title: "Diamond Jewelry",
-    category: "Premium Collection",
-    image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&q=80"
+    icon: Award,
+    number: "8+",
+    title: "Years of Excellence",
+    description: "Consistent growth and market leadership",
+    color: "from-orange-500/20 to-orange-600/20"
   }
 ];
 
-const Products = () => {
+const BusinessAchievements = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} id="products" className="py-24 bg-background">
+    <section ref={ref} id="achievements" className="py-24 bg-gradient-to-b from-background to-accent/5">
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div 
@@ -37,18 +46,18 @@ const Products = () => {
           }`}
         >
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Our <span className="text-accent">Collection</span>
+            Our <span className="text-accent">Achievements</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Explore our curated selection of premium precious metals and jewelry
+            Milestones that reflect our commitment to excellence and growth
           </p>
         </div>
 
-        {/* Products grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {products.map((product, index) => (
+        {/* Achievements grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {achievements.map((achievement, index) => (
             <div
-              key={product.title}
+              key={achievement.title}
               className={`transform transition-all duration-700 ${
                 isVisible
                   ? "translate-y-0 opacity-100"
@@ -57,32 +66,46 @@ const Products = () => {
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               <Card 
-                className="group overflow-hidden border-border/50 hover:shadow-elegant transition-all duration-500 h-full"
+                className="group text-center p-8 border-border/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-full bg-card/50 backdrop-blur-sm"
               >
-                {/* Image */}
-                <div className="relative overflow-hidden aspect-square">
-                  <img 
-                    src={product.image} 
-                    alt={product.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {/* Icon and Number */}
+                <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${achievement.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                  <achievement.icon className="w-10 h-10 text-accent" />
                 </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <p className="text-sm text-accent font-medium mb-2">{product.category}</p>
-                  <h3 className="font-playfair text-xl font-semibold text-foreground">
-                    {product.title}
-                  </h3>
+                
+                <div className="text-4xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform duration-300">
+                  {achievement.number}
                 </div>
+                
+                <h3 className="font-playfair text-xl font-semibold text-foreground mb-3">
+                  {achievement.title}
+                </h3>
+                
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {achievement.description}
+                </p>
               </Card>
             </div>
           ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className={`text-center mt-16 transform transition-all duration-700 ${
+          isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+        }`} style={{ transitionDelay: "600ms" }}>
+          <div className="bg-accent/10 border border-accent/20 rounded-2xl p-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              Growing Together
+            </h3>
+            <p className="text-muted-foreground mb-6">
+              These numbers represent not just our success, but the trust our customers, 
+              partners, and stakeholders have placed in us over the years.
+            </p>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default Products;
+export default BusinessAchievements;

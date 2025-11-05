@@ -1,42 +1,42 @@
-import { Shield, TrendingUp, Clock, Award, HeartHandshake, Lock } from "lucide-react";
+import { Shield, TrendingUp, Users, Award, HeartHandshake, Building2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
 
 const features = [
   {
-    icon: Shield,
-    title: "Certified Quality",
-    description: "All products are hallmarked and certified for authenticity and purity.",
+    icon: Building2,
+    title: "Diversified Portfolio",
+    description: "Multiple business verticals across finance, real estate, jewelry, and hospitality sectors.",
     gradient: "from-luxury-gold/20 to-yellow-500/20",
   },
   {
     icon: TrendingUp,
-    title: "High Returns",
-    description: "Competitive returns on investments with transparent pricing and minimal charges.",
+    title: "Proven Growth",
+    description: "Consistent business expansion and sustainable growth across all group companies.",
     gradient: "from-luxury-silver/20 to-gray-400/20",
   },
   {
-    icon: Clock,
-    title: "24/7 Support",
-    description: "Round-the-clock customer service to address all your queries and concerns.",
+    icon: Shield,
+    title: "Trusted Brand",
+    description: "Established reputation built on transparency, reliability, and ethical business practices.",
     gradient: "from-luxury-gold/20 to-yellow-500/20",
   },
   {
     icon: Award,
-    title: "Industry Leader",
-    description: "Over 25 years of excellence and trust in precious metals and jewelry.",
+    title: "Industry Excellence",
+    description: "Leading market position with over 8 years of excellence across multiple sectors.",
     gradient: "from-luxury-silver/20 to-gray-400/20",
   },
   {
     icon: HeartHandshake,
-    title: "Customer First",
-    description: "Your satisfaction is our priority with personalized service and care.",
+    title: "Customer Centric",
+    description: "Dedicated to delivering exceptional value and service across all business operations.",
     gradient: "from-luxury-gold/20 to-yellow-500/20",
   },
   {
-    icon: Lock,
-    title: "Secure Transactions",
-    description: "Bank-grade security for all your investments and purchases.",
+    icon: Users,
+    title: "Strong Network",
+    description: "Extensive network of satisfied customers, partners, and stakeholders across regions.",
     gradient: "from-luxury-silver/20 to-gray-400/20",
   },
 ];
@@ -73,10 +73,10 @@ const Features = () => {
           }`}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-luxury-gold via-yellow-400 to-luxury-gold bg-clip-text text-transparent">
-            Why Choose Prabanjam
+            Why Choose Prabanjam Group
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Experience excellence in every aspect of precious metal investments and luxury jewelry
+            Experience excellence across diverse business sectors with our commitment to quality and innovation
           </p>
         </div>
 

@@ -191,9 +191,9 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-foreground mb-2">Address</h3>
                       <p className="text-muted-foreground">
-                        Brindhavan Gardan, 1, Rabindranath Tagore Rd,<br />
-                        Maniyakarampalayam, Manikarampalayam,<br />
-                        Ganapathy, Coimbatore, Tamil Nadu 641006
+                        No.1, Brindhavan Garden, Bharathiyar Road,<br />
+                        Maniyakaranpalayam, Ganapathi,<br />
+                        Coimbatore -641006
                       </p>
                     </div>
                   </div>
@@ -207,8 +207,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-foreground mb-2">Phone</h3>
                       <p className="text-muted-foreground">
-                        Main: +1 (555) 123-4567<br />
-                        Investment Inquiries: +1 (555) 123-4568
+                        +91 98422 44014<br />
+                        +91 96299 66662
                       </p>
                     </div>
                   </div>
@@ -222,8 +222,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-foreground mb-2">Email</h3>
                       <p className="text-muted-foreground">
-                        General: info@prabanjam.com<br />
-                        Investment: invest@prabanjam.com
+                        General: prabanjamgroupcbe@gmail.com<br />
+                        Investment: prabanjamgroupcbe@gmail.com
                       </p>
                     </div>
                   </div>

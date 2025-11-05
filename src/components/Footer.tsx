@@ -60,14 +60,22 @@ const Footer = () => {
                 <Mail className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm text-primary-foreground/60">Email</p>
-                  <p className="text-primary-foreground/90">info@prabanjam.com</p>
+                  <p className="text-primary-foreground/90">prabanjamgroupcbe@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm text-primary-foreground/60">Phone</p>
-                  <p className="text-primary-foreground/90">+91 XXX XXX XXXX</p>
+                  <p className="text-primary-foreground/90">+91 98422 44014</p>
+                  <p className="text-primary-foreground/90">+91 96299 66662</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm text-primary-foreground/60">Address</p>
+                  <p className="text-primary-foreground/90">No.1, Brindhavan Garden, Bharathiyar Road, Maniyakaranpalayam, Ganapathi, Coimbatore -641006</p>
                 </div>
               </div>
 

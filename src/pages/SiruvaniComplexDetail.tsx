@@ -6,8 +6,8 @@ import { Building2, MapPin, Download, Eye, Target, Building } from "lucide-react
 
 const SiruvaniComplexDetail = () => {
   const branches = [
-    { name: "Siruvani Complex - Tower A", address: "RS Puram, Coimbatore", phone: "+91 98765 43220" },
-    { name: "Siruvani Complex - Tower B", address: "RS Puram, Coimbatore", phone: "+91 98765 43221" }
+    { name: "Siruvani Complex - Tower A", address: "No.1, Brindhavan Garden, Bharathiyar Road, Maniyakaranpalayam, Ganapathi, Coimbatore -641006", phone: "+91 98422 44014" },
+    { name: "Siruvani Complex - Tower B", address: "RS Puram, Coimbatore", phone: "+91 96299 66662" }
   ];
 
   const galleryImages = [

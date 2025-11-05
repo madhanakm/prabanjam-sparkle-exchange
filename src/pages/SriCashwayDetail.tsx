@@ -6,9 +6,9 @@ import { Coins, MapPin, Download, Eye, Target, Building } from "lucide-react";
 
 const SriCashwayDetail = () => {
   const branches = [
-    { name: "Main Branch", address: "123 Main Street, Coimbatore", phone: "+91 98765 43210" },
-    { name: "Anna Nagar Branch", address: "456 Anna Nagar, Chennai", phone: "+91 98765 43211" },
-    { name: "Gandhipuram Branch", address: "789 Gandhipuram, Coimbatore", phone: "+91 98765 43212" }
+    { name: "Main Branch", address: "No.1, Brindhavan Garden, Bharathiyar Road, Maniyakaranpalayam, Ganapathi, Coimbatore -641006", phone: "+91 98422 44014" },
+    { name: "Anna Nagar Branch", address: "456 Anna Nagar, Chennai", phone: "+91 96299 66662" },
+    { name: "Gandhipuram Branch", address: "789 Gandhipuram, Coimbatore", phone: "+91 98422 44014" }
   ];
 
   const galleryImages = [

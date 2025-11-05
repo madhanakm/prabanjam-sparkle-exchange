@@ -6,9 +6,9 @@ import { Gem, MapPin, Download, Eye, Target, Building } from "lucide-react";
 
 const PrabanjamJewelleryDetail = () => {
   const branches = [
-    { name: "Flagship Store", address: "Main Bazaar, Coimbatore", phone: "+91 98765 43230" },
-    { name: "Manufacturing Unit", address: "Industrial Estate, Coimbatore", phone: "+91 98765 43231" },
-    { name: "Wholesale Division", address: "Commercial Complex, Chennai", phone: "+91 98765 43232" }
+    { name: "Flagship Store", address: "No.1, Brindhavan Garden, Bharathiyar Road, Maniyakaranpalayam, Ganapathi, Coimbatore -641006", phone: "+91 98422 44014" },
+    { name: "Manufacturing Unit", address: "Industrial Estate, Coimbatore", phone: "+91 96299 66662" },
+    { name: "Wholesale Division", address: "Commercial Complex, Chennai", phone: "+91 98422 44014" }
   ];
 
   const galleryImages = [

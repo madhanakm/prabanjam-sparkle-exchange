@@ -6,8 +6,8 @@ import { MapPin as Resort, MapPin, Download, Eye, Target, Building } from "lucid
 
 const PrabanjamResortsDetail = () => {
   const branches = [
-    { name: "Main Resort", address: "Ooty Hills, Nilgiris District", phone: "+91 98765 43240" },
-    { name: "Conference Center", address: "Ooty Hills, Nilgiris District", phone: "+91 98765 43241" }
+    { name: "Main Resort", address: "Ooty Hills, Nilgiris District", phone: "+91 98422 44014" },
+    { name: "Conference Center", address: "Ooty Hills, Nilgiris District", phone: "+91 96299 66662" }
   ];
 
   const galleryImages = [

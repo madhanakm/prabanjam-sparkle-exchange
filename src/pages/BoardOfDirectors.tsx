@@ -8,21 +8,21 @@ const BoardOfDirectors = () => {
     {
       name: "K. Subramanian",
       position: "Managing Director",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+      image: "/directors/subramanian.jpeg",
       bio: "Visionary leader with extensive experience in business development and strategic planning across multiple industry sectors.",
       linkedin: "#"
     },
     {
       name: "S. Shanthimani",
       position: "Director",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
+      image: "/directors/shanthimani.jpg",
       bio: "Accomplished professional with deep expertise in operations management and organizational development.",
       linkedin: "#"
     },
     {
       name: "V. Prabhakaran",
       position: "Director",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+      image: "/directors/Prabhakaran.jpg",
       bio: "Experienced business leader specializing in financial management and corporate governance.",
       linkedin: "#"
     }

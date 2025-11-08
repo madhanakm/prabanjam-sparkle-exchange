@@ -12,15 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: [
-    'https://prabanjamjewellery.com',
-    'https://www.prabanjamjewellery.com',
-    'https://admin.prabanjamjewellery.com',
-    'http://localhost:8080',
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'http://localhost:5174'
-  ],
+  origin: true,
   credentials: true
 }));
 app.use(express.json());

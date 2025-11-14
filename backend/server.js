@@ -412,10 +412,10 @@ app.get('/api/gallery', (req, res) => {
       return res.status(500).json({ message: 'Database error' });
     }
     // Fix image URLs for production
-    const baseUrl = process.env.BASE_URL || 'http://localhost:5001';
+    const baseUrl = process.env.BASE_URL;
     const fixedResults = results.map(item => ({
       ...item,
-      image_url: item.image_url.replace('http://localhost:5001', baseUrl)
+      image_url: item.image_url.replace(/http:\/\/localhost:5001/g, baseUrl)
     }));
     res.json(fixedResults);
   });
@@ -427,7 +427,7 @@ app.post('/api/upload', authenticateToken, upload.single('image'), (req, res) =>
     return res.status(400).json({ message: 'No file uploaded' });
   }
   
-  const imageUrl = `${process.env.BASE_URL || 'https://backend.prabanjamjewellery.com'}/uploads/${req.file.filename}`;
+  const imageUrl = `${process.env.BASE_URL}/uploads/${req.file.filename}`;
   res.json({ image_url: imageUrl });
 });
 

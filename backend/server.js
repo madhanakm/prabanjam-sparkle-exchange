@@ -42,21 +42,38 @@ const upload = multer({
   }
 });
 
-// Database connection
+// Database connection with reconnection logic
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+  database: process.env.DB_NAME,
+  acquireTimeout: 60000,
+  timeout: 60000,
+  reconnect: true
 });
 
-db.connect((err) => {
-  if (err) {
-    console.error('Database connection failed:', err);
-    return;
-  }
-  console.log('Connected to MySQL database');
-});
+function handleDisconnect() {
+  db.connect((err) => {
+    if (err) {
+      console.error('Database connection failed:', err);
+      setTimeout(handleDisconnect, 2000);
+    } else {
+      console.log('Connected to MySQL database');
+    }
+  });
+
+  db.on('error', (err) => {
+    console.error('Database error:', err);
+    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+      handleDisconnect();
+    } else {
+      throw err;
+    }
+  });
+}
+
+handleDisconnect();
 
 // API Key middleware
 const authenticateApiKey = (req, res, next) => {
@@ -512,6 +529,33 @@ app.delete('/api/gallery/categories/:id', authenticateToken, (req, res) => {
   });
 });
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'OK', 
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received, shutting down gracefully');
+  db.end(() => {
+    console.log('Database connection closed');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  console.log('SIGINT received, shutting down gracefully');
+  db.end(() => {
+    console.log('Database connection closed');
+    process.exit(0);
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Health check available at http://localhost:${PORT}/health`);
 });

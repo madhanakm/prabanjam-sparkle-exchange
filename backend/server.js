@@ -187,13 +187,17 @@ app.post('/api/shareholder/login', (req, res) => {
 app.post('/api/admin/login', (req, res) => {
   const { username, password } = req.body;
   
+  console.log('🔐 [ADMIN LOGIN DEBUG] Login attempt for:', username);
+  
   const query = 'SELECT * FROM admins WHERE username = ?';
   db.query(query, [username], async (err, results) => {
     if (err) {
+      console.error('❌ [ADMIN LOGIN DEBUG] Database error:', err);
       return res.status(500).json({ message: 'Database error' });
     }
     
     if (results.length === 0) {
+      console.error('❌ [ADMIN LOGIN DEBUG] Admin not found:', username);
       return res.status(401).json({ message: 'Invalid credentials' });
     }
     
@@ -201,6 +205,7 @@ app.post('/api/admin/login', (req, res) => {
     const isValidPassword = await bcrypt.compare(password, admin.password);
     
     if (!isValidPassword) {
+      console.error('❌ [ADMIN LOGIN DEBUG] Invalid password for:', username);
       return res.status(401).json({ message: 'Invalid credentials' });
     }
     
@@ -209,6 +214,9 @@ app.post('/api/admin/login', (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: '24h' }
     );
+    
+    console.log('✅ [ADMIN LOGIN DEBUG] Login successful for:', username);
+    console.log('✅ [ADMIN LOGIN DEBUG] Token generated:', token.substring(0, 20) + '...');
     
     res.json({ token, admin: { id: admin.id, username: admin.username } });
   });
@@ -645,6 +653,28 @@ app.get('/health', (req, res) => {
     status: 'OK', 
     timestamp: new Date().toISOString(),
     uptime: process.uptime()
+  });
+});
+
+// Debug token endpoint
+app.get('/api/debug/token', (req, res) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  
+  console.log('🔐 [TOKEN DEBUG] Auth header:', authHeader);
+  console.log('🔐 [TOKEN DEBUG] Token:', token);
+  
+  if (!token) {
+    return res.json({ valid: false, error: 'No token provided' });
+  }
+  
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      console.error('❌ [TOKEN DEBUG] Verification failed:', err.message);
+      return res.json({ valid: false, error: err.message });
+    }
+    console.log('✅ [TOKEN DEBUG] Token valid for:', user);
+    res.json({ valid: true, user });
   });
 });
 

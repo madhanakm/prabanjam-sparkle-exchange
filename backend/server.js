@@ -21,6 +21,15 @@ app.use(cors({
   ],
   credentials: true
 }));
+
+// Debug middleware for deployment issues
+app.use((req, res, next) => {
+  console.log(`🌐 [API DEBUG] ${req.method} ${req.path} - Origin: ${req.headers.origin}`);
+  console.log(`🔑 [API DEBUG] API Key: ${req.headers['x-api-key'] ? 'Present' : 'Missing'}`);
+  console.log(`🔐 [API DEBUG] Auth: ${req.headers.authorization ? 'Present' : 'Missing'}`);
+  next();
+});
+
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
@@ -96,10 +105,15 @@ handleDisconnect();
 const authenticateApiKey = (req, res, next) => {
   const apiKey = req.headers['x-api-key'];
   
+  console.log(`🔑 [API KEY DEBUG] Expected: ${process.env.API_KEY}`);
+  console.log(`🔑 [API KEY DEBUG] Received: ${apiKey}`);
+  
   if (!apiKey || apiKey !== process.env.API_KEY) {
+    console.error(`❌ [API KEY DEBUG] Authentication failed`);
     return res.status(401).json({ message: 'Invalid API key' });
   }
   
+  console.log(`✅ [API KEY DEBUG] Authentication successful`);
   next();
 };
 
@@ -108,14 +122,20 @@ const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
+  console.log(`🔐 [TOKEN DEBUG] Auth header: ${authHeader}`);
+  console.log(`🔐 [TOKEN DEBUG] Token: ${token ? 'Present' : 'Missing'}`);
+
   if (!token) {
+    console.error(`❌ [TOKEN DEBUG] No token provided`);
     return res.status(401).json({ message: 'Access token required' });
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) {
+      console.error(`❌ [TOKEN DEBUG] Token verification failed:`, err.message);
       return res.status(403).json({ message: 'Invalid token' });
     }
+    console.log(`✅ [TOKEN DEBUG] Token verified for user:`, user);
     req.user = user;
     next();
   });
@@ -648,4 +668,10 @@ process.on('SIGINT', () => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Health check available at http://localhost:${PORT}/health`);
+  console.log('🌐 [DEPLOYMENT DEBUG] Environment variables:');
+  console.log(`  - BASE_URL: ${process.env.BASE_URL}`);
+  console.log(`  - API_KEY: ${process.env.API_KEY ? 'Set' : 'Missing'}`);
+  console.log(`  - JWT_SECRET: ${process.env.JWT_SECRET ? 'Set' : 'Missing'}`);
+  console.log(`  - DB_HOST: ${process.env.DB_HOST}`);
+  console.log(`  - DB_NAME: ${process.env.DB_NAME}`);
 });

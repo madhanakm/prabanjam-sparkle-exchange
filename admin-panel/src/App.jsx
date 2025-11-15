@@ -26,6 +26,9 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    const adminToken = localStorage.getItem('adminToken');
+    console.log('🔍 [APP DEBUG] Token check - token:', token ? 'Present' : 'Missing');
+    console.log('🔍 [APP DEBUG] Token check - adminToken:', adminToken ? 'Present' : 'Missing');
     if (token) {
       setIsAuthenticated(true);
     }
@@ -63,6 +66,8 @@ function App() {
 
   const handleLogin = (token) => {
     localStorage.setItem('token', token);
+    localStorage.setItem('adminToken', token);
+    console.log('✅ [LOGIN DEBUG] Token saved to localStorage:', token.substring(0, 20) + '...');
     setIsAuthenticated(true);
   };
 

@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
+import HeroSlider from "@/components/HeroSlider";
+import BoardOfDirectors from "@/components/BoardOfDirectors";
 import Features from "@/components/Features";
 import HomeServices from "@/components/HomeServices";
 import Investment from "@/components/Investment";
@@ -13,17 +13,15 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <div className="animate-fade-in opacity-0" style={{ animation: 'fadeInUp 1s ease-out forwards' }}>
-        <Hero />
-      </div>
+      <HeroSlider />
       <div className="animate-fade-in opacity-0" style={{ animation: 'fadeInUp 1s ease-out 0.2s forwards' }}>
-        <Stats />
+        <BoardOfDirectors />
       </div>
-      <div className="animate-fade-in opacity-0" style={{ animation: 'slideInLeft 1s ease-out 0.4s forwards' }}>
-        <Features />
-      </div>
-      <div className="animate-fade-in opacity-0" style={{ animation: 'slideInRight 1s ease-out 0.6s forwards' }}>
+      <div className="animate-fade-in opacity-0" style={{ animation: 'slideInRight 1s ease-out 0.4s forwards' }}>
         <HomeServices />
+      </div>
+      <div className="animate-fade-in opacity-0" style={{ animation: 'slideInLeft 1s ease-out 0.6s forwards' }}>
+        <Features />
       </div>
       <div className="animate-fade-in opacity-0" style={{ animation: 'fadeInUp 1s ease-out 0.8s forwards' }}>
         <Investment />

@@ -8,25 +8,29 @@ const companies = [
     icon: Coins,
     title: "Sri Cashway Gold Finance",
     description: "Leading gold finance company providing secured loans against gold ornaments with competitive interest rates and flexible repayment options.",
-    color: "from-accent/20 to-accent/5"
+    color: "from-accent/20 to-accent/5",
+    link: "/sri-cashway-detail"
   },
   {
     icon: Building2,
     title: "Siruvani Complex",
     description: "Premium commercial complex offering modern office spaces, retail outlets, and business facilities in prime locations.",
-    color: "from-primary/20 to-primary/5"
+    color: "from-primary/20 to-primary/5",
+    link: "/siruvani-complex-detail"
   },
   {
     icon: Gem,
     title: "Prabanjam Jewellery Limited",
     description: "Flagship jewelry company specializing in traditional and contemporary gold, silver, and diamond jewelry with in-house manufacturing.",
-    color: "from-accent/20 to-accent/5"
+    color: "from-accent/20 to-accent/5",
+    link: "/prabanjam-jewellery-detail"
   },
   {
     icon: MapPin,
     title: "Prabanjam Resorts (Ooty)",
     description: "Luxury resort destination in the scenic hills of Ooty, offering premium accommodation and hospitality services.",
-    color: "from-green-500/20 to-green-500/5"
+    color: "from-green-500/20 to-green-500/5",
+    link: "/prabanjam-resorts-detail"
   }
 ];
 
@@ -77,9 +81,16 @@ const HomeServices = () => {
                 <h3 className="font-playfair text-xl font-semibold text-foreground mb-3">
                   {company.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm">
+                <p className="text-muted-foreground leading-relaxed text-sm mb-4">
                   {company.description}
                 </p>
+                <Link 
+                  to={company.link}
+                  className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-medium text-sm transition-colors duration-300"
+                >
+                  View Details
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </Card>
             </div>
           ))}

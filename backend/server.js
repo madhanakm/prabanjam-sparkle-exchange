@@ -12,7 +12,13 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: true,
+  origin: [
+    'https://prabanjamjewellery.com',
+    'https://www.prabanjamjewellery.com',
+    'https://admin.prabanjamjewellery.com',
+    'http://localhost:8080',
+    'http://localhost:5174'
+  ],
   credentials: true
 }));
 app.use(express.json());
@@ -65,12 +71,23 @@ function handleDisconnect() {
 
   db.on('error', (err) => {
     console.error('Database error:', err);
-    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+    if (err.code === 'PROTOCOL_CONNECTION_LOST' || err.code === 'PROTOCOL_ENQUEUE_AFTER_QUIT' || err.code === 'PROTOCOL_ENQUEUE_AFTER_FATAL_ERROR' || err.code === 'PROTOCOL_ENQUEUE_HANDSHAKE_TWICE') {
+      console.log('Reconnecting to database...');
       handleDisconnect();
     } else {
       throw err;
     }
   });
+
+  // Keep connection alive
+  setInterval(() => {
+    db.query('SELECT 1', (err) => {
+      if (err) {
+        console.error('Keep alive query failed:', err);
+        handleDisconnect();
+      }
+    });
+  }, 60000); // Every minute
 }
 
 handleDisconnect();
@@ -431,6 +448,16 @@ app.post('/api/upload', authenticateToken, upload.single('image'), (req, res) =>
   res.json({ image_url: imageUrl });
 });
 
+// Slider image upload
+app.post('/api/admin/sliders/upload', authenticateToken, upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No image file provided' });
+  }
+
+  const imageUrl = `${process.env.BASE_URL || 'https://backend.prabanjamjewellery.com'}/uploads/${req.file.filename}`;
+  res.json({ imageUrl });
+});
+
 // Add gallery image (admin only)
 app.post('/api/gallery', authenticateToken, (req, res) => {
   const { title, description, image_url, category } = req.body;
@@ -526,6 +553,69 @@ app.delete('/api/gallery/categories/:id', authenticateToken, (req, res) => {
       return res.status(500).json({ message: 'Database error' });
     }
     res.json({ message: 'Category deleted successfully' });
+  });
+});
+
+// Homepage sliders endpoints
+// Get all active sliders
+app.get('/api/sliders', (req, res) => {
+  const query = 'SELECT * FROM homepage_sliders WHERE is_active = TRUE ORDER BY sort_order ASC';
+  db.query(query, (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json(results);
+  });
+});
+
+// Get all sliders (admin only)
+app.get('/api/admin/sliders', authenticateToken, (req, res) => {
+  const query = 'SELECT * FROM homepage_sliders ORDER BY sort_order ASC';
+  db.query(query, (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json(results);
+  });
+});
+
+// Add slider (admin only)
+app.post('/api/admin/sliders', authenticateToken, (req, res) => {
+  const { title, subtitle, description, image_url, button_text, button_link, is_active, sort_order } = req.body;
+  
+  const query = 'INSERT INTO homepage_sliders (title, subtitle, description, image_url, button_text, button_link, is_active, sort_order) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+  db.query(query, [title, subtitle, description, image_url, button_text, button_link, is_active || true, sort_order || 0], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Slider added successfully', id: result.insertId });
+  });
+});
+
+// Update slider (admin only)
+app.put('/api/admin/sliders/:id', authenticateToken, (req, res) => {
+  const { id } = req.params;
+  const { title, subtitle, description, image_url, button_text, button_link, is_active, sort_order } = req.body;
+  
+  const query = 'UPDATE homepage_sliders SET title = ?, subtitle = ?, description = ?, image_url = ?, button_text = ?, button_link = ?, is_active = ?, sort_order = ? WHERE id = ?';
+  db.query(query, [title, subtitle, description, image_url, button_text, button_link, is_active, sort_order, id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Slider updated successfully' });
+  });
+});
+
+// Delete slider (admin only)
+app.delete('/api/admin/sliders/:id', authenticateToken, (req, res) => {
+  const { id } = req.params;
+  
+  const query = 'DELETE FROM homepage_sliders WHERE id = ?';
+  db.query(query, [id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Slider deleted successfully' });
   });
 });
 

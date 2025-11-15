@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -8,29 +8,62 @@ import Contacts from './pages/Contacts';
 import Investments from './pages/Investments';
 import ChangePassword from './pages/ChangePassword';
 import Gallery from './pages/Gallery';
+import Sliders from './pages/Sliders';
 import Navbar from './components/Navbar';
 import './App.css';
+
+const INACTIVITY_TIMEOUT = 3 * 60 * 60 * 1000; // 3 hours
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('adminToken');
+    setIsAuthenticated(false);
+  }, []);
+
   useEffect(() => {
-    const token = localStorage.getItem('adminToken');
+    const token = localStorage.getItem('token');
     if (token) {
       setIsAuthenticated(true);
     }
     setLoading(false);
   }, []);
 
-  const handleLogin = (token) => {
-    localStorage.setItem('adminToken', token);
-    setIsAuthenticated(true);
-  };
+  useEffect(() => {
+    let inactivityTimer;
+    
+    const resetTimer = () => {
+      clearTimeout(inactivityTimer);
+      if (isAuthenticated) {
+        inactivityTimer = setTimeout(() => {
+          handleLogout();
+        }, INACTIVITY_TIMEOUT);
+      }
+    };
 
-  const handleLogout = () => {
-    localStorage.removeItem('adminToken');
-    setIsAuthenticated(false);
+    const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'];
+    
+    if (isAuthenticated) {
+      events.forEach(event => {
+        document.addEventListener(event, resetTimer, true);
+      });
+      resetTimer();
+    }
+
+    return () => {
+      clearTimeout(inactivityTimer);
+      events.forEach(event => {
+        document.removeEventListener(event, resetTimer, true);
+      });
+    };
+  }, [isAuthenticated, handleLogout]);
+
+  const handleLogin = (token) => {
+    localStorage.setItem('token', token);
+    setIsAuthenticated(true);
   };
 
   if (loading) {
@@ -103,6 +136,14 @@ function App() {
             element={
               isAuthenticated ? 
               <Gallery /> : 
+              <Navigate to="/login" />
+            } 
+          />
+          <Route 
+            path="/sliders" 
+            element={
+              isAuthenticated ? 
+              <Sliders /> : 
               <Navigate to="/login" />
             } 
           />

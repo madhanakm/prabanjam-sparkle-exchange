@@ -2,8 +2,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Users, TrendingUp, Award, Shield, Lock } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { api } from "@/config/api";
+
+const INACTIVITY_TIMEOUT = 3 * 60 * 60 * 1000; // 3 hours
 
 const Shareholders = () => {
   const [shareholders, setShareholders] = useState([]);
@@ -12,6 +14,14 @@ const Shareholders = () => {
   const [loginForm, setLoginForm] = useState({ username: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('shareholderToken');
+    localStorage.removeItem('shareholderData');
+    setIsLoggedIn(false);
+    setCurrentShareholder(null);
+    setShareholders([]);
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem('shareholderToken');
@@ -22,6 +32,35 @@ const Shareholders = () => {
       fetchShareholders(token);
     }
   }, []);
+
+  useEffect(() => {
+    let inactivityTimer;
+    
+    const resetTimer = () => {
+      clearTimeout(inactivityTimer);
+      if (isLoggedIn) {
+        inactivityTimer = setTimeout(() => {
+          handleLogout();
+        }, INACTIVITY_TIMEOUT);
+      }
+    };
+
+    const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'];
+    
+    if (isLoggedIn) {
+      events.forEach(event => {
+        document.addEventListener(event, resetTimer, true);
+      });
+      resetTimer();
+    }
+
+    return () => {
+      clearTimeout(inactivityTimer);
+      events.forEach(event => {
+        document.removeEventListener(event, resetTimer, true);
+      });
+    };
+  }, [isLoggedIn, handleLogout]);
 
   const fetchShareholders = async (token) => {
     try {
@@ -59,13 +98,7 @@ const Shareholders = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('shareholderToken');
-    localStorage.removeItem('shareholderData');
-    setIsLoggedIn(false);
-    setCurrentShareholder(null);
-    setShareholders([]);
-  };
+
 
   const benefits = [
     {

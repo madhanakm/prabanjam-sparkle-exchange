@@ -119,6 +119,116 @@ const Investment = () => {
           </div>
         </div>
 
+        {/* Investment Statistics */}
+        <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16">
+          <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+            <div className="text-3xl font-bold text-accent mb-2">₹50Cr+</div>
+            <div className="text-sm text-muted-foreground">Total Assets</div>
+          </Card>
+          <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+            <div className="text-3xl font-bold text-accent mb-2">25%</div>
+            <div className="text-sm text-muted-foreground">Annual Growth</div>
+          </Card>
+          <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+            <div className="text-3xl font-bold text-accent mb-2">5</div>
+            <div className="text-sm text-muted-foreground">Business Sectors</div>
+          </Card>
+          <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+            <div className="text-3xl font-bold text-accent mb-2">10+</div>
+            <div className="text-sm text-muted-foreground">Years Experience</div>
+          </Card>
+        </div>
+
+        {/* Investment Plans */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-center text-foreground mb-8">Investment <span className="text-accent">Plans</span></h3>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Card className="p-8 hover:shadow-xl transition-all duration-300 border-2 hover:border-accent/30">
+              <h4 className="text-xl font-bold text-foreground mb-4">Starter Plan</h4>
+              <div className="text-3xl font-bold text-accent mb-4">₹1 Lakh</div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                  Minimum investment amount
+                </li>
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                  Quarterly dividend payments
+                </li>
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                  Annual reports access
+                </li>
+              </ul>
+              <Button className="w-full bg-accent hover:bg-accent/90">Get Started</Button>
+            </Card>
+            <Card className="p-8 hover:shadow-xl transition-all duration-300 border-2 border-accent/50 relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm font-semibold">
+                Popular
+              </div>
+              <h4 className="text-xl font-bold text-foreground mb-4">Growth Plan</h4>
+              <div className="text-3xl font-bold text-accent mb-4">₹5 Lakh</div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                  Higher dividend rates
+                </li>
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                  Priority investment updates
+                </li>
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                  Exclusive investor events
+                </li>
+              </ul>
+              <Button className="w-full bg-accent hover:bg-accent/90">Invest Now</Button>
+            </Card>
+            <Card className="p-8 hover:shadow-xl transition-all duration-300 border-2 hover:border-accent/30">
+              <h4 className="text-xl font-bold text-foreground mb-4">Premium Plan</h4>
+              <div className="text-3xl font-bold text-accent mb-4">₹10 Lakh+</div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                  Maximum dividend benefits
+                </li>
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                  Board meeting invitations
+                </li>
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                  Strategic decision participation
+                </li>
+              </ul>
+              <Button className="w-full bg-accent hover:bg-accent/90">Contact Us</Button>
+            </Card>
+          </div>
+        </div>
+
+        {/* Why Invest */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-center text-foreground mb-8">Why Invest in <span className="text-accent">Prabanjam Groups</span></h3>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Card className="p-6 hover:shadow-lg transition-all duration-300">
+              <h4 className="text-lg font-semibold text-foreground mb-3">Diversified Revenue Streams</h4>
+              <p className="text-muted-foreground">Multiple business verticals reduce risk and ensure stable returns across different market conditions.</p>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-all duration-300">
+              <h4 className="text-lg font-semibold text-foreground mb-3">Proven Track Record</h4>
+              <p className="text-muted-foreground">Over a decade of successful operations with consistent growth and profitability.</p>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-all duration-300">
+              <h4 className="text-lg font-semibold text-foreground mb-3">Expansion Opportunities</h4>
+              <p className="text-muted-foreground">Strategic expansion plans across new markets and business sectors for future growth.</p>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-all duration-300">
+              <h4 className="text-lg font-semibold text-foreground mb-3">Transparent Operations</h4>
+              <p className="text-muted-foreground">Regular financial reporting and transparent communication with all stakeholders.</p>
+            </Card>
+          </div>
+        </div>
+
         {/* CTA */}
         <div 
           className={`text-center transform transition-all duration-700 ${
@@ -127,11 +237,17 @@ const Investment = () => {
           style={{ transitionDelay: "600ms" }}
         >
           <p className="text-muted-foreground mb-4">
-            Interested in learning more about our investment opportunity?
+            Ready to be part of our growth story?
           </p>
-          <Button variant="outline" size="lg" className="border-2 border-accent/30 hover:bg-accent/10 font-semibold">
-            Contact Investment Team
-          </Button>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button size="lg" className="bg-accent hover:bg-accent/90 font-semibold">
+              Start Investing Today
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <Button variant="outline" size="lg" className="border-2 border-accent/30 hover:bg-accent/10 font-semibold">
+              Download Brochure
+            </Button>
+          </div>
         </div>
       </div>
     </section>

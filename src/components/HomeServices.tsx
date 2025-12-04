@@ -12,6 +12,13 @@ const companies = [
     link: "/sri-cashway-detail"
   },
   {
+    icon: Gem,
+    title: "Prabanjam Gold Coverings",
+    description: "Specialized gold covering and plating services for jewelry, decorative items, and industrial applications with premium quality finishes.",
+    color: "from-yellow-500/20 to-yellow-500/5",
+    link: "/prabanjam-gold-coverings-detail"
+  },
+  {
     icon: Building2,
     title: "Siruvani Complex",
     description: "Premium commercial complex offering modern office spaces, retail outlets, and business facilities in prime locations.",
@@ -24,15 +31,8 @@ const companies = [
     description: "Flagship jewelry company specializing in traditional and contemporary gold, silver, and diamond jewelry with in-house manufacturing.",
     color: "from-accent/20 to-accent/5",
     link: "/prabanjam-jewellery-detail"
-  },
-  {
-    icon: MapPin,
-    title: "Prabanjam Resorts (Ooty)",
-    description: "Luxury resort destination in the scenic hills of Ooty, offering premium accommodation and hospitality services.",
-    color: "from-green-500/20 to-green-500/5",
-    link: "/prabanjam-resorts-detail"
   }
-];
+].slice(0, 4);
 
 const HomeServices = () => {
   const { ref, isVisible } = useScrollAnimation();

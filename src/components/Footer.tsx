@@ -16,11 +16,11 @@ const Footer = () => {
           <div>
             <img 
               src="/logo.png" 
-              alt="Prabanjam Jewelry" 
-              className="h-[75px] w-[200px] object-contain rounded-lg"
+              alt="Prabanjam Groups" 
+              className="h-[100px] w-[250px] object-contain rounded-lg"
             />
             <p className="text-primary-foreground/80 mb-4">
-              Your trusted partner for premium silver & gold trading since establishment. 
+              A diversified business conglomerate with excellence across multiple sectors. 
               Now offering exclusive investment opportunities.
             </p>
           </div>
@@ -30,24 +30,34 @@ const Footer = () => {
             <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                <Link to="/about" className="text-primary-foreground/80 hover:text-accent transition-colors">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                <Link to="/group-of-companies" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                  Group of Companies
+                </Link>
+              </li>
+              <li>
+                <Link to="/board-of-directors" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                  Board of Directors
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-primary-foreground/80 hover:text-accent transition-colors">
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                  Investment Info
-                </a>
+                <Link to="/investment" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                  Investment
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                <Link to="/contact" className="text-primary-foreground/80 hover:text-accent transition-colors">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -87,7 +97,7 @@ const Footer = () => {
         <div className="border-t border-primary-foreground/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-primary-foreground/60 text-sm">
-              © {new Date().getFullYear()} Prabanjam Jewelry Pvt Ltd. All rights reserved | Developed By <a href="https://thinkaside.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80 transition-colors">ThinkAside</a>
+              © {new Date().getFullYear()} Prabanjam Groups. All rights reserved | Developed By <a href="https://thinkaside.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80 transition-colors">ThinkAside</a>
             </p>
             <div className="flex gap-6 text-sm">
               <Link to="/privacy-policy" className="text-primary-foreground/60 hover:text-accent transition-colors">

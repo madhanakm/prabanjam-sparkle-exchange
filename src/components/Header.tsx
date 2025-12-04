@@ -32,8 +32,8 @@ const Header = () => {
           <Link to="/" className="hover:opacity-80 transition-opacity">
             <img 
               src="/logo.png" 
-              alt="Prabanjam Jewelry" 
-              className="h-[175px] w-[175px] object-contain rounded-lg"
+              alt="Prabanjam Groups" 
+              className="h-[200px] w-[200px] object-contain rounded-lg"
             />
           </Link>
 

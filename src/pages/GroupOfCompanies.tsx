@@ -18,6 +18,16 @@ const GroupOfCompanies = () => {
       detailLink: "/sri-cashway-detail"
     },
     {
+      icon: Factory,
+      name: "Prabanjam Gold Coverings",
+      type: "Manufacturing & Services",
+      description: "Specialized gold covering and plating services for jewelry, decorative items, and industrial applications with premium quality finishes.",
+      services: ["Gold Plating", "Jewelry Covering", "Industrial Coating", "Custom Finishes"],
+      established: "2019",
+      location: "Tamil Nadu",
+      detailLink: "/prabanjam-gold-coverings-detail"
+    },
+    {
       icon: Building2,
       name: "Siruvani Complex",
       type: "Real Estate",

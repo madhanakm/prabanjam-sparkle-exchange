@@ -15,25 +15,29 @@ const PrivacyPolicy = () => {
             
             <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
               <p className="text-lg">
-                At Prabanjam Jewelry Pvt Ltd, we are committed to protecting your privacy and personal information.
+                At Prabanjam Groups, we are committed to protecting your privacy and personal information across all our business verticals.
               </p>
 
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-4">Information We Collect</h2>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Personal identification information (Name, email, phone number)</li>
-                  <li>Transaction details and investment preferences</li>
+                  <li>Personal identification information (Name, email, phone number, address)</li>
+                  <li>Financial information for investment and loan services</li>
+                  <li>Transaction details across all business verticals</li>
                   <li>Communication records and correspondence</li>
+                  <li>Business information for commercial real estate services</li>
                 </ul>
               </div>
 
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-4">How We Use Your Information</h2>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>To provide and improve our services</li>
-                  <li>To process transactions and investments</li>
-                  <li>To communicate important updates and offers</li>
-                  <li>To comply with legal and regulatory requirements</li>
+                  <li>To provide services across financial, real estate, jewelry, and hospitality sectors</li>
+                  <li>To process transactions, investments, and loan applications</li>
+                  <li>To manage commercial real estate bookings and reservations</li>
+                  <li>To communicate important updates, offers, and business opportunities</li>
+                  <li>To comply with legal, regulatory, and industry requirements</li>
+                  <li>To improve our diversified business operations and customer experience</li>
                 </ul>
               </div>
 
@@ -56,7 +60,7 @@ const PrivacyPolicy = () => {
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-4">Contact Us</h2>
                 <p>
-                  If you have any questions about this Privacy Policy, please contact us at info@prabanjam.com
+                  If you have any questions about this Privacy Policy, please contact us at prabanjamgroupcbe@gmail.com or call +91 98422 44014
                 </p>
               </div>
 

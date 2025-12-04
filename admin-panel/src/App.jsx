@@ -41,25 +41,35 @@ function App() {
     const resetTimer = () => {
       clearTimeout(inactivityTimer);
       if (isAuthenticated) {
+        console.log('🕐 [AUTO LOGOUT] Timer reset - will logout in', INACTIVITY_TIMEOUT / 1000 / 60, 'minutes');
         inactivityTimer = setTimeout(() => {
+          console.log('⏰ [AUTO LOGOUT] Timeout reached - logging out');
+          alert('Session expired due to inactivity. You will be logged out.');
           handleLogout();
         }, INACTIVITY_TIMEOUT);
       }
     };
 
-    const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'];
+    const handleActivity = () => {
+      console.log('👆 [AUTO LOGOUT] User activity detected');
+      resetTimer();
+    };
+
+    const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
     
     if (isAuthenticated) {
+      console.log('🔐 [AUTO LOGOUT] Setting up inactivity timer');
       events.forEach(event => {
-        document.addEventListener(event, resetTimer, true);
+        document.addEventListener(event, handleActivity, true);
       });
       resetTimer();
     }
 
     return () => {
+      console.log('🧹 [AUTO LOGOUT] Cleaning up timers and listeners');
       clearTimeout(inactivityTimer);
       events.forEach(event => {
-        document.removeEventListener(event, resetTimer, true);
+        document.removeEventListener(event, handleActivity, true);
       });
     };
   }, [isAuthenticated, handleLogout]);

@@ -6,38 +6,44 @@ const services = [
   {
     icon: Coins,
     title: "Gold Finance Services",
-    description: "Secured loans against gold ornaments with competitive interest rates and flexible repayment options through Sri Cashway Gold Finance.",
-    color: "from-accent/20 to-accent/5"
+    description: "Secured loans against gold ornaments with competitive interest rates, quick processing, and flexible repayment options through Sri Cashway Gold Finance.",
+    color: "from-accent/20 to-accent/5",
+    features: ["Quick Loan Processing", "Competitive Interest Rates", "Flexible Repayment", "Secure Transactions"]
+  },
+  {
+    icon: Gem,
+    title: "Gold Covering & Plating",
+    description: "Professional gold plating and covering services for jewelry, decorative items, and industrial applications with premium quality finishes.",
+    color: "from-yellow-500/20 to-yellow-500/5",
+    features: ["Industrial Grade Coating", "Jewelry Restoration", "Custom Finishes", "Quality Assurance"]
   },
   {
     icon: Building2,
     title: "Commercial Real Estate",
-    description: "Premium office spaces, retail outlets, and business facilities at Siruvani Complex with modern amenities.",
-    color: "from-blue-500/20 to-blue-500/5"
+    description: "Premium office spaces, retail outlets, and business facilities at Siruvani Complex with modern amenities and prime locations.",
+    color: "from-blue-500/20 to-blue-500/5",
+    features: ["Prime Locations", "Modern Amenities", "Flexible Lease Terms", "Business Support"]
   },
   {
     icon: Gem,
-    title: "Jewelry Manufacturing & Retail",
-    description: "Traditional and contemporary gold, silver, and diamond jewelry with in-house manufacturing at Prabanjam Jewellery Limited.",
-    color: "from-accent/20 to-accent/5"
+    title: "Jewelry Manufacturing",
+    description: "Traditional and contemporary gold, silver, and diamond jewelry with in-house manufacturing and custom design services.",
+    color: "from-accent/20 to-accent/5",
+    features: ["Custom Design", "In-house Manufacturing", "Quality Certification", "Wholesale Trading"]
   },
   {
     icon: MapPin,
     title: "Hospitality Services",
-    description: "Luxury accommodation and hospitality services in the scenic hills of Ooty at Prabanjam Resorts.",
-    color: "from-green-500/20 to-green-500/5"
+    description: "Luxury accommodation and hospitality services in the scenic hills of Ooty with premium facilities and personalized service.",
+    color: "from-green-500/20 to-green-500/5",
+    features: ["Luxury Accommodation", "Event Management", "Conference Facilities", "Tourism Packages"]
   },
   {
     icon: TrendingUp,
     title: "Investment Opportunities",
-    description: "Diversified investment options across multiple business sectors with potential for long-term growth.",
-    color: "from-purple-500/20 to-purple-500/5"
-  },
-  {
-    icon: Shield,
-    title: "Business Consulting",
-    description: "Strategic business consulting and advisory services leveraging our multi-sector expertise.",
-    color: "from-orange-500/20 to-orange-500/5"
+    description: "Diversified investment options across multiple business sectors with transparent operations and potential for long-term growth.",
+    color: "from-purple-500/20 to-purple-500/5",
+    features: ["Diversified Portfolio", "Transparent Operations", "Regular Returns", "Growth Potential"]
   }
 ];
 
@@ -106,12 +112,12 @@ const Services = () => {
             Our <span className="text-accent">Services</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Comprehensive business solutions across finance, real estate, jewelry, and hospitality sectors
+            Comprehensive business solutions across finance, manufacturing, real estate, jewelry, and hospitality sectors
           </p>
         </div>
 
         {/* Services grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20">
           {services.map((service, index) => (
             <div
               key={service.title}
@@ -123,10 +129,10 @@ const Services = () => {
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               <Card 
-                className="p-8 hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 border-border/50 bg-card backdrop-blur-sm group h-full"
+                className="p-8 hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 border-border/50 bg-card backdrop-blur-sm group h-full text-center"
               >
                 {/* Icon container */}
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto`}>
                   <service.icon className="w-8 h-8 text-accent" />
                 </div>
 
@@ -134,18 +140,48 @@ const Services = () => {
                 <h3 className="font-playfair text-2xl font-semibold text-foreground mb-3">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed mb-4">
                   {service.description}
                 </p>
+                <div className="space-y-2">
+                  {service.features.map((feature) => (
+                    <div key={feature} className="flex items-center justify-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </div>
+                  ))}
+                </div>
               </Card>
             </div>
           ))}
         </div>
 
+        {/* Statistics */}
+        <div className="mb-20">
+          <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-3xl font-bold text-accent mb-2">₹50Cr+</div>
+              <div className="text-sm text-muted-foreground">Total Business Value</div>
+            </Card>
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-3xl font-bold text-accent mb-2">5</div>
+              <div className="text-sm text-muted-foreground">Business Verticals</div>
+            </Card>
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-3xl font-bold text-accent mb-2">1000+</div>
+              <div className="text-sm text-muted-foreground">Satisfied Clients</div>
+            </Card>
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-3xl font-bold text-accent mb-2">10+</div>
+              <div className="text-sm text-muted-foreground">Years Experience</div>
+            </Card>
+          </div>
+        </div>
+
         {/* Why Choose Us */}
         <div className="mb-20">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-foreground mb-4">Why Choose Prabanjam Group</h3>
+            <h3 className="text-3xl font-bold text-foreground mb-4">Why Choose <span className="text-accent">Prabanjam Groups</span></h3>
             <p className="text-muted-foreground">What makes us the preferred choice across multiple business sectors</p>
           </div>
           <div className="grid md:grid-cols-4 gap-6">

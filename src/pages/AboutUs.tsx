@@ -41,10 +41,10 @@ const AboutUs = () => {
           <div className="max-w-4xl mx-auto text-center">
             <div className="animate-fade-in opacity-0" style={{animation: 'fadeInUp 1s ease-out forwards'}}>
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-8 bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
-                About <span className="text-accent">Prabanjam Jewelry</span>
+                About <span className="text-accent">Prabanjam Groups</span>
               </h1>
               <p className="text-2xl text-muted-foreground leading-relaxed mb-8">
-                A legacy of trust, quality, and excellence in precious metals and jewelry since our inception.
+                A diversified business conglomerate with excellence across multiple sectors and industries.
               </p>
               <div className="w-24 h-1 bg-accent mx-auto rounded-full"></div>
             </div>
@@ -61,12 +61,12 @@ const AboutUs = () => {
               <div className="text-muted-foreground">Years of Excellence</div>
             </div>
             <div className="text-center animate-fade-in opacity-0" style={{animation: 'fadeInUp 1s ease-out 0.4s forwards'}}>
-              <div className="text-4xl font-bold text-accent mb-2">5000+</div>
-              <div className="text-muted-foreground">Happy Customers</div>
+              <div className="text-4xl font-bold text-accent mb-2">5</div>
+              <div className="text-muted-foreground">Business Verticals</div>
             </div>
             <div className="text-center animate-fade-in opacity-0" style={{animation: 'fadeInUp 1s ease-out 0.6s forwards'}}>
-              <div className="text-4xl font-bold text-accent mb-2">₹50Cr+</div>
-              <div className="text-muted-foreground">Assets Under Management</div>
+              <div className="text-4xl font-bold text-accent mb-2">1000+</div>
+              <div className="text-muted-foreground">Satisfied Clients</div>
             </div>
           </div>
         </div>
@@ -80,8 +80,8 @@ const AboutUs = () => {
               <div className="animate-fade-in opacity-0" style={{animation: 'slideInLeft 1s ease-out 0.2s forwards'}}>
                 <div className="relative group">
                   <img 
-                    src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=800&q=80"
-                    alt="Jewelry craftsmanship"
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80"
+                    alt="Business excellence"
                     className="rounded-2xl shadow-2xl w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent rounded-2xl"></div>
@@ -90,12 +90,12 @@ const AboutUs = () => {
               <div className="animate-fade-in opacity-0" style={{animation: 'slideInRight 1s ease-out 0.4s forwards'}}>
                 <h2 className="text-5xl font-bold text-foreground mb-8 leading-tight">Our <span className="text-accent">Story</span></h2>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Prabanjam Jewelry Pvt Ltd has been at the forefront of the precious metals industry, 
-                  providing exceptional quality silver, gold, and diamond jewelry to our valued customers.
+                  Prabanjam Groups is a diversified business conglomerate with interests spanning financial services, 
+                  real estate, jewelry manufacturing, hospitality, and specialized industrial services.
                 </p>
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  With a commitment to transparency, ethical sourcing, and customer satisfaction, 
-                  we have built a reputation as a trusted partner for both retail customers and investors.
+                  With a commitment to excellence, innovation, and customer satisfaction across all sectors, 
+                  we have built a reputation as a trusted partner for businesses and individuals alike.
                 </p>
                 <div className="flex gap-4">
                   <div className="flex items-center gap-2 text-accent">
@@ -118,8 +118,8 @@ const AboutUs = () => {
                 </div>
                 <h3 className="text-3xl font-bold text-foreground mb-6">Our Mission</h3>
                 <p className="text-muted-foreground leading-relaxed text-lg">
-                  To provide the finest quality precious metals and jewelry while maintaining the highest 
-                  standards of integrity and customer service.
+                  To deliver exceptional value and service across all our business verticals while maintaining 
+                  the highest standards of integrity and excellence.
                 </p>
               </Card>
 
@@ -129,8 +129,8 @@ const AboutUs = () => {
                 </div>
                 <h3 className="text-3xl font-bold text-foreground mb-6">Our Vision</h3>
                 <p className="text-muted-foreground leading-relaxed text-lg">
-                  To be the most trusted and preferred destination for precious metals trading and 
-                  investment in the region.
+                  To be the most trusted and diversified business group, creating sustainable value 
+                  across multiple industries and sectors.
                 </p>
               </Card>
 
@@ -140,11 +140,110 @@ const AboutUs = () => {
                 </div>
                 <h3 className="text-3xl font-bold text-foreground mb-6">Our Values</h3>
                 <p className="text-muted-foreground leading-relaxed text-lg">
-                  Integrity, transparency, quality, and customer-centricity form the foundation 
-                  of everything we do.
+                  Integrity, innovation, excellence, and customer-centricity form the foundation 
+                  of our diversified business operations.
                 </p>
               </Card>
             </div>
+
+            {/* Business Sectors */}
+            <section className="mt-24">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold text-foreground mb-4">Our <span className="text-accent">Business Sectors</span></h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Diversified portfolio spanning multiple industries with expertise and excellence
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <Card className="p-6 hover:shadow-lg transition-all duration-300">
+                  <h3 className="text-xl font-semibold text-foreground mb-3">Financial Services</h3>
+                  <p className="text-muted-foreground">Gold finance and lending solutions with competitive rates and flexible terms.</p>
+                </Card>
+                <Card className="p-6 hover:shadow-lg transition-all duration-300">
+                  <h3 className="text-xl font-semibold text-foreground mb-3">Manufacturing</h3>
+                  <p className="text-muted-foreground">Jewelry manufacturing and gold covering services with premium quality finishes.</p>
+                </Card>
+                <Card className="p-6 hover:shadow-lg transition-all duration-300">
+                  <h3 className="text-xl font-semibold text-foreground mb-3">Real Estate</h3>
+                  <p className="text-muted-foreground">Commercial complexes and business facilities in prime locations.</p>
+                </Card>
+                <Card className="p-6 hover:shadow-lg transition-all duration-300">
+                  <h3 className="text-xl font-semibold text-foreground mb-3">Hospitality</h3>
+                  <p className="text-muted-foreground">Luxury resort destinations offering premium accommodation and services.</p>
+                </Card>
+                <Card className="p-6 hover:shadow-lg transition-all duration-300">
+                  <h3 className="text-xl font-semibold text-foreground mb-3">Retail</h3>
+                  <p className="text-muted-foreground">Traditional and contemporary jewelry collections with custom design services.</p>
+                </Card>
+                <Card className="p-6 hover:shadow-lg transition-all duration-300">
+                  <h3 className="text-xl font-semibold text-foreground mb-3">Investment</h3>
+                  <p className="text-muted-foreground">Public share offerings and investment opportunities for growth-oriented investors.</p>
+                </Card>
+              </div>
+            </section>
+
+            {/* Leadership */}
+            <section className="mt-24">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold text-foreground mb-4">Our <span className="text-accent">Leadership</span></h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Experienced leadership driving innovation and growth across all business verticals
+                </p>
+              </div>
+              <Card className="p-8 bg-gradient-to-r from-accent/5 to-accent/10 border-accent/20">
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground mb-4">Visionary Leadership</h3>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      Our leadership team brings decades of combined experience across various industries, 
+                      driving strategic growth and operational excellence.
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      With a focus on innovation, sustainability, and stakeholder value creation, 
+                      we continue to expand our business horizons while maintaining our core values.
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-accent/20 mb-4">
+                      <Users className="w-16 h-16 text-accent" />
+                    </div>
+                    <p className="text-sm text-muted-foreground">Experienced Team</p>
+                  </div>
+                </div>
+              </Card>
+            </section>
+
+            {/* Achievements */}
+            <section className="mt-24">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold text-foreground mb-4">Our <span className="text-accent">Achievements</span></h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Milestones that reflect our commitment to excellence and growth
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+                  <TrendingUp className="w-12 h-12 text-accent mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-accent mb-2">25%</h3>
+                  <p className="text-muted-foreground">Annual Growth Rate</p>
+                </Card>
+                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+                  <Award className="w-12 h-12 text-accent mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-accent mb-2">ISO</h3>
+                  <p className="text-muted-foreground">Certified Quality</p>
+                </Card>
+                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+                  <Building2 className="w-12 h-12 text-accent mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-accent mb-2">15+</h3>
+                  <p className="text-muted-foreground">Business Locations</p>
+                </Card>
+                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+                  <Users className="w-12 h-12 text-accent mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-accent mb-2">100+</h3>
+                  <p className="text-muted-foreground">Team Members</p>
+                </Card>
+              </div>
+            </section>
           </div>
         </div>
       </section>

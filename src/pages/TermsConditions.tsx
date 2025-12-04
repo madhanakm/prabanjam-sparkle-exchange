@@ -28,35 +28,41 @@ const TermsConditions = () => {
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-4">Services</h2>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Silver selling and exchange services</li>
-                  <li>Old gold reselling services</li>
-                  <li>Investment advisory services</li>
-                  <li>Secure storage solutions</li>
+                  <li>Financial services including gold loans and lending</li>
+                  <li>Gold covering and plating services</li>
+                  <li>Commercial real estate and office spaces</li>
+                  <li>Jewelry manufacturing and retail</li>
+                  <li>Hospitality and resort services</li>
+                  <li>Investment advisory and share offerings</li>
                 </ul>
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">Investment Risks</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Investment & Financial Services</h2>
                 <p>
-                  All investments carry risk. Past performance does not guarantee future results. 
-                  Please consult with our advisors and consider your financial situation before making investment decisions.
+                  All investments and financial services carry inherent risks. Past performance does not guarantee future results. 
+                  Interest rates and terms are subject to change. Please consult with our advisors and consider your financial 
+                  situation before making investment or loan decisions across any of our business verticals.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-4">Pricing and Payments</h2>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>All prices are subject to market fluctuations</li>
-                  <li>Payments must be made as per agreed terms</li>
-                  <li>Additional charges may apply for certain services</li>
+                  <li>Prices for gold, jewelry, and services are subject to market fluctuations</li>
+                  <li>Real estate rental rates are as per agreed lease terms</li>
+                  <li>Loan interest rates are determined based on current market conditions</li>
+                  <li>Resort and hospitality charges are as per published rates</li>
+                  <li>Payments must be made as per agreed terms across all services</li>
+                  <li>Additional charges may apply for specialized services</li>
                 </ul>
               </div>
 
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-4">Limitation of Liability</h2>
                 <p>
-                  Prabanjam Jewelry Pvt Ltd shall not be liable for any indirect, incidental, special, 
-                  consequential, or punitive damages arising from your use of our services.
+                  Prabanjam Groups and its subsidiary companies shall not be liable for any indirect, incidental, special, 
+                  consequential, or punitive damages arising from your use of our services across any business vertical.
                 </p>
               </div>
 
@@ -71,7 +77,7 @@ const TermsConditions = () => {
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-4">Contact Information</h2>
                 <p>
-                  For any questions regarding these terms, please contact us at info@prabanjam.com
+                  For any questions regarding these terms, please contact us at prabanjamgroupcbe@gmail.com or call +91 98422 44014
                 </p>
               </div>
 

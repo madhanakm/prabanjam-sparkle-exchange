@@ -128,10 +128,14 @@ const PrabanjamGoldCoveringsDetail = () => {
                     serving both individual customers and industrial clients. Our state-of-the-art facility 
                     and experienced technicians ensure superior quality finishes for all applications.
                   </p>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed mb-6">
                     From jewelry restoration to industrial component coating, we provide comprehensive 
                     gold covering solutions with precision, reliability, and exceptional customer service.
                   </p>
+                  <div className="bg-accent/5 p-4 rounded-lg border border-accent/20">
+                    <h4 className="font-semibold text-foreground mb-2">📍 Location</h4>
+                    <p className="text-sm text-muted-foreground">No.133, Bharathiar Road, Maniyakarampalayam, Ganapathy, Coimbatore -641006</p>
+                  </div>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
@@ -228,6 +232,37 @@ const PrabanjamGoldCoveringsDetail = () => {
                     {feature.description}
                   </p>
                 </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Our <span className="text-accent">Gallery</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                See our gold covering work and facility in action
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                "/goldcoverings/prabanjam_gold_coverings.jpeg",
+                "/goldcoverings/prabanjam_gold_coverings1.jpeg",
+                "/goldcoverings/prabanjam_gold_coverings2.jpeg"
+              ].map((image, index) => (
+                <div key={index} className="aspect-square rounded-lg overflow-hidden animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <img 
+                    src={image} 
+                    alt={`Gold Coverings ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
               ))}
             </div>
           </div>

@@ -6,9 +6,7 @@ import { Gem, MapPin, Download, Eye, Target, Building } from "lucide-react";
 
 const PrabanjamJewelleryDetail = () => {
   const branches = [
-    { name: "Flagship Store", address: "No.1, Brindhavan Garden, Bharathiyar Road, Maniyakaranpalayam, Ganapathi, Coimbatore -641006", phone: "+91 98422 44014" },
-    { name: "Manufacturing Unit", address: "Industrial Estate, Coimbatore", phone: "+91 96299 66662" },
-    { name: "Wholesale Division", address: "Commercial Complex, Chennai", phone: "+91 98422 44014" }
+    { name: "Main Showroom", address: "No.1, Brindhavan Garden, Bharathiyar Road, Maniyakarampalayam, Ganapathy, Coimbatore -641006", phone: "+91 98422 44014" }
   ];
 
   const galleryImages = [
@@ -97,7 +95,7 @@ const PrabanjamJewelleryDetail = () => {
                 <Building className="w-8 h-8 text-accent mr-3" />
                 <h3 className="text-3xl font-bold text-foreground">Our Locations</h3>
               </div>
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="max-w-md mx-auto">
                 {branches.map((branch, index) => (
                   <Card key={index} className="p-6 border-accent/20">
                     <h4 className="text-xl font-semibold text-foreground mb-3">{branch.name}</h4>

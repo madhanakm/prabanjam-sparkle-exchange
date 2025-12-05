@@ -9,22 +9,12 @@ const GroupOfCompanies = () => {
   const existingCompanies = [
     {
       icon: Coins,
-      name: "Sri Cashway Gold Finance / Cashway Finance",
+      name: "Sri Cashway Gold Finance",
       type: "Financial Services",
-      description: "Short-term and long-term gold finance solutions with competitive rates and flexible terms.",
-      services: ["Short-term Finance", "Long-term Finance", "Gold Loans", "Quick Processing"],
+      description: "Secured gold loans with competitive interest rates, quick processing, and flexible repayment options across multiple branches.",
+      services: ["Gold Loans", "Quick Processing", "Competitive Rates", "Flexible Repayment"],
       established: "2018",
-      location: "Multiple Branches",
-      detailLink: "/sri-cashway-detail"
-    },
-    {
-      icon: Building2,
-      name: "Sri Cashway Finance Private Limited",
-      type: "Financial Services",
-      description: "Organized financial services under Prabanjam Group providing comprehensive financial solutions.",
-      services: ["Organized Finance", "Group Services", "Financial Planning", "Investment Advisory"],
-      established: "2019",
-      location: "Coimbatore",
+      location: "Coimbatore - 3 Branches",
       detailLink: "/sri-cashway-detail"
     },
     {

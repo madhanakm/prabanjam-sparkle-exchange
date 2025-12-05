@@ -2,33 +2,33 @@ import { Card } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { TrendingUp, Users, Award, Building2 } from "lucide-react";
 
-const achievements = [
+const milestones = [
   {
     icon: Building2,
-    number: "4+",
-    title: "Active Companies",
-    description: "Diversified business portfolio across multiple sectors",
+    number: "2016",
+    title: "Foundation & Early Achievements",
+    description: "Early achievements and establishment of Prabanjam Group's core businesses",
     color: "from-blue-500/20 to-blue-600/20"
   },
   {
-    icon: Users,
-    number: "5000+",
-    title: "Satisfied Customers",
-    description: "Trust built through exceptional service delivery",
+    icon: TrendingUp,
+    number: "2018",
+    title: "Business Expansion",
+    description: "Expansion of Prabanjam Group activities and strengthening of finance and jewellery verticals",
     color: "from-green-500/20 to-green-600/20"
   },
   {
-    icon: TrendingUp,
-    number: "₹50Cr+",
-    title: "Business Turnover",
-    description: "Strong financial performance across all verticals",
+    icon: Award,
+    number: "2019",
+    title: "Siruvani Complex Launch",
+    description: "Launch and development of Siruvani Complex as a major group project",
     color: "from-purple-500/20 to-purple-600/20"
   },
   {
-    icon: Award,
-    number: "8+",
-    title: "Years of Excellence",
-    description: "Consistent growth and market leadership",
+    icon: Users,
+    number: "2025",
+    title: "Planned Growth Phase",
+    description: "Growth of Prabanjam Group including Gold Covering and expanded jewellery operations",
     color: "from-orange-500/20 to-orange-600/20"
   }
 ];
@@ -46,18 +46,18 @@ const BusinessAchievements = () => {
           }`}
         >
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Our <span className="text-accent">Achievements</span>
+            Key <span className="text-accent">Milestones</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Milestones that reflect our commitment to excellence and growth
+            Timeline highlights showcasing our journey and future vision
           </p>
         </div>
 
-        {/* Achievements grid */}
+        {/* Milestones grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {achievements.map((achievement, index) => (
+          {milestones.map((milestone, index) => (
             <div
-              key={achievement.title}
+              key={milestone.title}
               className={`transform transition-all duration-700 ${
                 isVisible
                   ? "translate-y-0 opacity-100"
@@ -69,20 +69,20 @@ const BusinessAchievements = () => {
                 className="group text-center p-8 border-border/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-full bg-card/50 backdrop-blur-sm"
               >
                 {/* Icon and Number */}
-                <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${achievement.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                  <achievement.icon className="w-10 h-10 text-accent" />
+                <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${milestone.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                  <milestone.icon className="w-10 h-10 text-accent" />
                 </div>
                 
                 <div className="text-4xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform duration-300">
-                  {achievement.number}
+                  {milestone.number}
                 </div>
                 
                 <h3 className="font-playfair text-xl font-semibold text-foreground mb-3">
-                  {achievement.title}
+                  {milestone.title}
                 </h3>
                 
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  {achievement.description}
+                  {milestone.description}
                 </p>
               </Card>
             </div>

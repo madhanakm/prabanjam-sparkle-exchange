@@ -36,7 +36,7 @@ const SriCashwayDetail = () => {
               Leading gold finance company providing secured loans against gold ornaments
             </p>
             <Button 
-              onClick={() => window.open('/brochures/sri-cashway-brochure.pdf', '_blank')}
+              onClick={() => window.open('/brochures/brochure.pdf', '_blank')}
               className="bg-accent hover:bg-accent/90 text-white"
             >
               <Download className="w-4 h-4 mr-2" />

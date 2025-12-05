@@ -38,8 +38,8 @@ const Hero = () => {
 
             {/* Description with animation */}
             <p className="text-muted-foreground text-lg max-w-xl leading-relaxed animate-fade-in opacity-0" style={{ animation: 'fadeInUp 1s ease-out 1.1s forwards' }}>
-              A diversified business conglomerate with expertise in financial services, real estate, 
-              jewelry retail & manufacturing, and hospitality. Building trust through excellence across all sectors.
+              Prabanjam Group of Companies is a Coimbatore-based business group with interests across multiple sectors. 
+              Join the Prabanjam Dream Life Plan – a structured savings and benefits program designed to support your future dreams.
             </p>
 
             {/* CTA Buttons with staggered animation */}
@@ -49,7 +49,7 @@ const Hero = () => {
                   size="lg" 
                   className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                 >
-                  Invest Now
+                  Start With ₹100
                 </Button>
               </Link>
               <Link to="/services">
@@ -64,28 +64,28 @@ const Hero = () => {
               </Link>
             </div>
 
-            {/* Stats Cards with enhanced animations */}
+            {/* Key Milestones with enhanced animations */}
             <div className="flex flex-wrap gap-4 pt-8">
               <div className="bg-accent/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-all duration-300 hover:scale-105 animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 1.5s forwards' }}>
                 <div className="flex items-center gap-2 text-foreground font-bold text-2xl mb-1">
                   <Building2 className="w-6 h-6 text-accent" />
-                  4+
+                  2016
                 </div>
-                <p className="text-muted-foreground text-sm">Companies</p>
+                <p className="text-muted-foreground text-sm">Foundation</p>
               </div>
               <div className="bg-accent/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-all duration-300 hover:scale-105 animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 1.7s forwards' }}>
                 <div className="flex items-center gap-2 text-foreground font-bold text-2xl mb-1">
-                  <Users className="w-6 h-6 text-accent" />
-                  5000+
+                  <TrendingUp className="w-6 h-6 text-accent" />
+                  2018
                 </div>
-                <p className="text-muted-foreground text-sm">Happy Clients</p>
+                <p className="text-muted-foreground text-sm">Expansion</p>
               </div>
               <div className="bg-accent/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-all duration-300 hover:scale-105 animate-fade-in opacity-0" style={{ animation: 'slideInUp 1s ease-out 1.9s forwards' }}>
                 <div className="flex items-center gap-2 text-foreground font-bold text-2xl mb-1">
                   <Award className="w-6 h-6 text-accent" />
-                  8+
+                  2025
                 </div>
-                <p className="text-muted-foreground text-sm">Years Trust</p>
+                <p className="text-muted-foreground text-sm">Growth Vision</p>
               </div>
             </div>
           </div>

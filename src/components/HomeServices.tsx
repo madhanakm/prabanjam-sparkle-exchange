@@ -7,32 +7,32 @@ const companies = [
   {
     icon: Coins,
     title: "Sri Cashway Gold Finance",
-    description: "Leading gold finance company providing secured loans against gold ornaments with competitive interest rates and flexible repayment options.",
+    description: "Short-term and long-term gold finance solutions with competitive rates and flexible terms.",
     color: "from-accent/20 to-accent/5",
     link: "/sri-cashway-detail"
   },
   {
     icon: Gem,
-    title: "Prabanjam Gold Coverings",
-    description: "Specialized gold covering and plating services for jewelry, decorative items, and industrial applications with premium quality finishes.",
+    title: "Prabanjam Jewellery Limited",
+    description: "Jewellery showroom and Dream Life Plan operations offering traditional jewelry and structured savings programs.",
+    color: "from-accent/20 to-accent/5",
+    link: "/prabanjam-jewellery-detail"
+  },
+  {
+    icon: Gem,
+    title: "Prabanjam Gold Covering",
+    description: "Fashion and covering jewellery services with premium quality finishes and custom designs.",
     color: "from-yellow-500/20 to-yellow-500/5",
     link: "/prabanjam-gold-coverings-detail"
   },
   {
     icon: Building2,
     title: "Siruvani Complex",
-    description: "Premium commercial complex offering modern office spaces, retail outlets, and business facilities in prime locations.",
+    description: "Commercial complex developed and operated by the group offering modern business facilities.",
     color: "from-primary/20 to-primary/5",
     link: "/siruvani-complex-detail"
-  },
-  {
-    icon: Gem,
-    title: "Prabanjam Jewellery Limited",
-    description: "Flagship jewelry company specializing in traditional and contemporary gold, silver, and diamond jewelry with in-house manufacturing.",
-    color: "from-accent/20 to-accent/5",
-    link: "/prabanjam-jewellery-detail"
   }
-].slice(0, 4);
+];
 
 const HomeServices = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -53,7 +53,7 @@ const HomeServices = () => {
             Our <span className="text-accent">Companies</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Diversified business portfolio serving multiple sectors with excellence
+            Existing businesses across financial services, jewelry, real estate and hospitality sectors
           </p>
         </div>
 

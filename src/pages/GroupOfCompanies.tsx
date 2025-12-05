@@ -6,57 +6,76 @@ import { Building2, Coins, Factory, Gem, MapPin, ArrowRight } from "lucide-react
 import { Link } from "react-router-dom";
 
 const GroupOfCompanies = () => {
-  const companies = [
+  const existingCompanies = [
     {
       icon: Coins,
-      name: "Sri Cashway Gold Finance",
+      name: "Sri Cashway Gold Finance / Cashway Finance",
       type: "Financial Services",
-      description: "Leading gold finance company providing secured loans against gold ornaments with competitive interest rates and flexible repayment options.",
-      services: ["Gold Loans", "Jewelry Loans", "Quick Processing", "Competitive Rates"],
+      description: "Short-term and long-term gold finance solutions with competitive rates and flexible terms.",
+      services: ["Short-term Finance", "Long-term Finance", "Gold Loans", "Quick Processing"],
       established: "2018",
       location: "Multiple Branches",
       detailLink: "/sri-cashway-detail"
     },
     {
+      icon: Building2,
+      name: "Sri Cashway Finance Private Limited",
+      type: "Financial Services",
+      description: "Organized financial services under Prabanjam Group providing comprehensive financial solutions.",
+      services: ["Organized Finance", "Group Services", "Financial Planning", "Investment Advisory"],
+      established: "2019",
+      location: "Coimbatore",
+      detailLink: "/sri-cashway-detail"
+    },
+    {
+      icon: Gem,
+      name: "Prabanjam Jewellery Limited",
+      type: "Retail & Dream Life Plan",
+      description: "Jewellery showroom and Dream Life Plan operations offering traditional jewelry and structured savings programs.",
+      services: ["Jewellery Showroom", "Dream Life Plan", "Gold Collections", "Investment Plans"],
+      established: "2015",
+      location: "Tamil Nadu",
+      detailLink: "/prabanjam-jewellery-detail"
+    },
+    {
       icon: Factory,
-      name: "Prabanjam Gold Coverings",
-      type: "Manufacturing & Services",
-      description: "Specialized gold covering and plating services for jewelry, decorative items, and industrial applications with premium quality finishes.",
-      services: ["Gold Plating", "Jewelry Covering", "Industrial Coating", "Custom Finishes"],
+      name: "Prabanjam Gold Covering",
+      type: "Fashion & Manufacturing",
+      description: "Fashion and covering jewellery services with premium quality finishes and custom designs.",
+      services: ["Fashion Jewellery", "Gold Covering", "Custom Design", "Quality Finishes"],
       established: "2019",
       location: "Tamil Nadu",
       detailLink: "/prabanjam-gold-coverings-detail"
     },
     {
       icon: Building2,
-      name: "Siruvani Complex",
+      name: "Siruvani Complex (Prabanjam Group)",
       type: "Real Estate",
-      description: "Premium commercial complex offering modern office spaces, retail outlets, and business facilities in prime locations.",
-      services: ["Commercial Spaces", "Retail Outlets", "Office Rentals", "Business Facilities"],
+      description: "Commercial complex developed and operated by the group offering modern business facilities.",
+      services: ["Commercial Spaces", "Business Facilities", "Property Development", "Complex Management"],
       established: "2020",
       location: "Coimbatore",
       detailLink: "/siruvani-complex-detail"
     },
     {
-      icon: Gem,
-      name: "Prabanjam Jewellery Limited",
-      type: "Retail & Manufacturing",
-      description: "Flagship jewelry company specializing in traditional and contemporary gold, silver, and diamond jewelry with in-house manufacturing.",
-      services: ["Gold Jewelry", "Diamond Collections", "Custom Design", "Wholesale Trading"],
-      established: "2015",
-      location: "Tamil Nadu",
-      detailLink: "/prabanjam-jewellery-detail"
-    },
-    {
       icon: MapPin,
-      name: "Prabanjam Resorts (Ooty)",
+      name: "Prabanjam Resort (Ooty)",
       type: "Hospitality",
-      description: "Luxury resort destination in the scenic hills of Ooty, offering premium accommodation and hospitality services for tourists and business travelers.",
-      services: ["Luxury Accommodation", "Conference Halls", "Event Management", "Tourism Packages"],
+      description: "Resort & cottage facilities in Ooty providing luxury accommodation and hospitality services.",
+      services: ["Resort Facilities", "Cottage Accommodation", "Tourism Services", "Event Hosting"],
       established: "2022",
       location: "Ooty, Tamil Nadu",
       detailLink: "/prabanjam-resorts-detail"
     }
+  ];
+
+  const upcomingVentures = [
+    { name: "Prabanjam Construction", sector: "Real Estate" },
+    { name: "Prabanjam Silver Factory", sector: "Manufacturing" },
+    { name: "Prabanjam Textiles", sector: "Consumer Services" },
+    { name: "Prabanjam Travels", sector: "Logistics" },
+    { name: "Prabanjam Transports", sector: "Logistics" },
+    { name: "Prabanjam Industrial Projects", sector: "Manufacturing" }
   ];
 
   return (
@@ -92,9 +111,10 @@ const GroupOfCompanies = () => {
               </p>
             </Card>
 
-            {/* Companies Grid */}
-            <div className="space-y-8">
-              {companies.map((company, index) => (
+            {/* Existing Companies Grid */}
+            <div className="space-y-8 mb-16">
+              <h3 className="text-2xl font-bold text-foreground mb-8">Existing <span className="text-accent">Businesses</span></h3>
+              {existingCompanies.map((company, index) => (
                 <Card 
                   key={company.name}
                   className="overflow-hidden hover:shadow-elegant transition-all duration-300 animate-fade-in"
@@ -152,6 +172,26 @@ const GroupOfCompanies = () => {
                   </div>
                 </Card>
               ))}
+            </div>
+
+            {/* Upcoming Ventures */}
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold text-foreground mb-8">Upcoming <span className="text-accent">Ventures</span></h3>
+              <Card className="p-8 bg-gradient-to-r from-accent/5 to-accent/10 border-accent/20">
+                <p className="text-muted-foreground mb-6">
+                  Prabanjam Group is expanding into multiple sectors to strengthen the group's presence in real estate, manufacturing, logistics and consumer services:
+                </p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {upcomingVentures.map((venture, index) => (
+                    <div key={venture.name} className="flex items-center justify-between p-4 bg-background/50 rounded-lg border border-accent/10">
+                      <div>
+                        <h4 className="font-semibold text-foreground">{venture.name}</h4>
+                        <p className="text-sm text-muted-foreground">{venture.sector}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
             </div>
 
             {/* Synergy Section */}

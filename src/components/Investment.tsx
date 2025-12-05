@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, Users, Shield, ArrowRight } from "lucide-react";
+import { TrendingUp, Users, Shield, ArrowRight, ChevronDown } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Investment = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <section ref={ref} id="investment" className="py-24 bg-gradient-to-b from-background to-primary/5 relative overflow-hidden">
@@ -23,10 +25,10 @@ const Investment = () => {
             <span className="text-sm font-semibold text-accent">Investment Opportunity</span>
           </div>
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Invest in <span className="text-accent">Prabanjam Group</span>
+            Start Your Financial Journey With Just <span className="text-accent">₹100</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Be part of our diversified growth story across multiple business sectors.
+            Join the Prabanjam Dream Life Plan, where every unit starts at just ₹100. Begin small, grow steadily, and build long-term value for your future.
           </p>
         </div>
 
@@ -40,24 +42,24 @@ const Investment = () => {
             style={{ transitionDelay: "200ms" }}
           >
             <Card className="p-8 bg-gradient-luxury border-accent/20 text-primary-foreground shadow-gold hover:shadow-gold/70 transition-all duration-500 h-full">
-              <h3 className="font-playfair text-3xl font-bold mb-6">Group Investment Opportunity</h3>
+              <h3 className="font-playfair text-3xl font-bold mb-6">Dream Life Plan - ₹100 Starting Unit</h3>
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-accent mt-2"></div>
                   <p className="text-primary-foreground/90">
-                    <span className="font-semibold">Diversified Portfolio:</span> Multiple revenue streams across finance, real estate, jewelry & hospitality
+                    <span className="font-semibold">Minimum Entry:</span> Just ₹100 per unit - anyone can start without financial pressure
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-accent mt-2"></div>
                   <p className="text-primary-foreground/90">
-                    <span className="font-semibold">Expansion Plans:</span> 5 new companies launching in the next 3 years
+                    <span className="font-semibold">Flexible Scaling:</span> Add more units anytime as your income grows
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-accent mt-2"></div>
                   <p className="text-primary-foreground/90">
-                    <span className="font-semibold">Proven Success:</span> 8+ years of excellence across multiple business sectors
+                    <span className="font-semibold">Long-Term Compounding:</span> Your money increases year-by-year with guaranteed annual benefits
                   </p>
                 </div>
               </div>
@@ -119,113 +121,121 @@ const Investment = () => {
           </div>
         </div>
 
-        {/* Investment Statistics */}
-        <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16">
-          <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-            <div className="text-3xl font-bold text-accent mb-2">₹50Cr+</div>
-            <div className="text-sm text-muted-foreground">Total Assets</div>
-          </Card>
-          <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-            <div className="text-3xl font-bold text-accent mb-2">25%</div>
-            <div className="text-sm text-muted-foreground">Annual Growth</div>
-          </Card>
-          <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-            <div className="text-3xl font-bold text-accent mb-2">5</div>
-            <div className="text-sm text-muted-foreground">Business Sectors</div>
-          </Card>
-          <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-            <div className="text-3xl font-bold text-accent mb-2">10+</div>
-            <div className="text-sm text-muted-foreground">Years Experience</div>
-          </Card>
-        </div>
-
-        {/* Investment Plans */}
+        {/* Who Can Join */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-center text-foreground mb-8">Investment <span className="text-accent">Plans</span></h3>
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card className="p-8 hover:shadow-xl transition-all duration-300 border-2 hover:border-accent/30">
-              <h4 className="text-xl font-bold text-foreground mb-4">Starter Plan</h4>
-              <div className="text-3xl font-bold text-accent mb-4">₹1 Lakh</div>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  Minimum investment amount
-                </li>
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  Quarterly dividend payments
-                </li>
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  Annual reports access
-                </li>
-              </ul>
-              <Button className="w-full bg-accent hover:bg-accent/90">Get Started</Button>
+          <h3 className="text-3xl font-bold text-center text-foreground mb-8">Who Can <span className="text-accent">Join</span></h3>
+          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-7xl mx-auto">
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-lg font-bold text-accent mb-2">Students</div>
+              <div className="text-xs text-muted-foreground">College & School</div>
             </Card>
-            <Card className="p-8 hover:shadow-xl transition-all duration-300 border-2 border-accent/50 relative">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm font-semibold">
-                Popular
-              </div>
-              <h4 className="text-xl font-bold text-foreground mb-4">Growth Plan</h4>
-              <div className="text-3xl font-bold text-accent mb-4">₹5 Lakh</div>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  Higher dividend rates
-                </li>
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  Priority investment updates
-                </li>
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  Exclusive investor events
-                </li>
-              </ul>
-              <Button className="w-full bg-accent hover:bg-accent/90">Invest Now</Button>
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-lg font-bold text-accent mb-2">Homemakers</div>
+              <div className="text-xs text-muted-foreground">Family Savings</div>
             </Card>
-            <Card className="p-8 hover:shadow-xl transition-all duration-300 border-2 hover:border-accent/30">
-              <h4 className="text-xl font-bold text-foreground mb-4">Premium Plan</h4>
-              <div className="text-3xl font-bold text-accent mb-4">₹10 Lakh+</div>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  Maximum dividend benefits
-                </li>
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  Board meeting invitations
-                </li>
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  Strategic decision participation
-                </li>
-              </ul>
-              <Button className="w-full bg-accent hover:bg-accent/90">Contact Us</Button>
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-lg font-bold text-accent mb-2">Employees</div>
+              <div className="text-xs text-muted-foreground">Salaried</div>
+            </Card>
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-lg font-bold text-accent mb-2">Business</div>
+              <div className="text-xs text-muted-foreground">Small & Large</div>
+            </Card>
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-lg font-bold text-accent mb-2">Self-Employed</div>
+              <div className="text-xs text-muted-foreground">Professionals</div>
+            </Card>
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-lg font-bold text-accent mb-2">Senior Citizens</div>
+              <div className="text-xs text-muted-foreground">Retirement Planning</div>
             </Card>
           </div>
         </div>
 
-        {/* Why Invest */}
+
+
+        {/* Why ₹100 Starting Price Is Powerful */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-center text-foreground mb-8">Why Invest in <span className="text-accent">Prabanjam Groups</span></h3>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <h3 className="text-3xl font-bold text-center text-foreground mb-8">Why ₹100 Starting Price Is <span className="text-accent">Powerful</span></h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <Card className="p-6 hover:shadow-lg transition-all duration-300">
-              <h4 className="text-lg font-semibold text-foreground mb-3">Diversified Revenue Streams</h4>
-              <p className="text-muted-foreground">Multiple business verticals reduce risk and ensure stable returns across different market conditions.</p>
+              <h4 className="text-lg font-semibold text-foreground mb-3">Low Risk Entry</h4>
+              <p className="text-muted-foreground">Anyone can start without financial pressure - just ₹100 to begin your journey.</p>
             </Card>
             <Card className="p-6 hover:shadow-lg transition-all duration-300">
-              <h4 className="text-lg font-semibold text-foreground mb-3">Proven Track Record</h4>
-              <p className="text-muted-foreground">Over a decade of successful operations with consistent growth and profitability.</p>
+              <h4 className="text-lg font-semibold text-foreground mb-3">Flexible Scaling</h4>
+              <p className="text-muted-foreground">Add more units anytime as your income grows - no restrictions or penalties.</p>
             </Card>
             <Card className="p-6 hover:shadow-lg transition-all duration-300">
-              <h4 className="text-lg font-semibold text-foreground mb-3">Expansion Opportunities</h4>
-              <p className="text-muted-foreground">Strategic expansion plans across new markets and business sectors for future growth.</p>
+              <h4 className="text-lg font-semibold text-foreground mb-3">Long-Term Compounding</h4>
+              <p className="text-muted-foreground">Your money increases year-by-year with guaranteed annual benefits and returns.</p>
             </Card>
             <Card className="p-6 hover:shadow-lg transition-all duration-300">
-              <h4 className="text-lg font-semibold text-foreground mb-3">Transparent Operations</h4>
-              <p className="text-muted-foreground">Regular financial reporting and transparent communication with all stakeholders.</p>
+              <h4 className="text-lg font-semibold text-foreground mb-3">Discipline & Consistency</h4>
+              <p className="text-muted-foreground">Encourages smart financial habits and systematic wealth building over time.</p>
             </Card>
+            <Card className="p-6 hover:shadow-lg transition-all duration-300">
+              <h4 className="text-lg font-semibold text-foreground mb-3">Family Wealth Planning</h4>
+              <p className="text-muted-foreground">Gift units to children or loved ones - perfect for family financial planning.</p>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-all duration-300">
+              <h4 className="text-lg font-semibold text-foreground mb-3">Transparency</h4>
+              <p className="text-muted-foreground">Clear plan structure with year-wise benefit charts showing growth automatically.</p>
+            </Card>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-center text-foreground mb-8">Frequently Asked <span className="text-accent">Questions</span></h3>
+          <div className="max-w-4xl mx-auto space-y-3">
+            {[
+              {
+                q: "Is ₹100 enough to start?",
+                a: "Yes. Even one unit = ₹100 is a valid starting point. You can add more units anytime."
+              },
+              {
+                q: "Can I increase my investment later?",
+                a: "Absolutely. You can purchase additional units at any time to increase your future maturity value."
+              },
+              {
+                q: "How long should I stay in the plan?",
+                a: "Longer duration gives higher maturity and maximum returns."
+              },
+              {
+                q: "Is there a maturity chart?",
+                a: "Yes, every member receives a year-wise benefit chart, showing how investment value grows automatically."
+              },
+              {
+                q: "Is this safe?",
+                a: "Prabanjam Dream Life Plan is backed by Prabanjam Jewellery Limited, part of the Prabanjam Group of Companies, ensuring stability and reliability."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="border border-border/50 rounded-lg overflow-hidden bg-card/50 backdrop-blur-sm hover:shadow-md transition-all duration-300">
+                <button
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className={`w-full p-6 text-left flex items-center justify-between transition-all duration-300 ${
+                    openFaq === index ? 'bg-accent/10 border-b border-accent/20' : 'hover:bg-accent/5'
+                  }`}
+                >
+                  <h4 className="text-lg font-semibold text-foreground pr-4">{faq.q}</h4>
+                  <div className={`w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center transition-all duration-300 ${
+                    openFaq === index ? 'bg-accent text-white' : ''
+                  }`}>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
+                      openFaq === index ? 'rotate-180' : ''
+                    }`} />
+                  </div>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${
+                  openFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                }`}>
+                  <div className="px-6 pb-6 pt-2">
+                    <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -237,15 +247,20 @@ const Investment = () => {
           style={{ transitionDelay: "600ms" }}
         >
           <p className="text-muted-foreground mb-4">
-            Ready to be part of our growth story?
+            Whether you are a student, professional, or small business owner – anyone can start and watch their money multiply.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button size="lg" className="bg-accent hover:bg-accent/90 font-semibold">
-              Start Investing Today
+              Start With ₹100 Today
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button variant="outline" size="lg" className="border-2 border-accent/30 hover:bg-accent/10 font-semibold">
-              Download Brochure
+            <Button 
+              onClick={() => window.open('/brochures/brochure.pdf', '_blank')}
+              variant="outline" 
+              size="lg" 
+              className="border-2 border-accent/30 hover:bg-accent/10 font-semibold"
+            >
+              Download Plan Details
             </Button>
           </div>
         </div>

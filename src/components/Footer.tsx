@@ -20,8 +20,8 @@ const Footer = () => {
               className="h-[100px] w-[250px] object-contain rounded-lg"
             />
             <p className="text-primary-foreground/80 mb-4">
-              A diversified business conglomerate with excellence across multiple sectors. 
-              Now offering exclusive investment opportunities.
+              Prabanjam Group of Companies is a Coimbatore-based business group with interests in gold finance, jewellery retail, real estate, hospitality, textiles, and industrial ventures. 
+              Now offering the Prabanjam Dream Life Plan.
             </p>
           </div>
 

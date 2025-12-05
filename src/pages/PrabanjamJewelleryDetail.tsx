@@ -36,7 +36,7 @@ const PrabanjamJewelleryDetail = () => {
               Flagship jewelry company specializing in traditional and contemporary designs
             </p>
             <Button 
-              onClick={() => window.open('/brochures/prabanjam-jewellery-brochure.pdf', '_blank')}
+              onClick={() => window.open('/brochures/brochure.pdf', '_blank')}
               className="bg-accent hover:bg-accent/90 text-white"
             >
               <Download className="w-4 h-4 mr-2" />

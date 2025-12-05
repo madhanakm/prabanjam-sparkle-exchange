@@ -4,69 +4,69 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const services = [
   {
-    icon: Coins,
-    title: "Gold Finance Services",
-    description: "Secured loans against gold ornaments with competitive interest rates, quick processing, and flexible repayment options through Sri Cashway Gold Finance.",
+    icon: Gem,
+    title: "Prabanjam Jewellery Limited",
+    description: "Premium gold, silver, and diamond jewelry with traditional craftsmanship and contemporary designs. Established jewelry manufacturing and retail operations.",
     color: "from-accent/20 to-accent/5",
-    features: ["Quick Loan Processing", "Competitive Interest Rates", "Flexible Repayment", "Secure Transactions"]
+    features: ["Traditional Craftsmanship", "Contemporary Designs", "Quality Certification", "Retail & Wholesale"]
   },
   {
-    icon: Gem,
-    title: "Gold Covering & Plating",
-    description: "Professional gold plating and covering services for jewelry, decorative items, and industrial applications with premium quality finishes.",
+    icon: Coins,
+    title: "Sri Cashway Gold Finance",
+    description: "Secured gold loans with competitive interest rates, quick processing, and flexible repayment options. Trusted financial services for immediate cash needs.",
     color: "from-yellow-500/20 to-yellow-500/5",
-    features: ["Industrial Grade Coating", "Jewelry Restoration", "Custom Finishes", "Quality Assurance"]
+    features: ["Quick Loan Processing", "Competitive Rates", "Flexible Repayment", "Secure Transactions"]
   },
   {
     icon: Building2,
-    title: "Commercial Real Estate",
-    description: "Premium office spaces, retail outlets, and business facilities at Siruvani Complex with modern amenities and prime locations.",
+    title: "Siruvani Complex",
+    description: "Premium commercial real estate with modern office spaces, retail outlets, and business facilities in prime Coimbatore locations.",
     color: "from-blue-500/20 to-blue-500/5",
-    features: ["Prime Locations", "Modern Amenities", "Flexible Lease Terms", "Business Support"]
+    features: ["Prime Location", "Modern Amenities", "Business Facilities", "Flexible Spaces"]
   },
   {
     icon: Gem,
-    title: "Jewelry Manufacturing",
-    description: "Traditional and contemporary gold, silver, and diamond jewelry with in-house manufacturing and custom design services.",
-    color: "from-accent/20 to-accent/5",
-    features: ["Custom Design", "In-house Manufacturing", "Quality Certification", "Wholesale Trading"]
+    title: "Gold Covering Works",
+    description: "Professional gold plating and covering services for jewelry, decorative items, and industrial applications with premium quality finishes.",
+    color: "from-orange-500/20 to-orange-500/5",
+    features: ["Industrial Coating", "Jewelry Plating", "Custom Finishes", "Quality Assurance"]
   },
   {
     icon: MapPin,
-    title: "Hospitality Services",
-    description: "Luxury accommodation and hospitality services in the scenic hills of Ooty with premium facilities and personalized service.",
+    title: "Ooty Hospitality",
+    description: "Luxury accommodation and hospitality services in the scenic Nilgiri hills with premium facilities and personalized guest experiences.",
     color: "from-green-500/20 to-green-500/5",
-    features: ["Luxury Accommodation", "Event Management", "Conference Facilities", "Tourism Packages"]
+    features: ["Hill Station Resort", "Premium Facilities", "Event Hosting", "Tourism Services"]
   },
   {
     icon: TrendingUp,
-    title: "Investment Opportunities",
-    description: "Diversified investment options across multiple business sectors with transparent operations and potential for long-term growth.",
+    title: "Dream Life Plan",
+    description: "Accessible investment opportunity starting at ₹100 per unit, designed for long-term wealth creation and financial security for all income groups.",
     color: "from-purple-500/20 to-purple-500/5",
-    features: ["Diversified Portfolio", "Transparent Operations", "Regular Returns", "Growth Potential"]
+    features: ["₹100 Starting Unit", "Long-term Growth", "Flexible Investment", "Wealth Creation"]
   }
 ];
 
 const features = [
   {
     icon: Award,
-    title: "Industry Excellence",
-    description: "8+ years of proven excellence across multiple sectors"
+    title: "Established Legacy",
+    description: "8+ years of proven success across multiple business sectors"
   },
   {
-    icon: Clock,
-    title: "Reliable Service",
-    description: "Consistent and dependable service delivery"
-  },
-  {
-    icon: CheckCircle,
-    title: "Customer Satisfaction",
-    description: "5000+ satisfied customers across all business verticals"
+    icon: Shield,
+    title: "Trusted Operations",
+    description: "Transparent business practices with reliable service delivery"
   },
   {
     icon: Users,
-    title: "Diversified Expertise",
-    description: "Multi-sector experience and specialized knowledge"
+    title: "Customer Focus",
+    description: "5000+ satisfied customers across all business verticals"
+  },
+  {
+    icon: TrendingUp,
+    title: "Growth Vision",
+    description: "Expanding portfolio with 6 upcoming ventures by 2025-27"
   }
 ];
 
@@ -112,7 +112,7 @@ const Services = () => {
             Our <span className="text-accent">Services</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Comprehensive business solutions across finance, manufacturing, real estate, jewelry, and hospitality sectors
+            Diversified business group with 6 established companies and 6 upcoming ventures across multiple sectors in Coimbatore
           </p>
         </div>
 
@@ -160,20 +160,20 @@ const Services = () => {
         <div className="mb-20">
           <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-              <div className="text-3xl font-bold text-accent mb-2">₹50Cr+</div>
-              <div className="text-sm text-muted-foreground">Total Business Value</div>
+              <div className="text-3xl font-bold text-accent mb-2">6</div>
+              <div className="text-sm text-muted-foreground">Active Companies</div>
             </Card>
             <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-              <div className="text-3xl font-bold text-accent mb-2">5</div>
-              <div className="text-sm text-muted-foreground">Business Verticals</div>
-            </Card>
-            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-              <div className="text-3xl font-bold text-accent mb-2">1000+</div>
-              <div className="text-sm text-muted-foreground">Satisfied Clients</div>
-            </Card>
-            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-              <div className="text-3xl font-bold text-accent mb-2">10+</div>
+              <div className="text-3xl font-bold text-accent mb-2">8+</div>
               <div className="text-sm text-muted-foreground">Years Experience</div>
+            </Card>
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-3xl font-bold text-accent mb-2">5000+</div>
+              <div className="text-sm text-muted-foreground">Satisfied Customers</div>
+            </Card>
+            <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
+              <div className="text-3xl font-bold text-accent mb-2">6</div>
+              <div className="text-sm text-muted-foreground">Upcoming Ventures</div>
             </Card>
           </div>
         </div>
@@ -227,7 +227,7 @@ const Services = () => {
             Ready to Get Started?
           </h3>
           <p className="text-lg text-muted-foreground mb-6">
-            Contact us today for a free consultation and discover the best solutions for your business needs
+            Join the Prabanjam Groups family and explore opportunities across our diversified business portfolio
           </p>
           <button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold shadow-md hover:shadow-gold transition-all duration-300">
             Get Free Consultation

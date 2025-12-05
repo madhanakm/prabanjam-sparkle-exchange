@@ -90,12 +90,12 @@ const AboutUs = () => {
               <div className="animate-fade-in opacity-0" style={{animation: 'slideInRight 1s ease-out 0.4s forwards'}}>
                 <h2 className="text-5xl font-bold text-foreground mb-8 leading-tight">Our <span className="text-accent">Story</span></h2>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Prabanjam Groups is a diversified business conglomerate with interests spanning financial services, 
-                  real estate, jewelry manufacturing, hospitality, and specialized industrial services.
+                  Prabanjam Group of Companies is a Coimbatore-based business group with interests in gold finance, 
+                  jewellery retail and gold covering, real estate and construction, resorts & hospitality, textiles, travels and transports, and industrial ventures and investment plans.
                 </p>
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  With a commitment to excellence, innovation, and customer satisfaction across all sectors, 
-                  we have built a reputation as a trusted partner for businesses and individuals alike.
+                  With a vision to create long-term value and financial security for families, Prabanjam Group has launched the 
+                  Prabanjam Dream Life Plan – a structured savings and benefits program designed to support your future dreams.
                 </p>
                 <div className="flex gap-4">
                   <div className="flex items-center gap-2 text-accent">
@@ -176,8 +176,8 @@ const AboutUs = () => {
                   <p className="text-muted-foreground">Traditional and contemporary jewelry collections with custom design services.</p>
                 </Card>
                 <Card className="p-6 hover:shadow-lg transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-foreground mb-3">Investment</h3>
-                  <p className="text-muted-foreground">Public share offerings and investment opportunities for growth-oriented investors.</p>
+                  <h3 className="text-xl font-semibold text-foreground mb-3">Dream Life Plan</h3>
+                  <p className="text-muted-foreground">Structured savings program starting at ₹100 per unit for long-term wealth creation and family financial security.</p>
                 </Card>
               </div>
             </section>
@@ -213,34 +213,69 @@ const AboutUs = () => {
               </Card>
             </section>
 
-            {/* Achievements */}
+            {/* Key Milestones */}
             <section className="mt-24">
               <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold text-foreground mb-4">Our <span className="text-accent">Achievements</span></h2>
+                <h2 className="text-4xl font-bold text-foreground mb-4">Key <span className="text-accent">Milestones</span></h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Milestones that reflect our commitment to excellence and growth
+                  Timeline highlights showcasing our journey and future vision
                 </p>
               </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-                  <TrendingUp className="w-12 h-12 text-accent mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-accent mb-2">25%</h3>
-                  <p className="text-muted-foreground">Annual Growth Rate</p>
+              <div className="space-y-8 max-w-4xl mx-auto">
+                <Card className="p-6 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">
+                      2016
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground mb-2">Foundation & Early Achievements</h3>
+                      <p className="text-muted-foreground">Early achievements and establishment of Prabanjam Group's core businesses.</p>
+                    </div>
+                  </div>
                 </Card>
-                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-                  <Award className="w-12 h-12 text-accent mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-accent mb-2">ISO</h3>
-                  <p className="text-muted-foreground">Certified Quality</p>
+                <Card className="p-6 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">
+                      2018
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground mb-2">Business Expansion</h3>
+                      <p className="text-muted-foreground">Expansion of Prabanjam Group activities and strengthening of finance and jewellery verticals.</p>
+                    </div>
+                  </div>
                 </Card>
-                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-                  <Building2 className="w-12 h-12 text-accent mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-accent mb-2">15+</h3>
-                  <p className="text-muted-foreground">Business Locations</p>
+                <Card className="p-6 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">
+                      2019
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground mb-2">Siruvani Complex Launch</h3>
+                      <p className="text-muted-foreground">Launch and development of Siruvani Complex as a major group project.</p>
+                    </div>
+                  </div>
                 </Card>
-                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-                  <Users className="w-12 h-12 text-accent mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-accent mb-2">100+</h3>
-                  <p className="text-muted-foreground">Team Members</p>
+                <Card className="p-6 hover:shadow-lg transition-all duration-300 border-2 border-accent/30">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-accent to-accent/80 text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">
+                      2025
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground mb-2">Planned Growth Phase</h3>
+                      <p className="text-muted-foreground">Growth of Prabanjam Group of Companies, including Prabanjam Gold Covering and expanded jewellery operations.</p>
+                    </div>
+                  </div>
+                </Card>
+                <Card className="p-6 hover:shadow-lg transition-all duration-300 border-2 border-accent/30">
+                  <div className="flex items-start gap-4">
+                    <div className="w-20 h-16 bg-gradient-to-r from-accent to-accent/80 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                      2026-27
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground mb-2">Dream Life Plan Vision</h3>
+                      <p className="text-muted-foreground">Further development of Prabanjam Resort, Construction, Textiles, Travels, Transports and Silver Factory as part of the Dream Life Plan vision.</p>
+                    </div>
+                  </div>
                 </Card>
               </div>
             </section>

@@ -95,7 +95,7 @@ const Header = () => {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <Button 
-              onClick={() => window.open('/brochures/prabanjam-group-brochure.pdf', '_blank')}
+              onClick={() => window.open('/brochures/brochure.pdf', '_blank')}
               variant="outline" 
               className="border-accent text-accent hover:bg-accent hover:text-white"
             >
@@ -181,7 +181,7 @@ const Header = () => {
               </Link>
               <Button 
                 onClick={() => {
-                  window.open('/brochures/prabanjam-group-brochure.pdf', '_blank');
+                  window.open('/brochures/brochure.pdf', '_blank');
                   setIsMenuOpen(false);
                 }}
                 variant="outline" 

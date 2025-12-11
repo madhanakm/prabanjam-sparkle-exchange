@@ -1,6 +1,13 @@
 import axios from 'axios';
 
 const API_BASE_URL = 'https://backend.prabanjamjewellery.com/api';
+
+// Add CORS headers for production
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-api-key'
+};
 const API_KEY = 'prabanjam_api_key_2024';
 
 // Create axios instance with default config

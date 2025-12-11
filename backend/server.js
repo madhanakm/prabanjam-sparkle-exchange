@@ -101,7 +101,7 @@ handleDisconnect();
 // Centralized URL fixing utility
 const fixImageUrl = (url) => {
   if (!url) return url;
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.BASE_URL || 'https://backend.prabanjamjewellery.com';
   // Fix any localhost URLs to use production URL
   return url.replace(/http:\/\/localhost:\d+/g, baseUrl).replace(/undefined/g, baseUrl);
 };
@@ -479,7 +479,7 @@ app.post('/api/upload', authenticateToken, upload.single('image'), (req, res) =>
     return res.status(400).json({ message: 'No file uploaded' });
   }
   
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.BASE_URL || 'https://backend.prabanjamjewellery.com';
   const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
   res.json({ image_url: imageUrl });
 });
@@ -490,7 +490,7 @@ app.post('/api/admin/sliders/upload', authenticateToken, upload.single('image'),
     return res.status(400).json({ error: 'No image file provided' });
   }
 
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.BASE_URL || 'https://backend.prabanjamjewellery.com';
   const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
   res.json({ imageUrl });
 });
@@ -766,7 +766,7 @@ app.get('/api/admin/unused-images', authenticateToken, (req, res) => {
       if (!usedFiles.has(file)) {
         const filePath = path.join(uploadsDir, file);
         const stats = fs.statSync(filePath);
-        const baseUrl = process.env.BASE_URL;
+        const baseUrl = process.env.BASE_URL || 'https://backend.prabanjamjewellery.com';
         
         unusedImages.push({
           name: file,

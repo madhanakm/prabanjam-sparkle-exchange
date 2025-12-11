@@ -6,38 +6,45 @@ import { Building2, Factory, Shirt, Car, Truck } from "lucide-react";
 const Upcoming = () => {
   const upcomingCompanies = [
     {
-      name: "Prabanjam Constructions",
+      name: "Prabanjam Construction",
       icon: Building2,
-      description: "Premium residential and commercial construction projects with modern architecture and sustainable building practices.",
-      features: ["Luxury Apartments", "Commercial Complexes", "Villa Projects", "Infrastructure Development"],
-      launchYear: "2025"
+      description: "Residential building construction, including land purchasing and home-building services, headquartered in Coimbatore.",
+      features: ["Residential Construction", "Land Purchasing", "Home Building Services", "Coimbatore Operations"],
+      launchYear: "2026-27"
     },
     {
       name: "Prabanjam Silver Factory",
       icon: Factory,
-      description: "State-of-the-art silver manufacturing facility producing high-quality silver products and jewelry.",
-      features: ["Silver Jewelry Manufacturing", "Bullion Production", "Custom Silver Items", "Export Quality Products"],
-      launchYear: "2025"
+      description: "Manufacturing unit dedicated to high-quality silver ornaments production to meet rising market demands.",
+      features: ["Silver Ornament Manufacturing", "High-Quality Production", "Market Demand Focus", "Coimbatore Based"],
+      launchYear: "2026"
+    },
+    {
+      name: "Prabanjam Industrial",
+      icon: Factory,
+      description: "Industrial operations expanding the group's manufacturing capabilities across multiple sectors.",
+      features: ["Manufacturing Operations", "Multi-Sector Focus", "Industrial Capabilities", "Production Excellence"],
+      launchYear: "2027"
     },
     {
       name: "Prabanjam Textiles",
       icon: Shirt,
-      description: "Premium textile manufacturing and retail chain offering quality fabrics and garments.",
-      features: ["Premium Fabrics", "Ready-made Garments", "Custom Tailoring", "Wholesale & Retail"],
-      launchYear: "2026"
+      description: "Textile manufacturing and retail operations to diversify the group's consumer product portfolio.",
+      features: ["Textile Manufacturing", "Retail Operations", "Consumer Products", "Portfolio Diversification"],
+      launchYear: "2027"
     },
     {
       name: "Prabanjam Travels",
       icon: Car,
-      description: "Comprehensive travel services including tour packages, hotel bookings, and travel consultancy.",
-      features: ["Tour Packages", "Hotel Bookings", "Flight Reservations", "Travel Insurance"],
-      launchYear: "2026"
+      description: "Travel and tourism services complementing the hospitality division with comprehensive travel solutions.",
+      features: ["Travel Services", "Tourism Solutions", "Hospitality Complement", "Comprehensive Packages"],
+      launchYear: "2027"
     },
     {
       name: "Prabanjam Transports",
       icon: Truck,
-      description: "Reliable logistics and transportation services for goods and passenger transport.",
-      features: ["Goods Transportation", "Passenger Services", "Logistics Solutions", "Interstate Services"],
+      description: "Transportation and logistics services supporting the group's expanding business operations.",
+      features: ["Transportation Services", "Logistics Support", "Business Operations", "Expansion Support"],
       launchYear: "2027"
     }
   ];
@@ -116,7 +123,7 @@ const Upcoming = () => {
                 Investment Opportunities
               </h3>
               <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Be part of our growth story. Investment opportunities available for our upcoming ventures.
+                Be part of our growth story with ₹17+ Crores in total assets. Investment opportunities available for our upcoming ventures launching 2026-2027.
               </p>
               <button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold shadow-md hover:shadow-gold hover:scale-105 transition-all duration-300">
                 Learn More About Investment

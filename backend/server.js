@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
@@ -13,7 +14,9 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors({
   origin: true,
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key']
 }));
 
 // Debug middleware for deployment issues
@@ -94,6 +97,21 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
+
+// Centralized URL fixing utility
+const fixImageUrl = (url) => {
+  if (!url) return url;
+  const baseUrl = process.env.BASE_URL || 'http://localhost:5001';
+  return url.replace(/http:\/\/localhost:5000/g, baseUrl).replace(/http:\/\/localhost:5001/g, baseUrl).replace(/undefined/g, baseUrl);
+};
+
+// Apply URL fixing to results
+const fixImageUrls = (results) => {
+  return results.map(item => ({
+    ...item,
+    image_url: item.image_url ? fixImageUrl(item.image_url) : item.image_url
+  }));
+};
 
 // API Key middleware
 const authenticateApiKey = (req, res, next) => {
@@ -450,13 +468,7 @@ app.get('/api/gallery', (req, res) => {
     if (err) {
       return res.status(500).json({ message: 'Database error' });
     }
-    // Fix image URLs for production
-    const baseUrl = process.env.BASE_URL || 'https://backend.prabanjamjewellery.com';
-    const fixedResults = results.map(item => ({
-      ...item,
-      image_url: item.image_url.replace(/http:\/\/localhost:5001/g, baseUrl).replace(/undefined/g, baseUrl)
-    }));
-    res.json(fixedResults);
+    res.json(fixImageUrls(results));
   });
 });
 
@@ -466,7 +478,7 @@ app.post('/api/upload', authenticateToken, upload.single('image'), (req, res) =>
     return res.status(400).json({ message: 'No file uploaded' });
   }
   
-  const imageUrl = `${process.env.BASE_URL || 'https://backend.prabanjamjewellery.com'}/uploads/${req.file.filename}`;
+  const imageUrl = `${process.env.BASE_URL || 'http://localhost:5001'}/uploads/${req.file.filename}`;
   res.json({ image_url: imageUrl });
 });
 
@@ -476,7 +488,7 @@ app.post('/api/admin/sliders/upload', authenticateToken, upload.single('image'),
     return res.status(400).json({ error: 'No image file provided' });
   }
 
-  const imageUrl = `${process.env.BASE_URL || 'https://backend.prabanjamjewellery.com'}/uploads/${req.file.filename}`;
+  const imageUrl = `${process.env.BASE_URL || 'http://localhost:5001'}/uploads/${req.file.filename}`;
   res.json({ imageUrl });
 });
 
@@ -517,6 +529,59 @@ app.delete('/api/gallery/:id', authenticateToken, (req, res) => {
       return res.status(500).json({ message: 'Database error' });
     }
     res.json({ message: 'Gallery image deleted successfully' });
+  });
+});
+
+// Company Gallery endpoints
+// Get gallery images by company (no auth required for public access)
+app.get('/api/company-gallery/:company', (req, res) => {
+  const { company } = req.params;
+  const query = 'SELECT * FROM company_gallery WHERE company_name = ? ORDER BY created_at DESC';
+  db.query(query, [company], (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json(fixImageUrls(results));
+  });
+});
+
+// Add company gallery image (admin only)
+app.post('/api/company-gallery', authenticateToken, (req, res) => {
+  const { company_name, title, description, image_url } = req.body;
+  
+  const query = 'INSERT INTO company_gallery (company_name, title, description, image_url) VALUES (?, ?, ?, ?)';
+  db.query(query, [company_name, title, description, image_url], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Company gallery image added successfully', id: result.insertId });
+  });
+});
+
+// Update company gallery image (admin only)
+app.put('/api/company-gallery/:id', authenticateToken, (req, res) => {
+  const { id } = req.params;
+  const { title, description, image_url } = req.body;
+  
+  const query = 'UPDATE company_gallery SET title = ?, description = ?, image_url = ? WHERE id = ?';
+  db.query(query, [title, description, image_url, id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Company gallery image updated successfully' });
+  });
+});
+
+// Delete company gallery image (admin only)
+app.delete('/api/company-gallery/:id', authenticateToken, (req, res) => {
+  const { id } = req.params;
+  
+  const query = 'DELETE FROM company_gallery WHERE id = ?';
+  db.query(query, [id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Company gallery image deleted successfully' });
   });
 });
 
@@ -586,7 +651,7 @@ app.get('/api/sliders', (req, res) => {
     if (err) {
       return res.status(500).json({ message: 'Database error' });
     }
-    res.json(results);
+    res.json(fixImageUrls(results));
   });
 });
 
@@ -597,7 +662,7 @@ app.get('/api/admin/sliders', authenticateToken, (req, res) => {
     if (err) {
       return res.status(500).json({ message: 'Database error' });
     }
-    res.json(results);
+    res.json(fixImageUrls(results));
   });
 });
 
@@ -647,6 +712,110 @@ app.get('/health', (req, res) => {
     status: 'OK', 
     timestamp: new Date().toISOString(),
     uptime: process.uptime()
+  });
+});
+
+// Unused images management endpoints
+// Scan for unused images (admin only)
+app.get('/api/admin/unused-images', authenticateToken, (req, res) => {
+  const uploadsDir = path.join(__dirname, 'uploads');
+  
+  if (!fs.existsSync(uploadsDir)) {
+    return res.json({ images: [], stats: { total: 0, size: 0 } });
+  }
+
+  // Get all files in uploads directory
+  const files = fs.readdirSync(uploadsDir).filter(file => {
+    const ext = path.extname(file).toLowerCase();
+    return ['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext);
+  });
+
+  // Get all image URLs from database
+  const queries = [
+    'SELECT image_url FROM gallery WHERE image_url IS NOT NULL',
+    'SELECT image_url FROM company_gallery WHERE image_url IS NOT NULL',
+    'SELECT image_url FROM homepage_sliders WHERE image_url IS NOT NULL'
+  ];
+
+  Promise.all(queries.map(query => new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) reject(err);
+      else resolve(results.map(row => row.image_url));
+    });
+  })))
+  .then(results => {
+    const usedUrls = results.flat();
+    const usedFiles = new Set();
+    
+    // Extract filenames from URLs
+    usedUrls.forEach(url => {
+      if (url) {
+        const filename = path.basename(url);
+        usedFiles.add(filename);
+      }
+    });
+
+    // Find unused files
+    const unusedImages = [];
+    let totalSize = 0;
+
+    files.forEach(file => {
+      if (!usedFiles.has(file)) {
+        const filePath = path.join(uploadsDir, file);
+        const stats = fs.statSync(filePath);
+        const baseUrl = process.env.BASE_URL || 'http://localhost:5001';
+        
+        unusedImages.push({
+          name: file,
+          path: filePath,
+          url: `${baseUrl}/uploads/${file}`,
+          size: stats.size,
+          modified: stats.mtime
+        });
+        totalSize += stats.size;
+      }
+    });
+
+    res.json({
+      images: unusedImages,
+      stats: {
+        total: unusedImages.length,
+        size: totalSize
+      }
+    });
+  })
+  .catch(err => {
+    console.error('Error scanning unused images:', err);
+    res.status(500).json({ message: 'Database error' });
+  });
+});
+
+// Delete unused images (admin only)
+app.post('/api/admin/delete-unused-images', authenticateToken, (req, res) => {
+  const { images } = req.body;
+  
+  if (!Array.isArray(images) || images.length === 0) {
+    return res.status(400).json({ message: 'No images specified for deletion' });
+  }
+
+  let deletedCount = 0;
+  let errors = [];
+
+  images.forEach(imagePath => {
+    try {
+      if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+        deletedCount++;
+      }
+    } catch (error) {
+      errors.push({ path: imagePath, error: error.message });
+    }
+  });
+
+  res.json({
+    message: `Successfully deleted ${deletedCount} images`,
+    deletedCount,
+    errors: errors.length > 0 ? errors : undefined
   });
 });
 

@@ -209,7 +209,9 @@ const Sliders = () => {
                     ) : (
                       <div className="upload-zone">
                         <div className="upload-content">
-                          <div className="upload-icon">📷</div>
+                          <svg className="upload-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                          </svg>
                           <label className="upload-button">
                             {uploading ? 'Uploading...' : 'Upload Image'}
                             <input
@@ -347,14 +349,18 @@ const Sliders = () => {
                     onClick={() => handleEdit(slider)}
                     title="Edit slider"
                   >
-                    ✏️
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                    </svg>
                   </button>
                   <button 
                     className="action-btn delete-btn"
                     onClick={() => handleDelete(slider.id)}
                     title="Delete slider"
                   >
-                    🗑️
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                    </svg>
                   </button>
                 </div>
               </div>

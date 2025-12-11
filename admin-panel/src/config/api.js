@@ -28,4 +28,7 @@ export const debugToken = () => {
   return token;
 };
 
+
+
 export { API_BASE_URL, API_KEY };
+export default api;

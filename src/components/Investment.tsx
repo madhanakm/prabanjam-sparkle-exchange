@@ -121,6 +121,200 @@ const Investment = () => {
           </div>
         </div>
 
+        {/* Investment Returns Table */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-center text-foreground mb-8">Investment Returns <span className="text-accent">Chart</span></h3>
+          <div className="max-w-6xl mx-auto">
+            <Card className="p-6 overflow-hidden">
+              <div className="text-center mb-6">
+                <h4 className="text-xl font-bold text-accent mb-2">Investment Amount with Profit Returns Table</h4>
+                <p className="text-sm text-muted-foreground">See how your investment grows over the years</p>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse text-center text-sm">
+                  <thead>
+                    <tr>
+                      <th className="bg-accent text-white p-3 border border-border font-bold">Investment / Month</th>
+                      <th className="bg-accent text-white p-3 border border-border font-bold">1 Year</th>
+                      <th className="bg-accent text-white p-3 border border-border font-bold">2 Years</th>
+                      <th className="bg-accent text-white p-3 border border-border font-bold">3 Years</th>
+                      <th className="bg-accent text-white p-3 border border-border font-bold">4 Years</th>
+                      <th className="bg-accent text-white p-3 border border-border font-bold">5 Years</th>
+                      <th className="bg-accent text-white p-3 border border-border font-bold">6 Years</th>
+                      <th className="bg-accent text-white p-3 border border-border font-bold">7 Years</th>
+                      <th className="bg-accent text-white p-3 border border-border font-bold">8 Years</th>
+                      <th className="bg-accent text-white p-3 border border-border font-bold">9 Years</th>
+                      <th className="bg-accent text-white p-3 border border-border font-bold">10 Years</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="bg-muted font-bold p-3 border border-border">₹10,000</td>
+                      <td className="p-3 border border-border">₹11,268</td>
+                      <td className="p-3 border border-border">₹12,722</td>
+                      <td className="p-3 border border-border">₹14,554</td>
+                      <td className="p-3 border border-border">₹16,870</td>
+                      <td className="p-3 border border-border">₹20,053</td>
+                      <td className="p-3 border border-border">₹23,573</td>
+                      <td className="p-3 border border-border">₹27,234</td>
+                      <td className="p-3 border border-border">₹31,484</td>
+                      <td className="p-3 border border-border">₹36,416</td>
+                      <td className="p-3 border border-border">₹42,142</td>
+                    </tr>
+                    <tr className="bg-foreground/5">
+                      <td className="bg-muted font-bold p-3 border border-border">₹20,000</td>
+                      <td className="p-3 border border-border">₹22,537</td>
+                      <td className="p-3 border border-border">₹25,444</td>
+                      <td className="p-3 border border-border">₹29,107</td>
+                      <td className="p-3 border border-border">₹33,740</td>
+                      <td className="p-3 border border-border">₹40,106</td>
+                      <td className="p-3 border border-border">₹47,147</td>
+                      <td className="p-3 border border-border">₹54,469</td>
+                      <td className="p-3 border border-border">₹62,928</td>
+                      <td className="p-3 border border-border">₹72,833</td>
+                      <td className="p-3 border border-border">₹84,284</td>
+                    </tr>
+                    <tr>
+                      <td className="bg-muted font-bold p-3 border border-border">₹30,000</td>
+                      <td className="p-3 border border-border">₹33,805</td>
+                      <td className="p-3 border border-border">₹38,166</td>
+                      <td className="p-3 border border-border">₹43,661</td>
+                      <td className="p-3 border border-border">₹50,609</td>
+                      <td className="p-3 border border-border">₹60,159</td>
+                      <td className="p-3 border border-border">₹70,720</td>
+                      <td className="p-3 border border-border">₹81,703</td>
+                      <td className="p-3 border border-border">₹94,452</td>
+                      <td className="p-3 border border-border">₹1,09,249</td>
+                      <td className="p-3 border border-border">₹1,26,426</td>
+                    </tr>
+                    <tr className="bg-foreground/5">
+                      <td className="bg-muted font-bold p-3 border border-border">₹40,000</td>
+                      <td className="p-3 border border-border">₹45,073</td>
+                      <td className="p-3 border border-border">₹50,888</td>
+                      <td className="p-3 border border-border">₹58,215</td>
+                      <td className="p-3 border border-border">₹67,479</td>
+                      <td className="p-3 border border-border">₹80,213</td>
+                      <td className="p-3 border border-border">₹94,294</td>
+                      <td className="p-3 border border-border">₹1,08,938</td>
+                      <td className="p-3 border border-border">₹1,25,935</td>
+                      <td className="p-3 border border-border">₹1,45,666</td>
+                      <td className="p-3 border border-border">₹1,68,568</td>
+                    </tr>
+                    <tr>
+                      <td className="bg-muted font-bold p-3 border border-border">₹50,000</td>
+                      <td className="p-3 border border-border">₹56,341</td>
+                      <td className="p-3 border border-border">₹63,609</td>
+                      <td className="p-3 border border-border">₹72,768</td>
+                      <td className="p-3 border border-border">₹84,349</td>
+                      <td className="p-3 border border-border">₹1,00,266</td>
+                      <td className="p-3 border border-border">₹1,17,867</td>
+                      <td className="p-3 border border-border">₹1,36,172</td>
+                      <td className="p-3 border border-border">₹1,57,419</td>
+                      <td className="p-3 border border-border">₹1,82,082</td>
+                      <td className="p-3 border border-border">₹2,10,710</td>
+                    </tr>
+                    <tr className="bg-foreground/5">
+                      <td className="bg-muted font-bold p-3 border border-border">₹1,00,000</td>
+                      <td className="p-3 border border-border">₹1,12,683</td>
+                      <td className="p-3 border border-border">₹1,27,219</td>
+                      <td className="p-3 border border-border">₹1,45,536</td>
+                      <td className="p-3 border border-border">₹1,68,698</td>
+                      <td className="p-3 border border-border">₹2,00,532</td>
+                      <td className="p-3 border border-border">₹2,35,735</td>
+                      <td className="p-3 border border-border">₹2,72,344</td>
+                      <td className="p-3 border border-border">₹3,14,838</td>
+                      <td className="p-3 border border-border">₹3,64,164</td>
+                      <td className="p-3 border border-border">₹4,21,419</td>
+                    </tr>
+                    <tr>
+                      <td className="bg-muted font-bold p-3 border border-border">₹2,00,000</td>
+                      <td className="p-3 border border-border">₹2,25,365</td>
+                      <td className="p-3 border border-border">₹2,54,438</td>
+                      <td className="p-3 border border-border">₹2,91,073</td>
+                      <td className="p-3 border border-border">₹3,37,395</td>
+                      <td className="p-3 border border-border">₹4,01,063</td>
+                      <td className="p-3 border border-border">₹4,71,469</td>
+                      <td className="p-3 border border-border">₹5,44,688</td>
+                      <td className="p-3 border border-border">₹6,29,677</td>
+                      <td className="p-3 border border-border">₹7,28,328</td>
+                      <td className="p-3 border border-border">₹8,42,838</td>
+                    </tr>
+                    <tr className="bg-foreground/5">
+                      <td className="bg-muted font-bold p-3 border border-border">₹3,00,000</td>
+                      <td className="p-3 border border-border">₹3,38,048</td>
+                      <td className="p-3 border border-border">₹3,81,657</td>
+                      <td className="p-3 border border-border">₹4,36,609</td>
+                      <td className="p-3 border border-border">₹5,06,093</td>
+                      <td className="p-3 border border-border">₹6,01,595</td>
+                      <td className="p-3 border border-border">₹7,07,204</td>
+                      <td className="p-3 border border-border">₹8,17,032</td>
+                      <td className="p-3 border border-border">₹9,44,515</td>
+                      <td className="p-3 border border-border">₹10,92,492</td>
+                      <td className="p-3 border border-border">₹12,64,257</td>
+                    </tr>
+                    <tr>
+                      <td className="bg-muted font-bold p-3 border border-border">₹4,00,000</td>
+                      <td className="p-3 border border-border">₹4,50,730</td>
+                      <td className="p-3 border border-border">₹5,08,876</td>
+                      <td className="p-3 border border-border">₹5,82,146</td>
+                      <td className="p-3 border border-border">₹6,74,790</td>
+                      <td className="p-3 border border-border">₹8,02,126</td>
+                      <td className="p-3 border border-border">₹9,42,938</td>
+                      <td className="p-3 border border-border">₹10,89,376</td>
+                      <td className="p-3 border border-border">₹12,59,354</td>
+                      <td className="p-3 border border-border">₹14,56,656</td>
+                      <td className="p-3 border border-border">₹16,85,676</td>
+                    </tr>
+                    <tr className="bg-foreground/5">
+                      <td className="bg-muted font-bold p-3 border border-border">₹5,00,000</td>
+                      <td className="p-3 border border-border">₹5,63,413</td>
+                      <td className="p-3 border border-border">₹6,36,094</td>
+                      <td className="p-3 border border-border">₹7,27,682</td>
+                      <td className="p-3 border border-border">₹8,43,488</td>
+                      <td className="p-3 border border-border">₹10,02,658</td>
+                      <td className="p-3 border border-border">₹11,78,673</td>
+                      <td className="p-3 border border-border">₹13,61,720</td>
+                      <td className="p-3 border border-border">₹15,74,192</td>
+                      <td className="p-3 border border-border">₹18,20,820</td>
+                      <td className="p-3 border border-border">₹21,07,095</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-xs text-muted-foreground">* Returns shown are indicative and subject to market conditions</p>
+              </div>
+            </Card>
+            
+            {/* Terms and Conditions */}
+            <Card className="p-6 mt-6 bg-accent/5 border-accent/20">
+              <h4 className="text-lg font-semibold text-foreground mb-4">Important Terms & Conditions</h4>
+              <div className="space-y-3 text-sm text-muted-foreground">
+                <p className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0"></span>
+                  To receive the maturity amount on the scheduled due date, all required payments must be completed within the stipulated timeframe.
+                </p>
+                <p className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0"></span>
+                  In the event of a delay, a penalty of ₹1 per day will be applied until the outstanding amount is fully settled.
+                </p>
+                <p className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0"></span>
+                  If the payment is not completed by the maturity date, both the maturity amount and the eligible profit will be deferred to the next applicable maturity cycle.
+                </p>
+                <p className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0"></span>
+                  The disbursement of the principal amount along with the profit will be made only upon successful completion of three consecutive months of uninterrupted payments.
+                </p>
+                <p className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0"></span>
+                  The company reserves the right to release the maturity amount in accordance with the policies and regulations governing the Prabanjam Group.
+                </p>
+              </div>
+            </Card>
+          </div>
+        </div>
+
         {/* Who Can Join */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-center text-foreground mb-8">Who Can <span className="text-accent">Join</span></h3>

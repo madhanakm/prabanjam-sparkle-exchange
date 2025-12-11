@@ -108,6 +108,16 @@ INSERT INTO gallery (title, description, image_url, category, is_featured) VALUE
 ('Silver Bracelets', 'Elegant silver bracelet designs', 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80', 'jewelry', FALSE),
 ('Gold Earrings', 'Traditional and modern gold earrings', 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80', 'jewelry', FALSE);
 
+-- Company Gallery table
+CREATE TABLE company_gallery (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  company_name VARCHAR(100) NOT NULL,
+  title VARCHAR(200) NOT NULL,
+  description TEXT,
+  image_url VARCHAR(500) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Homepage sliders table
 CREATE TABLE homepage_sliders (
   id INT AUTO_INCREMENT PRIMARY KEY,

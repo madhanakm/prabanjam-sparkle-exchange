@@ -9,6 +9,8 @@ import Investments from './pages/Investments';
 import ChangePassword from './pages/ChangePassword';
 import Gallery from './pages/Gallery';
 import Sliders from './pages/Sliders';
+import UnusedImages from './pages/UnusedImages';
+import CompanyGallery from './components/CompanyGallery';
 import Navbar from './components/Navbar';
 import './App.css';
 
@@ -26,9 +28,6 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const adminToken = localStorage.getItem('adminToken');
-    console.log('🔍 [APP DEBUG] Token check - token:', token ? 'Present' : 'Missing');
-    console.log('🔍 [APP DEBUG] Token check - adminToken:', adminToken ? 'Present' : 'Missing');
     if (token) {
       setIsAuthenticated(true);
     }
@@ -41,9 +40,7 @@ function App() {
     const resetTimer = () => {
       clearTimeout(inactivityTimer);
       if (isAuthenticated) {
-        console.log('🕐 [AUTO LOGOUT] Timer reset - will logout in', INACTIVITY_TIMEOUT / 1000 / 60, 'minutes');
         inactivityTimer = setTimeout(() => {
-          console.log('⏰ [AUTO LOGOUT] Timeout reached - logging out');
           alert('Session expired due to inactivity. You will be logged out.');
           handleLogout();
         }, INACTIVITY_TIMEOUT);
@@ -51,14 +48,12 @@ function App() {
     };
 
     const handleActivity = () => {
-      console.log('👆 [AUTO LOGOUT] User activity detected');
       resetTimer();
     };
 
     const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
     
     if (isAuthenticated) {
-      console.log('🔐 [AUTO LOGOUT] Setting up inactivity timer');
       events.forEach(event => {
         document.addEventListener(event, handleActivity, true);
       });
@@ -66,7 +61,6 @@ function App() {
     }
 
     return () => {
-      console.log('🧹 [AUTO LOGOUT] Cleaning up timers and listeners');
       clearTimeout(inactivityTimer);
       events.forEach(event => {
         document.removeEventListener(event, handleActivity, true);
@@ -89,6 +83,7 @@ function App() {
     <Router>
       <div className="App">
         {isAuthenticated && <Navbar onLogout={handleLogout} />}
+        <main className={isAuthenticated ? 'main-content' : ''}>
         <Routes>
           <Route 
             path="/login" 
@@ -162,8 +157,25 @@ function App() {
               <Navigate to="/login" />
             } 
           />
+          <Route 
+            path="/company-gallery" 
+            element={
+              isAuthenticated ? 
+              <CompanyGallery /> : 
+              <Navigate to="/login" />
+            } 
+          />
+          <Route 
+            path="/unused-images" 
+            element={
+              isAuthenticated ? 
+              <UnusedImages /> : 
+              <Navigate to="/login" />
+            } 
+          />
           <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>
+        </main>
       </div>
     </Router>
   );

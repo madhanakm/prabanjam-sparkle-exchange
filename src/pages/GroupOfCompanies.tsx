@@ -13,7 +13,7 @@ const GroupOfCompanies = () => {
       type: "Financial Services",
       description: "Secured gold loans with competitive interest rates, quick processing, and flexible repayment options across multiple branches.",
       services: ["Gold Loans", "Quick Processing", "Competitive Rates", "Flexible Repayment"],
-      established: "2018",
+      established: "2016",
       location: "Coimbatore - 3 Branches",
       detailLink: "/sri-cashway-detail"
     },
@@ -23,7 +23,7 @@ const GroupOfCompanies = () => {
       type: "Retail & Dream Life Plan",
       description: "Jewellery showroom and Dream Life Plan operations offering traditional jewelry and structured savings programs.",
       services: ["Jewellery Showroom", "Dream Life Plan", "Gold Collections", "Investment Plans"],
-      established: "2015",
+      established: "2025",
       location: "Tamil Nadu",
       detailLink: "/prabanjam-jewellery-detail"
     },
@@ -33,7 +33,7 @@ const GroupOfCompanies = () => {
       type: "Fashion & Manufacturing",
       description: "Fashion and covering jewellery services with premium quality finishes and custom designs.",
       services: ["Fashion Jewellery", "Gold Covering", "Custom Design", "Quality Finishes"],
-      established: "2019",
+      established: "2025",
       location: "Tamil Nadu",
       detailLink: "/prabanjam-gold-coverings-detail"
     },
@@ -43,7 +43,7 @@ const GroupOfCompanies = () => {
       type: "Real Estate",
       description: "Commercial complex developed and operated by the group offering modern business facilities.",
       services: ["Commercial Spaces", "Business Facilities", "Property Development", "Complex Management"],
-      established: "2020",
+      established: "2019",
       location: "Coimbatore",
       detailLink: "/siruvani-complex-detail"
     },
@@ -53,19 +53,49 @@ const GroupOfCompanies = () => {
       type: "Hospitality",
       description: "Resort & cottage facilities in Ooty providing luxury accommodation and hospitality services.",
       services: ["Resort Facilities", "Cottage Accommodation", "Tourism Services", "Event Hosting"],
-      established: "2022",
+      established: "2026",
       location: "Ooty, Tamil Nadu",
       detailLink: "/prabanjam-resorts-detail"
     }
   ];
 
   const upcomingVentures = [
-    { name: "Prabanjam Construction", sector: "Real Estate" },
-    { name: "Prabanjam Silver Factory", sector: "Manufacturing" },
-    { name: "Prabanjam Textiles", sector: "Consumer Services" },
-    { name: "Prabanjam Travels", sector: "Logistics" },
-    { name: "Prabanjam Transports", sector: "Logistics" },
-    { name: "Prabanjam Industrial Projects", sector: "Manufacturing" }
+    { 
+      name: "Prabanjam Construction", 
+      sector: "Real Estate", 
+      year: "2026-27",
+      description: "Residential building construction, including land purchasing and home-building services, headquartered in Coimbatore."
+    },
+    { 
+      name: "Prabanjam Silver Factory", 
+      sector: "Manufacturing", 
+      year: "2026",
+      description: "Manufacturing unit dedicated to high-quality silver ornaments production to meet rising market demands."
+    },
+    { 
+      name: "Prabanjam Industrial", 
+      sector: "Manufacturing", 
+      year: "2027",
+      description: "Industrial operations expanding the group's manufacturing capabilities across multiple sectors."
+    },
+    { 
+      name: "Prabanjam Textiles", 
+      sector: "Consumer Services", 
+      year: "2027",
+      description: "Textile manufacturing and retail operations to diversify the group's consumer product portfolio."
+    },
+    { 
+      name: "Prabanjam Travels", 
+      sector: "Logistics", 
+      year: "2027",
+      description: "Travel and tourism services complementing the hospitality division with comprehensive travel solutions."
+    },
+    { 
+      name: "Prabanjam Transports", 
+      sector: "Logistics", 
+      year: "2027",
+      description: "Transportation and logistics services supporting the group's expanding business operations."
+    }
   ];
 
   return (
@@ -127,7 +157,7 @@ const GroupOfCompanies = () => {
                               {company.type}
                             </span>
                             <span className="inline-block px-3 py-1 bg-muted text-muted-foreground text-sm font-medium rounded-full">
-                              Est. {company.established}
+                              Established Year: {company.established}
                             </span>
                           </div>
                           <p className="text-sm text-muted-foreground">
@@ -167,21 +197,38 @@ const GroupOfCompanies = () => {
             {/* Upcoming Ventures */}
             <div className="mb-16">
               <h3 className="text-2xl font-bold text-foreground mb-8">Upcoming <span className="text-accent">Ventures</span></h3>
-              <Card className="p-8 bg-gradient-to-r from-accent/5 to-accent/10 border-accent/20">
-                <p className="text-muted-foreground mb-6">
-                  Prabanjam Group is expanding into multiple sectors to strengthen the group's presence in real estate, manufacturing, logistics and consumer services:
-                </p>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="space-y-6">
+                <Card className="p-8 bg-gradient-to-r from-accent/5 to-accent/10 border-accent/20 mb-6">
+                  <p className="text-muted-foreground mb-2">
+                    Prabanjam Group is expanding into multiple sectors to strengthen the group's presence in real estate, manufacturing, logistics and consumer services.
+                  </p>
+                  <p className="text-sm text-accent font-semibold">
+                    Total Group Asset Value: ₹17+ Crores (as of 2025)
+                  </p>
+                </Card>
+                <div className="grid md:grid-cols-2 gap-6">
                   {upcomingVentures.map((venture, index) => (
-                    <div key={venture.name} className="flex items-center justify-between p-4 bg-background/50 rounded-lg border border-accent/10">
-                      <div>
-                        <h4 className="font-semibold text-foreground">{venture.name}</h4>
-                        <p className="text-sm text-muted-foreground">{venture.sector}</p>
+                    <Card key={venture.name} className="p-6 hover:shadow-lg transition-all duration-300 border-accent/10">
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <h4 className="font-semibold text-foreground text-lg">{venture.name}</h4>
+                          <div className="flex gap-2 mt-1">
+                            <span className="inline-block px-2 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full">
+                              {venture.sector}
+                            </span>
+                            <span className="inline-block px-2 py-1 bg-muted text-muted-foreground text-xs font-medium rounded-full">
+                              Launch: {venture.year}
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {venture.description}
+                      </p>
+                    </Card>
                   ))}
                 </div>
-              </Card>
+              </div>
             </div>
 
             {/* Synergy Section */}
@@ -192,7 +239,8 @@ const GroupOfCompanies = () => {
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                 Our diversified business portfolio creates synergies across sectors, enabling us to 
                 provide comprehensive solutions, maintain high quality standards, and deliver 
-                exceptional value to our customers and stakeholders across all business verticals.
+                exceptional value to our customers and stakeholders. With ₹17+ Crores in total assets 
+                and ambitious expansion plans through 2027, we're building a strong foundation for long-term growth.
               </p>
             </Card>
           </div>

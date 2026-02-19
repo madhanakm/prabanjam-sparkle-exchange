@@ -9,6 +9,7 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import FloatingButtons from "@/components/FloatingButtons";
 import WelcomeModal from "@/components/WelcomeModal";
+import InvestmentCalculator from "@/components/InvestmentCalculator";
 
 const Index = () => {
   return (
@@ -18,13 +19,15 @@ const Index = () => {
       <div className="animate-fade-in opacity-0" style={{ animation: 'fadeInUp 1s ease-out 0.2s forwards' }}>
         <BoardOfDirectors />
       </div>
-      <div className="animate-fade-in opacity-0" style={{ animation: 'slideInRight 1s ease-out 0.4s forwards' }}>
+      <div className="animate-fade-in opacity-0" style={{ animation: 'fadeInUp 1s ease-out 0.4s forwards' }}>
+        <InvestmentCalculator />
+      </div>
+      <div className="animate-fade-in opacity-0" style={{ animation: 'slideInRight 1s ease-out 0.6s forwards' }}>
         <HomeServices />
       </div>
-      <div className="animate-fade-in opacity-0" style={{ animation: 'slideInLeft 1s ease-out 0.6s forwards' }}>
+      <div className="animate-fade-in opacity-0" style={{ animation: 'slideInLeft 1s ease-out 0.8s forwards' }}>
         <Features />
       </div>
-
       <div className="animate-fade-in opacity-0" style={{ animation: 'slideInLeft 1s ease-out 1s forwards' }}>
         <BusinessAchievements />
       </div>

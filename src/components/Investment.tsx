@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Users, Shield, ArrowRight, ChevronDown } from "lucide-react";
@@ -7,6 +7,18 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const Investment = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
 
   return (
     <section ref={ref} id="investment" className="py-24 bg-gradient-to-b from-background to-primary/5 relative overflow-hidden">
@@ -122,7 +134,7 @@ const Investment = () => {
         </div>
 
         {/* Investment Returns Table */}
-        <div className="mb-16">
+        <div id="returns-table" className="mb-16">
           <h3 className="text-3xl font-bold text-center text-foreground mb-8">Investment Returns <span className="text-accent">Chart</span></h3>
           <div className="max-w-6xl mx-auto">
             <Card className="p-6 overflow-hidden">

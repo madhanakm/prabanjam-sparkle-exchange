@@ -3,11 +3,12 @@ import HeroSlider from "@/components/HeroSlider";
 import BoardOfDirectors from "@/components/BoardOfDirectors";
 import Features from "@/components/Features";
 import HomeServices from "@/components/HomeServices";
-
 import BusinessAchievements from "@/components/Products";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import FloatingButtons from "@/components/FloatingButtons";
+import WelcomeModal from "@/components/WelcomeModal";
 
 const Index = () => {
   return (
@@ -34,6 +35,8 @@ const Index = () => {
         <CTA />
       </div>
       <Footer />
+      <FloatingButtons />
+      <WelcomeModal />
     </div>
   );
 };

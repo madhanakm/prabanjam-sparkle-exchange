@@ -367,10 +367,10 @@ app.post('/api/shareholders', authenticateToken, async (req, res) => {
 
 // Contact form submission
 app.post('/api/contact', authenticateApiKey, (req, res) => {
-  const { firstName, lastName, email, phone, subject, message } = req.body;
+  const { name, phone, area } = req.body;
   
-  const query = 'INSERT INTO contact_submissions (first_name, last_name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?, ?)';
-  db.query(query, [firstName, lastName, email, phone, subject, message], (err, result) => {
+  const query = 'INSERT INTO contact_submissions (name, phone, area) VALUES (?, ?, ?)';
+  db.query(query, [name, phone, area], (err, result) => {
     if (err) {
       return res.status(500).json({ message: 'Database error' });
     }

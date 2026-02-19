@@ -3,18 +3,14 @@ import { X, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import { api } from '@/config/api';
 
 const WelcomeModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
+    name: '',
     phone: '',
-    subject: '',
-    message: ''
+    area: ''
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -71,37 +67,13 @@ const WelcomeModal = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-3">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="modal-firstName">First Name</Label>
-                  <Input 
-                    id="modal-firstName" 
-                    placeholder="John" 
-                    value={formData.firstName}
-                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="modal-lastName">Last Name</Label>
-                  <Input 
-                    id="modal-lastName" 
-                    placeholder="Doe" 
-                    value={formData.lastName}
-                    onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                    required
-                  />
-                </div>
-              </div>
-
               <div className="space-y-2">
-                <Label htmlFor="modal-email">Email</Label>
+                <Label htmlFor="modal-name">Name</Label>
                 <Input 
-                  id="modal-email" 
-                  type="email" 
-                  placeholder="john.doe@example.com" 
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  id="modal-name" 
+                  placeholder="Your full name" 
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
                   required
                 />
               </div>
@@ -114,27 +86,17 @@ const WelcomeModal = () => {
                   placeholder="+91 98422 44014" 
                   value={formData.phone}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  required
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="modal-subject">Subject</Label>
+                <Label htmlFor="modal-area">Area</Label>
                 <Input 
-                  id="modal-subject" 
-                  placeholder="How can we help you?" 
-                  value={formData.subject}
-                  onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="modal-message">Message</Label>
-                <Textarea 
-                  id="modal-message" 
-                  placeholder="Tell us more about your inquiry..."
-                  rows={3}
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  id="modal-area" 
+                  placeholder="Your area/location" 
+                  value={formData.area}
+                  onChange={(e) => setFormData({...formData, area: e.target.value})}
                   required
                 />
               </div>

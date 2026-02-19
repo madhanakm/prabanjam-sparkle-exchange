@@ -28,14 +28,25 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Handle 401 responses and auto-logout
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('adminToken');
+      window.location.href = '/login';
+    }
+    return Promise.reject(error);
+  }
+);
+
 // Debug function to check token status
 export const debugToken = () => {
   const token = localStorage.getItem('adminToken');
   console.log('🔍 [TOKEN DEBUG] Token in localStorage:', token);
   return token;
 };
-
-
 
 export { API_BASE_URL, API_KEY };
 export default api;

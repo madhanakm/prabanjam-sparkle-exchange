@@ -4,19 +4,15 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { useState } from "react";
 import { api } from "@/config/api";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
+    name: '',
     phone: '',
-    subject: '',
-    message: ''
+    area: ''
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -31,12 +27,9 @@ const Contact = () => {
       await api.post('/contact', formData);
       setSuccess(true);
       setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
+        name: '',
         phone: '',
-        subject: '',
-        message: ''
+        area: ''
       });
     } catch (error) {
       setError('Failed to send message. Please try again.');
@@ -86,37 +79,13 @@ const Contact = () => {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="firstName">First Name</Label>
-                          <Input 
-                            id="firstName" 
-                            placeholder="John" 
-                            value={formData.firstName}
-                            onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                            required
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="lastName">Last Name</Label>
-                          <Input 
-                            id="lastName" 
-                            placeholder="Doe" 
-                            value={formData.lastName}
-                            onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                            required
-                          />
-                        </div>
-                      </div>
-
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
+                        <Label htmlFor="name">Name</Label>
                         <Input 
-                          id="email" 
-                          type="email" 
-                          placeholder="john.doe@example.com" 
-                          value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          id="name" 
+                          placeholder="Your full name" 
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
                           required
                         />
                       </div>
@@ -126,30 +95,20 @@ const Contact = () => {
                         <Input 
                           id="phone" 
                           type="tel" 
-                          placeholder="+1 (555) 000-0000" 
+                          placeholder="+91 98422 44014" 
                           value={formData.phone}
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          required
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="subject">Subject</Label>
+                        <Label htmlFor="area">Area</Label>
                         <Input 
-                          id="subject" 
-                          placeholder="How can we help you?" 
-                          value={formData.subject}
-                          onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="message">Message</Label>
-                        <Textarea 
-                          id="message" 
-                          placeholder="Tell us more about your inquiry..."
-                          rows={5}
-                          value={formData.message}
-                          onChange={(e) => setFormData({...formData, message: e.target.value})}
+                          id="area" 
+                          placeholder="Your area/location" 
+                          value={formData.area}
+                          onChange={(e) => setFormData({...formData, area: e.target.value})}
                           required
                         />
                       </div>

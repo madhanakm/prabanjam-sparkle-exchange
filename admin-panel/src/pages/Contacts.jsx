@@ -48,10 +48,8 @@ const Contacts = () => {
             <tr>
               <th>S.No</th>
               <th>Name</th>
-              <th>Email</th>
               <th>Phone</th>
-              <th>Subject</th>
-              <th>Message</th>
+              <th>Area</th>
               <th>Date</th>
             </tr>
           </thead>
@@ -59,11 +57,9 @@ const Contacts = () => {
             {currentItems.map((contact, index) => (
               <tr key={contact.id}>
                 <td>{indexOfFirstItem + index + 1}</td>
-                <td>{contact.first_name} {contact.last_name}</td>
-                <td>{contact.email}</td>
+                <td>{contact.name}</td>
                 <td>{contact.phone}</td>
-                <td>{contact.subject}</td>
-                <td>{contact.message}</td>
+                <td>{contact.area}</td>
                 <td>{new Date(contact.created_at).toLocaleDateString()}</td>
               </tr>
             ))}

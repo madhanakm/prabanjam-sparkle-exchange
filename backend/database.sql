@@ -52,12 +52,9 @@ INSERT INTO shareholders (name, shares, investment_date, username, password) VAL
 -- Contact submissions table
 CREATE TABLE contact_submissions (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(50) NOT NULL,
-  last_name VARCHAR(50) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  phone VARCHAR(20),
-  subject VARCHAR(200),
-  message TEXT NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  area VARCHAR(200) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

@@ -7,18 +7,19 @@ import { Label } from '@/components/ui/label';
 import { Calculator, TrendingUp } from 'lucide-react';
 
 const InvestmentCalculator = () => {
-  const [monthlyAmount, setMonthlyAmount] = useState(10000);
+  const [scheme, setScheme] = useState<'fixed' | 'monthly'>('fixed');
+  const [amount, setAmount] = useState(0);
   const [years, setYears] = useState(5);
 
-  const calculateReturns = (amount: number, year: number) => {
-    const maturityPer10k = [11268, 12722, 14554, 16870, 20053, 23573, 27234, 31484, 36416, 42142];
-    return Math.round((amount / 10000) * maturityPer10k[year - 1]);
+  const fixedInterestRates = [12.0, 12.35, 12.70, 13.05, 13.40, 13.75, 14.10, 14.45, 14.80, 15.0];
+
+  const calculateFixedReturns = (principal: number, year: number) => {
+    const rate = fixedInterestRates[year - 1] / 100;
+    const maturityAmount = principal * Math.pow(1 + rate, year);
+    return Math.round(maturityAmount);
   };
 
-  const totalInvestment = monthlyAmount * 12 * years;
-  const maturityAmount = calculateReturns(monthlyAmount, years);
-  const totalReturns = maturityAmount - totalInvestment;
-  const returnPercentage = ((totalReturns / totalInvestment) * 100).toFixed(2);
+  const returnBenefit = scheme === 'fixed' ? calculateFixedReturns(amount, years) : 0;
 
   return (
     <section className="py-16 bg-gradient-to-b from-primary/5 to-background">
@@ -32,7 +33,7 @@ const InvestmentCalculator = () => {
             Calculate Your <span className="text-accent">Returns</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            See how your monthly investment grows over time with our Dream Life Plan
+            Choose your investment scheme and see your returns
           </p>
         </div>
 
@@ -44,16 +45,42 @@ const InvestmentCalculator = () => {
               
               <div className="space-y-6">
                 <div>
+                  <Label className="text-base font-semibold mb-3 block">Select Scheme</Label>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      onClick={() => setScheme('fixed')}
+                      className={`p-3 rounded-lg border-2 transition-all ${
+                        scheme === 'fixed'
+                          ? 'border-accent bg-accent/10 text-accent font-semibold'
+                          : 'border-border hover:border-accent/50'
+                      }`}
+                    >
+                      Fixed Deposit
+                    </button>
+                    <button
+                      onClick={() => setScheme('monthly')}
+                      className={`p-3 rounded-lg border-2 transition-all ${
+                        scheme === 'monthly'
+                          ? 'border-accent bg-accent/10 text-accent font-semibold'
+                          : 'border-border hover:border-accent/50'
+                      }`}
+                    >
+                      Monthly Deposit
+                    </button>
+                  </div>
+                </div>
+
+                <div>
                   <Label htmlFor="amount" className="text-base font-semibold mb-2 block">
-                    Monthly Investment Amount
+                    {scheme === 'fixed' ? 'Investment Amount' : 'Monthly Investment Amount'}
                   </Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₹</span>
                     <Input
                       id="amount"
                       type="number"
-                      value={monthlyAmount}
-                      onChange={(e) => setMonthlyAmount(Number(e.target.value))}
+                      value={amount}
+                      onChange={(e) => setAmount(Number(e.target.value))}
                       className="pl-8 text-lg h-12"
                       min="100"
                       step="1000"
@@ -97,22 +124,21 @@ const InvestmentCalculator = () => {
               
               <div className="space-y-6">
                 <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                  <p className="text-xs md:text-sm text-primary-foreground/80 mb-1">Total Investment</p>
-                  <p className="text-2xl md:text-3xl font-bold">₹{totalInvestment.toLocaleString('en-IN')}</p>
+                  <p className="text-xs md:text-sm text-primary-foreground/80 mb-1">
+                    {scheme === 'fixed' ? 'Investment Amount' : 'Total Investment'}
+                  </p>
+                  <p className="text-2xl md:text-3xl font-bold">₹{amount.toLocaleString('en-IN')}</p>
                 </div>
 
                 <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                  <p className="text-xs md:text-sm text-primary-foreground/80 mb-1">Maturity Amount</p>
-                  <p className="text-2xl md:text-3xl font-bold text-accent">₹{maturityAmount.toLocaleString('en-IN')}</p>
-                </div>
-
-                <div className="bg-white/10 rounded-lg p-3 md:p-4">
-                  <p className="text-xs md:text-sm text-primary-foreground/80 mb-1">Total Returns</p>
-                  <p className="text-2xl md:text-3xl font-bold text-green-400">₹{totalReturns.toLocaleString('en-IN')}</p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <TrendingUp className="w-4 h-4 text-green-400" />
-                    <span className="text-sm text-green-400 font-semibold">{returnPercentage}% Growth</span>
-                  </div>
+                  <p className="text-xs md:text-sm text-primary-foreground/80 mb-1">Return Benefit</p>
+                  <p className="text-2xl md:text-3xl font-bold text-green-400">₹{returnBenefit.toLocaleString('en-IN')}</p>
+                  {scheme === 'fixed' && (
+                    <div className="flex items-center gap-2 mt-2">
+                      <TrendingUp className="w-4 h-4 text-green-400" />
+                      <span className="text-sm text-green-400 font-semibold">{fixedInterestRates[years - 1]}% Interest</span>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -129,14 +155,14 @@ const InvestmentCalculator = () => {
 
           {/* Quick Comparison */}
           <Card className="mt-8 p-6">
-            <h4 className="text-lg font-semibold text-foreground mb-4">Quick Comparison</h4>
+            <h4 className="text-lg font-semibold text-foreground mb-4">Quick Comparison - {scheme === 'fixed' ? 'Fixed Deposit' : 'Monthly Deposit'}</h4>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {[1, 3, 5, 7, 10].map((year) => {
-                const amount = calculateReturns(monthlyAmount, year);
+                const benefit = scheme === 'fixed' ? calculateFixedReturns(amount, year) : 0;
                 return (
                   <div key={year} className="text-center p-2 md:p-3 bg-accent/5 rounded-lg">
                     <p className="text-xs md:text-sm text-muted-foreground mb-1">{year} Year{year > 1 ? 's' : ''}</p>
-                    <p className="text-base md:text-lg font-bold text-accent">₹{amount.toLocaleString('en-IN')}</p>
+                    <p className="text-base md:text-lg font-bold text-accent">₹{benefit.toLocaleString('en-IN')}</p>
                   </div>
                 );
               })}

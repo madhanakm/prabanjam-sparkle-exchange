@@ -11,15 +11,28 @@ const InvestmentCalculator = () => {
   const [amount, setAmount] = useState(0);
   const [years, setYears] = useState(5);
 
-  const fixedInterestRates = [12.0, 12.35, 12.70, 13.05, 13.40, 13.75, 14.10, 14.45, 14.80, 15.0];
+  const fixedMaturityPer10k = [11268, 12722, 14554, 16870, 20053, 23573, 27234, 31484, 36416, 42142];
 
   const calculateFixedReturns = (principal: number, year: number) => {
-    const rate = fixedInterestRates[year - 1] / 100;
-    const maturityAmount = principal * Math.pow(1 + rate, year);
-    return Math.round(maturityAmount);
+    return Math.round((principal / 10000) * fixedMaturityPer10k[year - 1]);
   };
 
-  const returnBenefit = scheme === 'fixed' ? calculateFixedReturns(amount, years) : 0;
+  const calculateMonthlyReturns = (monthlyAmt: number, year: number) => {
+    const rates = [12.0, 12.35, 12.70, 13.05, 13.40, 13.75, 14.10, 14.45, 14.80, 15.0];
+    let balance = 0;
+    for (let y = 1; y <= year; y++) {
+      const r = rates[y - 1] / 100 / 12;
+      balance = balance * Math.pow(1 + r, 12) + monthlyAmt * ((Math.pow(1 + r, 12) - 1) / r) * (1 + r);
+    }
+    return Math.round(balance);
+  };
+
+  const maturityAmount = scheme === 'fixed'
+    ? calculateFixedReturns(amount, years)
+    : calculateMonthlyReturns(amount, years);
+
+  const totalInvested = scheme === 'fixed' ? amount : amount * 12 * years;
+  const returnBenefit = maturityAmount - totalInvested;
 
   return (
     <section className="py-16 bg-gradient-to-b from-primary/5 to-background">
@@ -127,7 +140,12 @@ const InvestmentCalculator = () => {
                   <p className="text-xs md:text-sm text-primary-foreground/80 mb-1">
                     {scheme === 'fixed' ? 'Investment Amount' : 'Total Investment'}
                   </p>
-                  <p className="text-2xl md:text-3xl font-bold">₹{amount.toLocaleString('en-IN')}</p>
+                  <p className="text-2xl md:text-3xl font-bold">₹{totalInvested.toLocaleString('en-IN')}</p>
+                </div>
+
+                <div className="bg-white/10 rounded-lg p-3 md:p-4">
+                  <p className="text-xs md:text-sm text-primary-foreground/80 mb-1">Maturity Amount</p>
+                  <p className="text-2xl md:text-3xl font-bold text-accent">₹{maturityAmount.toLocaleString('en-IN')}</p>
                 </div>
 
                 <div className="bg-white/10 rounded-lg p-3 md:p-4">
@@ -136,7 +154,7 @@ const InvestmentCalculator = () => {
                   {scheme === 'fixed' && (
                     <div className="flex items-center gap-2 mt-2">
                       <TrendingUp className="w-4 h-4 text-green-400" />
-                      <span className="text-sm text-green-400 font-semibold">{fixedInterestRates[years - 1]}% Interest</span>
+                      <span className="text-sm text-green-400 font-semibold">on {years} Year{years > 1 ? 's' : ''}</span>
                     </div>
                   )}
                 </div>
@@ -158,11 +176,13 @@ const InvestmentCalculator = () => {
             <h4 className="text-lg font-semibold text-foreground mb-4">Quick Comparison - {scheme === 'fixed' ? 'Fixed Deposit' : 'Monthly Deposit'}</h4>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {[1, 3, 5, 7, 10].map((year) => {
-                const benefit = scheme === 'fixed' ? calculateFixedReturns(amount, year) : 0;
+                const maturity = scheme === 'fixed'
+                  ? calculateFixedReturns(amount, year)
+                  : calculateMonthlyReturns(amount, year);
                 return (
                   <div key={year} className="text-center p-2 md:p-3 bg-accent/5 rounded-lg">
                     <p className="text-xs md:text-sm text-muted-foreground mb-1">{year} Year{year > 1 ? 's' : ''}</p>
-                    <p className="text-base md:text-lg font-bold text-accent">₹{benefit.toLocaleString('en-IN')}</p>
+                    <p className="text-base md:text-lg font-bold text-accent">₹{maturity.toLocaleString('en-IN')}</p>
                   </div>
                 );
               })}
